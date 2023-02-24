@@ -1,0 +1,25 @@
+.banner {
+    background-image: url(../img/fundo-landing-page-1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.texto-inicio h1{
+    color: #FFFF;
+    font-size: 50px;
+    padding: 140px 100px 50px 120px;
+    position: relative;
+}
+
+.texto-inicio a {
+    background-color: #f1d302;
+    color: #00072D;
+    border-radius: 35px;
+    cursor: pointer; 
+    font-size: 20px;
+    padding: 15px 150px;
+    margin-left: 120px;
+
+}
