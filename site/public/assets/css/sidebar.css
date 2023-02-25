@@ -1,0 +1,77 @@
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.sidebar{
+    width: 15%;
+    height: 100%;
+    background-color: #00072d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.content{
+    width: 85%;
+    height: 100%;
+}
+
+.perfilNome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+.iconPerfil{
+    width: 40%;
+    border-radius: 15px;
+    transition: 0.3s;
+    padding: 4%;
+    cursor: pointer;
+}
+.iconPerfilNome{
+    width: 40%;
+}
+.nomePerfil{
+    color: white;
+}
+
+.perfilFranquia{
+    display: flex;
+    justify-content: center;
+}
+.perfilFuncionario{
+    display: flex;
+    justify-content: center;
+}
+.perfilDefinicoes{
+    display: flex;
+    justify-content: center;
+}
+.perfilGrafico{
+    display: flex;
+    justify-content: center;
+}
+.btnSair{
+    width: 50%;
+    height: 5%;
+    background-color: #F1D302;
+    color: black;
+    font-weight: bold;
+    font-size: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btnSair:hover{
+    box-shadow: 3px 3px 1px black;
+    transition: 0.3s;
+}
+.iconPerfil:hover{
+    box-shadow: 4px 4px 1px black;
+    background-color: #1B98E0;
+    width: 45%;
+    transition: 0.3s;
+}
