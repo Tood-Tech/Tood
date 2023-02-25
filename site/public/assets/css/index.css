@@ -23,3 +23,41 @@
     margin-left: 120px;
 
 }
+
+
+/* segunda parte do site
+     INICIO
+*/
+
+.pageTwo{
+    display: flex;
+    height: 85vh;
+}
+
+.page2_img{
+    background-color: #00073F;
+    width: 57vw;
+    padding: 50px 50px 50px 80px;
+}
+
+.page2_img img{
+    height: 500px;
+    width: 520px;
+}
+
+.page2_txt{
+    background: rgb(247, 245, 242);
+    display: flex;
+    align-items: center;
+    padding: 125px 125px 125px 125px;
+    width: 55%;
+}
+
+.page2_txt span{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+} 
+
+/* FIM */
