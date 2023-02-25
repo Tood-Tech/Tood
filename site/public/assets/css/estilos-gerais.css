@@ -35,7 +35,6 @@ header {
 
 .navegacao {
   width: 350px;
-  
 }
 
 .navegacao ul {
@@ -65,3 +64,65 @@ footer {
   background-color: #f1d302;
   text-align: center;
 }
+
+/*CARD*/ 
+
+
+
+.social .container{
+  justify-content: center;
+}
+
+.box img {
+  width: 200px;
+}
+
+.social .container .boxes {
+  display: flex;
+}
+
+.social p {
+  text-align: center;
+}
+
+.box {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.box {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social{
+  padding-top: 10%;
+  padding-bottom: 10%;
+  background-color: #00072D;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+
+
+}
+
+.box-circulo {
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  border-radius: 150px;
+  background-color: #1B98E0;
+}
+
+.box-quadrado{
+  height:115%;
+  width: 100%;
+  background-color: #00073F;
+  }
+
+
+/*CARD*/
