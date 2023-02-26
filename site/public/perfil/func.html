@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/func.css">
     <title>Document</title>
 </head>
 <body>
@@ -19,23 +20,49 @@
                     <span class="nomePerfil">Nome do zé</span>
                 </div>
                 <div class="perfilFranquia">
-                    <img class="iconPerfil" src="../assets/img/franquia.png" alt="">
+                    <a class="ancora" href="franquia.html"><img class="iconPerfil" src="../assets/img/franquia.png" alt=""></a>
                 </div>
                 <div class="perfilFuncionario">
-                    <img class="iconPerfil" src="../assets/img/carteira-de-identidade.png" alt="">
+                    <a class="ancora" href="func.html"><img class="iconPerfil" src="../assets/img/carteira-de-identidade.png" alt=""></a>
                 </div>
                 <div class="perfilDefinicoes">
-                    <img class="iconPerfil" src="../assets/img/definicoes.png" alt="">
+                    <a class="ancora" href="totem.html"><img class="iconPerfil" src="../assets/img/definicoes.png" alt=""></a>
                 </div>
                 <div class="perfilGrafico">
-                    <img class="iconPerfil" src="../assets/img/grafico-preditivo.png" alt="">
+                    <a class="ancora" href="dashboard.html"><img class="iconPerfil" src="../assets/img/grafico-preditivo.png" alt=""></a>
                 </div>
                 <button class="btnSair">Sair</button>
             </div>
         <!-- FIM DA SIDEBAR -->
 
             <div class="content">
-
+                <div class="content-main">
+                    <div class="form">
+                        <h1 class="tituloFunc">Cadastre seu funcionário</h1>
+                        <div class="contentForm">
+                            <div class="parteForm">
+                                <input class="inputs" type="text" placeholder="Nome">
+                                <input class="inputs" type="text" placeholder="E-mail">
+                                <input class="inputs" type="password" placeholder="Senha">
+                                <input class="inputs" type="text" placeholder="Telefone">
+                                <input class="inputs" type="text" placeholder="CPF">
+                            </div>
+                            <div class="parteForm">
+                                <input class="inputs" type="text" placeholder="Logradouro">
+                                <input class="inputs" type="text" placeholder="Número">
+                                <input class="inputs" type="text" placeholder="Bairro">
+                                <input class="inputs" type="text" placeholder="Complemento">
+                                <div class="btnsForm">
+                                    <select class="selectPermissao" name="Permissao" id="Permissao">
+                                        <option value="0">Admin</option>
+                                        <option value="1">Usuário</option>
+                                    </select>
+                                    <button class="btnConfirmar">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

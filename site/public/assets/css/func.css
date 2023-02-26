@@ -1,0 +1,83 @@
+/* CONTEÚDO */
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+}
+.content-main{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 80%;
+    height: 80vh;
+    background-color: #00072d;
+    border-radius: 20px;
+}
+.tituloFunc{
+    width: 100%;
+    height: 6%;
+    background-color: #F1D302;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 3px solid #1B98E0;
+}
+.contentForm{
+    width: 100%;
+    height: 94%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.parteForm{
+    width: 40%;
+    height: 60%;
+}
+.inputs{
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 10%;
+    padding-left: 2%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+}
+.inputs::placeholder{
+    font-size: 130%;
+}
+.selectPermissao{
+    width: 30%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: #6D6A75;
+    font-size: 100%;
+}
+.btnConfirmar{
+    width: 30%;
+    height: 100%;
+    background-color: #F1D302;
+    color: black;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btnConfirmar:hover{
+    box-shadow: 3px 3px 1px black;
+    transition: 0.3s;
+}
+.btnsForm{
+    height: 9%;
+    display: flex;
+    justify-content: space-between;
+}
