@@ -27,11 +27,11 @@
                             <input type="password" id="iptSenha" placeholder="Senha">
                         </div><br>
                     </div>
-                    <button onclick="">Entrar</button>
+                    <button onclick="acessarLogin()">Entrar</button>
                 </div>
 
                 <div class="logo">
-                    <img class="img_logo" src="assets/img/tood-logo-white.png" alt="">
+                    <a href="index.html"><img class="img_logo" src="assets/img/tood-logo-white.png" alt=""></a>
                 </div>
             </div>
 
@@ -41,3 +41,11 @@
 </body>
 
 </html>
+
+<script>
+
+    // Função para entrar na Dashboard
+    function acessarLogin() {
+        window.location = "./perfil/dashboard.html";
+    }
+</script>
