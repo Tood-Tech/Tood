@@ -4,6 +4,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    width: 100%;
+}
+.texto-inicio{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .texto-inicio h1{
@@ -13,15 +21,31 @@
     position: relative;
 }
 
-.texto-inicio a {
+.texto-inicio a{
     background-color: #f1d302;
     color: #00072D;
     border-radius: 35px;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 20px;
-    padding: 15px 150px;
-    margin-left: 120px;
+    width: 50%;
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+@media only screen and (max-width: 600px) {
+    .texto-inicio{
+        width: 100%;
+    }
+    .texto-inicio h1{
+        font-size: 150%;
+    }
+    .texto-inicio a{
+        font-size: 100%;
+        width: 40%;
+        height: 8%;
+    }
 }
 
 
@@ -31,7 +55,7 @@
 
 .pageTwo{
     display: flex;
-    height: 85vh;
+    height: 100vh;
 }
 
 .page2_img{
@@ -61,3 +85,4 @@
 } 
 
 /* FIM */
+
