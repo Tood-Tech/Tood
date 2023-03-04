@@ -105,9 +105,48 @@ header {
 /*RODAPÉ/FOOTER*/
 
 footer {
-  padding: 15px 0;
-  background-color: #f1d302;
-  text-align: center;
+  display: flex;
+  width: 100%;
+  background-color: black;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.logoFooter{
+  width: 20%;
+}
+.barra{
+  width: 0.1%;
+  height: 20vh;
+  background-color: white;
+}
+.informacoesFooter{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.informacoesFooter h1{
+  color: yellow;
+  font-size: 100%;
+}
+.informacoesFooter p{
+  color: white;
+  font-size: 80%;
+}
+
+@media screen and (max-width: 600px){
+  footer{
+    flex-direction: column;
+  }
+  .barra{
+    display: none;
+  }
+  .informacoesFooter{
+    width: 100%;
+    align-items: center;
+    margin-bottom: 5%;
+  }
 }
 
 /*CARD*/ 
