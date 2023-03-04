@@ -1,25 +1,28 @@
 /* CONTEÚDO */
 
-.content{
+.content {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: end;
 }
-.content-main{
+
+.content-main {
     width: 85%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form{
+
+.form {
     width: 80%;
     height: 80vh;
     background-color: #00072d;
     border-radius: 20px;
 }
-.tituloFunc{
+
+.tituloFunc {
     width: 100%;
     height: 6%;
     background-color: #F1D302;
@@ -29,18 +32,21 @@
     border-top-right-radius: 20px;
     border-bottom: 3px solid #1B98E0;
 }
-.contentForm{
+
+.contentForm {
     width: 100%;
     height: 94%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
-.parteForm{
+
+.parteForm {
     width: 40%;
     height: 60%;
 }
-.inputs{
+
+.inputs {
     width: 100%;
     height: 3vh;
     margin-bottom: 10%;
@@ -50,10 +56,12 @@
     border-bottom: 1px solid white;
     color: white;
 }
-.inputs::placeholder{
+
+.inputs::placeholder {
     font-size: 130%;
 }
-.selectPermissao{
+
+.selectPermissao {
     width: 30%;
     background-color: transparent;
     border: none;
@@ -61,7 +69,8 @@
     color: #6D6A75;
     font-size: 100%;
 }
-.btnConfirmar{
+
+.btnConfirmar {
     width: 30%;
     height: 100%;
     background-color: #F1D302;
@@ -72,12 +81,57 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.btnConfirmar:hover{
+
+.btnConfirmar:hover {
     box-shadow: 3px 3px 1px black;
     transition: 0.3s;
 }
-.btnsForm{
+
+.btnsForm {
     height: 9%;
     display: flex;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+    .tituloFunc {
+        padding: 7% 0 15% 0;
+        width: 100%;
+        font-size: 100%;
+    }
+
+    .contentForm {
+        width: 80%;
+        height: 55%;
+        display: flex;
+        align-items: column;
+        flex-direction: column;
+        margin-top: 30%;
+
+    }
+
+    .inputs {
+        font-size: 50%;
+        width: 160%;
+    }
+
+    .selectPermissao {
+        width: 160%;
+        font-size: 65%;
+        height: 200%;
+        padding: 7%;
+    }
+
+    .btnConfirmar {
+        width: 165%;
+        font-size: 65%;
+        border-radius: 0%;
+        padding: 10% 0 23% 0;
+        margin-top: 35%;
+    }
+
+    .btnsForm {
+        display: flex;
+        flex-direction: column;
+    }
 }
