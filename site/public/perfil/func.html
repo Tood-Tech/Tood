@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/func.css">
+    <script src="../assets/js/menu.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,6 +16,8 @@
 
         <!-- SIDE BAR -->
             <div class="sidebar">
+                <div class="mobile-menu-close-perfil-icon">
+                    <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/close_white_36dp.svg" alt=""></button>
                 </div>
                 <div class="perfilNome">
                     <img  class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
@@ -38,6 +41,9 @@
 
             <div class="content">
                 <div class="content-main">
+                    <div class="mobile-menu-perfil-icon">
+                        <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/menu_black_36dp.svg" alt=""></button>
+                    </div>
                     <div class="form">
                         <h1 class="tituloFunc">Cadastre seu funcionário</h1>
                         <div class="contentForm">
