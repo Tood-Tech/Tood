@@ -65,8 +65,7 @@
 }
 
 .page2_img img{
-    height: 500px;
-    width: 520px;
+    width: 100%;
 }
 
 .page2_txt{
@@ -82,7 +81,32 @@
     font-style: normal;
     font-weight: 600;
     font-size: 35px;
-} 
+}
+
+@media only screen and (max-width: 600px){
+    .pageTwo{
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+    }
+    .page2_img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+    .page2_img img{
+        width: 50%;
+    }
+    .page2_txt{
+        width: 100%;
+        padding: 10%;
+    }
+    .page2_txt span{
+        font-size: 100%;
+    }
+
+}
 
 /* SOCIAL */
 @media screen and (max-width: 600px){
