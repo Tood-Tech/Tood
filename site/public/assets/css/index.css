@@ -108,19 +108,7 @@
 
 }
 
-/* SOCIAL */
-@media screen and (max-width: 600px){
-    .social .container{
-      height: 100%;
-    }
-    .social .container .boxes {
-      display: flex;
-      flex-direction: column;
-    }
-    .box img {
-      width: 100px;
-    }
-  }
+
 
 /* FIM */
 
