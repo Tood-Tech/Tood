@@ -20,3 +20,7 @@ function menuPerfilMobile(){
     }
 
 }
+
+function voltar(){
+    window.location = "../index.html";
+}
