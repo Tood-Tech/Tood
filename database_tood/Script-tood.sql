@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema ToodDatabase
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema ToodDatabase
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `ToodDatabase` DEFAULT CHARACTER SET utf8 ;
 USE `ToodDatabase` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Empresa`
+-- Table `ToodDatabase`.`Empresa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Empresa` (
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Empresa` (
   `idEmpresa` INT NOT NULL AUTO_INCREMENT,
   `razaoSocial` VARCHAR(45) NULL,
   `nomeFantasia` VARCHAR(45) NULL,
@@ -29,9 +29,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Estabelecimento`
+-- Table `ToodDatabase`.`Estabelecimento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Estabelecimento` (
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Estabelecimento` (
   `idEstabelecimento` INT NOT NULL AUTO_INCREMENT,
   `fkEmpresa` INT NOT NULL,
   `identificacao` VARCHAR(45) NULL,
@@ -39,16 +39,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Estabelecimento` (
   INDEX `fk_Freezer_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
   CONSTRAINT `fk_Freezer_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `mydb`.`Empresa` (`idEmpresa`)
+    REFERENCES `ToodDatabase`.`Empresa` (`idEmpresa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Totem`
+-- Table `ToodDatabase`.`Totem`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Totem` (
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Totem` (
   `idTotem` INT NOT NULL AUTO_INCREMENT,
   `fkEstabelecimento` INT NOT NULL,
   `processador` VARCHAR(45) NULL,
@@ -59,16 +59,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Totem` (
   INDEX `fk_Totem_Estabelecimento1_idx` (`fkEstabelecimento` ASC) VISIBLE,
   CONSTRAINT `fk_Totem_Estabelecimento1`
     FOREIGN KEY (`fkEstabelecimento`)
-    REFERENCES `mydb`.`Estabelecimento` (`idEstabelecimento`)
+    REFERENCES `ToodDatabase`.`Estabelecimento` (`idEstabelecimento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`DadoTotem`
+-- Table `ToodDatabase`.`DadoTotem`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`DadoTotem` (
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`DadoTotem` (
   `idDadosTotem` INT NOT NULL AUTO_INCREMENT,
   `fkTotem` INT NOT NULL,
   `dataHora` DATETIME NULL,
@@ -79,16 +79,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`DadoTotem` (
   INDEX `fk_dados_sensores_idx` (`fkTotem` ASC) VISIBLE,
   CONSTRAINT `fk_dados_sensores`
     FOREIGN KEY (`fkTotem`)
-    REFERENCES `mydb`.`Totem` (`idTotem`)
+    REFERENCES `ToodDatabase`.`Totem` (`idTotem`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Usuario`
+-- Table `ToodDatabase`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `fkEmpresa` INT NOT NULL,
   `nomeUsuario` VARCHAR(45) NULL,
@@ -99,16 +99,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
   INDEX `fk_Usuario_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
   CONSTRAINT `fk_Usuario_Empresa1`
     FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `mydb`.`Empresa` (`idEmpresa`)
+    REFERENCES `ToodDatabase`.`Empresa` (`idEmpresa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`AlertaSensor`
+-- Table `ToodDatabase`.`AlertaSensor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`AlertaSensor` (
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`AlertaSensor` (
   `idAlertaSensor` INT NOT NULL AUTO_INCREMENT,
   `fkSensor` INT NOT NULL,
   `dtAlerta` DATETIME NULL,
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`AlertaSensor` (
   INDEX `fk_Alerta_has_Sensores_Sensores1_idx` (`fkSensor` ASC) VISIBLE,
   CONSTRAINT `fk_Alerta_has_Sensores_Sensores1`
     FOREIGN KEY (`fkSensor`)
-    REFERENCES `mydb`.`Totem` (`idTotem`)
+    REFERENCES `ToodDatabase`.`Totem` (`idTotem`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
