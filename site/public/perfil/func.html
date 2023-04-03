@@ -48,9 +48,9 @@
                         <h1 class="tituloFunc">Cadastre seu funcionário</h1>
                         <div class="contentForm">
                             <div class="parteForm">
-                                <input class="inputs" type="text" placeholder="Nome">
-                                <input class="inputs" type="text" placeholder="E-mail">
-                                <input class="inputs" type="password" placeholder="Senha">
+                                <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
+                                <input id="emailFunc" class="inputs" type="text" placeholder="E-mail">
+                                <input id="senhaFunc" class="inputs" type="password" placeholder="Senha">
                                 <input class="inputs" type="text" placeholder="Telefone">
                                 <input class="inputs" type="text" placeholder="CPF">
                             </div>
@@ -60,11 +60,11 @@
                                 <input class="inputs" type="text" placeholder="Bairro">
                                 <input class="inputs" type="text" placeholder="Complemento">
                                 <div class="btnsForm">
-                                    <select class="selectPermissao" name="Permissao" id="Permissao">
-                                        <option value="0">Admin</option>
-                                        <option value="1">Usuário</option>
+                                    <select class="selectPermissao" name="Permissao" id="cargoFunc">
+                                        <option value="gerente">Gerente</option>
+                                        <option value="suporte">Suporte</option>
                                     </select>
-                                    <button class="btnConfirmar">Confirmar</button>
+                                    <button onclick="cadastrarFuncionario()" class="btnConfirmar">Confirmar</button>
                                 </div>
                             </div>
                         </div>
@@ -77,3 +77,66 @@
 
 </body>
 </html>
+
+<script>
+    
+    function cadastrarFuncionario() {
+                //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nomeFunc.value;
+        var emailVar = emailFunc.value;
+        var senhaVar = senhaFunc.value;
+        var cargoVar = cargoFunc.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cargoVar == "") {
+
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            // setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarFuncionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cargoServer: cargoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "func.html";
+                }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+
+</script>
