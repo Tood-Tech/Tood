@@ -91,6 +91,13 @@
     justify-content: space-between;
 }
 
+.func {
+    box-shadow: 4px 4px 1px black;
+    background-color: #1B98E0;
+    width: 45%;
+}
+
+
 @media only screen and (max-width: 600px) {
     .content-main{
         width: 100%;
