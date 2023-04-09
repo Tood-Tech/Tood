@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/franq.css">
     <title>Document</title>
 </head>
 <body>
@@ -31,6 +32,52 @@
                 </div>
                 <button class="btnSair">Sair</button>
             </div>
-        <!-- FIM DA SIDEBAR -->
+            <!-- FIM DA SIDEBAR -->
+
+           
+                <div class="form">
+                    <h1 class="tituloFunc">Cadastre sua empresa</h1>
+                   
+                    <div class="contentForm">
+                        <div class="parteForm">
+                        <span class="tituloInp">Nome:</span>
+                        <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
+                        <span class="tituloInp">CNPJ:</span>
+                        <input id="cnpjFunc" class="inputs" type="text" placeholder="">
+                    </div>
+                    <div class="parteForm">
+                        <span class="tituloInp">Telefone:</span>
+                        <input id="telFunc" class="inputs" type="text" placeholder="">
+                        <span class="tituloInp">Responsável:</span>
+                        <input id="respFunc" class="inputs" type="text" placeholder="">
+                    </div>
+                </div>
+                    <div class="btnsForm">
+                        <button onclick="cadastrarFranquia()" class="btnConfirmar">Cadastrar</button>
+                </div>
+                <h4>Empresas Cadastradas</h4>
+                <div class="historico">
+<div class="histEmpresa">
+    <h1>Nome:</h1>
+    <div id="ttl">####</div>
+</div>
+<div class="histEmpresa">
+    <h1>CNPJ:</h1>
+    <div id="ttl">####</div>
+</div>
+<div class="histEmpresa">
+    <h1>Telefone:</h1>
+    <div id="ttl">####</div>
+</div>
+<div class="histEmpresa">
+    <h1>Responsável:</h1>
+    <div id="ttl">####</div>
+</div>
+</div>
+<div class="btnsForm u">
+    <button onclick="utilizarFranquia()" class="btnConfirmar">Utilizar</button>
+</div>
+</div>
+            </div>
 </body>
 </html>
