@@ -1,35 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/totem.css">
     <title>Document</title>
 </head>
+
 <body>
-    <section class="main">
-        <!-- SIDE BAR -->
+    <main>
+        <section class="main">
+            <!-- SIDE BAR -->
             <div class="sidebar">
                 <div class="perfilNome">
-                    <img  class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
+                    <img class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
                     <span class="nomePerfil">Nome do zé</span>
                 </div>
                 <div class="perfilFranquia">
-                    <a class="ancora" href="franquia.html"><img class="iconPerfil" src="../assets/img/franquia.png" alt=""></a>
+                    <a class="ancora" href="franquia.html"><img class="iconPerfil" src="../assets/img/franquia.png"
+                            alt=""></a>
                 </div>
                 <div class="perfilFuncionario">
-                    <a class="ancora" href="func.html"><img class="iconPerfil" src="../assets/img/carteira-de-identidade.png" alt=""></a>
+                    <a class="ancora" href="func.html"><img class="iconPerfil"
+                            src="../assets/img/carteira-de-identidade.png" alt=""></a>
                 </div>
                 <div class="perfilDefinicoes">
-                    <a class="ancora" href="totem.html"><img class="iconPerfil" src="../assets/img/definicoes.png" alt=""></a>
+                    <a class="ancora" href="totem.html"><img class="iconPerfil" src="../assets/img/definicoes.png"
+                            alt=""></a>
                 </div>
                 <div class="perfilGrafico">
-                    <a class="ancora" href="dashboard.html"><img class="iconPerfil" src="../assets/img/grafico-preditivo.png" alt=""></a>
+                    <a class="ancora" href="dashboard.html"><img class="iconPerfil"
+                            src="../assets/img/grafico-preditivo.png" alt=""></a>
                 </div>
                 <button class="btnSair">Sair</button>
             </div>
-        <!-- FIM DA SIDEBAR -->
+            <!-- FIM DA SIDEBAR -->
+            <div class="content-form">
+                <div class="div-form">
+                    <div class="form">
+                        <h1 class="title-form">Cadastre seu totem</h1>
+                        <div class="form-inputs">
+                            <div class="parteForm">
+                                <input id="apelidoTotem" class="inputs" type="text" placeholder="Apelido">
+                                <input id="marcaTotem" class="inputs" type="text" placeholder="Marca">
+                                <input id="modeloTotem" class="inputs" type="text" placeholder="Modelo">
+                                <input id="discoTotem" class="inputs" type="text" placeholder="Disco">
+                            </div>
+                            <div class="parteForm">
+                                <input id="processadorTotem" class="inputs" type="text" placeholder="Processador">
+                                <input id="softwareTotem" class="inputs" type="text" placeholder="Software">
+                                <input id="cpuTotem" class="inputs" type="text" placeholder="GPU">
+                                <input id="ramTotem" class="inputs" type="text" placeholder="Ram">
+                            </div>
+                        </div>
+                        <div class="parametrizar">
+                            <h1 class="titleParametrizar">Parametrizar Alertas</h1>
+                            <p class="pDescricao">Digite a "%" de uso para gerarmos um alerta para cada componente.</p>
+                            <div class="labelIpt">
+                                <label for="processadorTotem" class="labelComponentes">Processador:</label>
+                                <input id="processadorTotem" class="inputs parametrizarIpts" type="number" min="1"
+                                    max="100" placeholder="%">
+                            </div>
+                            <div class="labelIpt">
+                                <label for="ramTotem" class="labelComponentes">Ram:</label>
+                                <input id="ramTotem" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                    placeholder="%">
+                            </div>
+                            <div class="labelIpt">
+                                <label for="discoTotem" class="labelComponentes">Disco:</label>
+                                <input id="discoTotem" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                    placeholder="%">
+                            </div>
+                            <div class="labelIpt">
+                                <label for="gpuTotem" class="labelComponentes">GPU:</label>
+                                <input id="gpuTotem" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                    placeholder="%">
+                            </div>
+                        </div>
+                        <div class="div-btnConfirmar">
+                            <button class="btnConfirmar">
+                                Confirmar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cardTotem">
+                        <div class="iconTotem">
+                            <img class="iconTotemSvg" src="../assets/img/totemSvg.svg" alt="imgTotem">
+                        </div>
+                        <div class="atributs">
+                            <div class="atributosTotem">
+                                <div class="individualAtributo primeiro">
+                                    <p style="font-weight: bold;">Apelido: <span style="font-weight: 300;" id="apelido">HXR-480</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Ram: <span style="font-weight: 300;" id="ram">8GB</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Disco: <span style="font-weight: 300;" id="disco">500GB</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Processador: <span style="font-weight: 300;" id="processador">i7 10th</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Gpu: <span style="font-weight: 300;" id="gpu">1050 TI</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Marca: <span style="font-weight: 300;" id="marca">Asus</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Modelo: <span style="font-weight: 300;" id="modelo">????</span></p>
+                                </div>
+                                <div class="individualAtributo ultimo">
+                                    <p style="font-weight: bold">Software: <span style="font-weight: 300;" id="software">Domingo's software</span></p>
+                                </div>
+                            </div>
+                            <div class="parametrosTotem">
+                                <h1 class="tituloParametrosTotem">Parâmetros para os Alertas</h1>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Processador: <span style="font-weight: 300;" id="processador">90%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Ram: <span style="font-weight: 300;" id="processador">80%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Disco: <span style="font-weight: 300;" id="processador">75%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Gpu: <span style="font-weight: 300;" id="processador">70%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <button class="btnDeletarMaquina">
+                                    Deletar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+
+
+
 </body>
+
 </html>
