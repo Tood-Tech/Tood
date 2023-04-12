@@ -219,3 +219,9 @@
     background-color: red;
     transition: 0.3s;
 }
+
+.totem {
+    box-shadow: 4px 4px 1px black;
+    background-color: #1B98E0;
+    width: 45%;
+}
