@@ -121,7 +121,7 @@
 }
 /* PARTE DE READ, UPDATE AND DELETE (cards de cada máquina)*/
 .cardTotem{
-    width: 80%;
+    width: 100%;
     background-color: #00072D;
     display: flex;
     margin-bottom: 5%;

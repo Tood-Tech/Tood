@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="atualizarFeed()">
     <main>
         <section class="main">
             <!-- SIDE BAR -->
@@ -87,7 +87,8 @@
                             </button>
                         </div>
                     </div>
-                    <div class="cardTotem">
+                    <div id="teste">
+                        <div class="cardTotem">
                         <div class="iconTotem">
                             <img class="iconTotemSvg" src="../assets/img/totemSvg.svg" alt="imgTotem">
                         </div>
@@ -142,6 +143,8 @@
                                 </button>
                             </div>
                         </div>
+                    
+                    </div>
                     </div>
                 </div>
             </div>
@@ -159,3 +162,154 @@
 </body>
 
 </html>
+
+<script>
+
+function atualizarFeed() {
+        //aguardar();
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    teste.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        
+
+                        //ALGUMA COISA
+
+                        
+                        teste.innerHTML += `
+                        <div class="cardTotem">
+                        <div class="iconTotem">
+                            <img class="iconTotemSvg" src="../assets/img/totemSvg.svg" alt="imgTotem">
+                        </div>
+                        <div class="atributs">
+                            <div class="atributosTotem">
+                                <div class="individualAtributo primeiro">
+                                    <p style="font-weight: bold;">Apelido: <span style="font-weight: 300;" id="apelido">HXR-480</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Ram: <span style="font-weight: 300;" id="ram">${publicacao.ram}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Disco: <span style="font-weight: 300;" id="disco">${publicacao.disco}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Processador: <span style="font-weight: 300;" id="processador">${publicacao.processador}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Gpu: <span style="font-weight: 300;" id="gpu">${publicacao.gpu}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold">Marca: <span style="font-weight: 300;" id="marca">Asus</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Modelo: <span style="font-weight: 300;" id="modelo">????</span></p>
+                                </div>
+                                <div class="individualAtributo ultimo">
+                                    <p style="font-weight: bold">Software: <span style="font-weight: 300;" id="software">Domingo's software</span></p>
+                                </div>
+                            </div>
+                            <div class="parametrosTotem">
+                                <h1 class="tituloParametrosTotem">Parâmetros para os Alertas</h1>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Processador: <span style="font-weight: 300;" id="processador">${publicacao.alertaProcessador}%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Ram: <span style="font-weight: 300;" id="processador">${publicacao.alertaRam}%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Disco: <span style="font-weight: 300;" id="processador">${publicacao.alertaDisco}%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Gpu: <span style="font-weight: 300;" id="processador">${publicacao.alertaGpu}%</span></p>
+                                    <button class="btnAlterarApelido">Alterar</button>
+                                </div>
+                                <button class="btnDeletarMaquina">
+                                    Deletar
+                                </button>
+                        `
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+// <div class="cardTotem">
+//                         <div class="iconTotem">
+//                             <img class="iconTotemSvg" src="../assets/img/totemSvg.svg" alt="imgTotem">
+//                         </div>
+//                         <div class="atributs">
+//                             <div class="atributosTotem">
+//                                 <div class="individualAtributo primeiro">
+//                                     <p style="font-weight: bold;">Apelido: <span style="font-weight: 300;" id="apelido">HXR-480</span></p>
+//                                     <button class="btnAlterarApelido">Alterar</button>
+//                                 </div>
+//                                 <div class="individualAtributo">
+//                                     <p style="font-weight: bold">Ram: <span style="font-weight: 300;" id="ram">${ram}</span></p>
+//                                 </div>
+//                                 <div class="individualAtributo">
+//                                     <p style="font-weight: bold">Disco: <span style="font-weight: 300;" id="disco">${disco}</span></p>
+//                                 </div>
+//                                 <div class="individualAtributo">
+//                                     <p style="font-weight: bold">Processador: <span style="font-weight: 300;" id="processador">${processador}</span></p>
+//                                 </div>
+//                                 <div class="individualAtributo">
+//                                     <p style="font-weight: bold">Gpu: <span style="font-weight: 300;" id="gpu">${gpu}</span></p>
+//                                 </div>
+//                                 <div class="individualAtributo">
+//                                     <p style="font-weight: bold">Marca: <span style="font-weight: 300;" id="marca">Asus</span></p>
+//                                 </div>
+//                                 <div class="individualAtributo">
+//                                     <p style="font-weight: bold;">Modelo: <span style="font-weight: 300;" id="modelo">????</span></p>
+//                                 </div>
+//                                 <div class="individualAtributo ultimo">
+//                                     <p style="font-weight: bold">Software: <span style="font-weight: 300;" id="software">Domingo's software</span></p>
+//                                 </div>
+//                             </div>
+//                             <div class="parametrosTotem">
+//                                 <h1 class="tituloParametrosTotem">Parâmetros para os Alertas</h1>
+//                                 <div class="individualAtributo parametrosAlterar">
+//                                     <p style="font-weight: bold;">Processador: <span style="font-weight: 300;" id="processador">${alertaProcessador}%</span></p>
+//                                     <button class="btnAlterarApelido">Alterar</button>
+//                                 </div>
+//                                 <div class="individualAtributo parametrosAlterar">
+//                                     <p style="font-weight: bold;">Ram: <span style="font-weight: 300;" id="processador">${alertaRam}%</span></p>
+//                                     <button class="btnAlterarApelido">Alterar</button>
+//                                 </div>
+//                                 <div class="individualAtributo parametrosAlterar">
+//                                     <p style="font-weight: bold;">Disco: <span style="font-weight: 300;" id="processador">${alertaDisco}%</span></p>
+//                                     <button class="btnAlterarApelido">Alterar</button>
+//                                 </div>
+//                                 <div class="individualAtributo parametrosAlterar">
+//                                     <p style="font-weight: bold;">Gpu: <span style="font-weight: 300;" id="processador">${alertaGpu}%</span></p>
+//                                     <button class="btnAlterarApelido">Alterar</button>
+//                                 </div>
+//                                 <button class="btnDeletarMaquina">
+//                                     Deletar
+//                                 </button>
+    
+</script>
