@@ -1,22 +1,21 @@
 /* CONTEÚDO */
 .content {
     width: 100%;
-    height: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .content-main {
     width: 85%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    margin-top: 2%;
 }
 .form {
     width: 80%;
-    height: 40vh;
     background-color: #00072d;
     border-radius: 20px;
 }
@@ -43,17 +42,22 @@
 .parteForm {
     width: 40%;
     height: 60%;
+    margin: 5% 0 5% 0;
 }
 
 .inputs {
     width: 100%;
     height: 3vh;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     padding-left: 2%;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid white;
     color: white;
+}
+.lastInput{
+    margin-bottom: 0;
+
 }
 
 .inputs::placeholder {
@@ -62,7 +66,7 @@
 
 .selectPermissao {
     width: 30%;
-    background-color: transparent;
+    background-color:  #00072D;
     border: none;
     border-bottom: 1px solid white;
     color: #6D6A75;
@@ -100,9 +104,71 @@
 /* Cards de funcionários */
 .card-func{
     width: 80%;
-    height: 20vh;
-    background-color: #00072d;
+    background-color: #00072D;
+    display: flex;
+    align-items: center;
     border-radius: 20px;
+    margin: 2% 0 2% 0;
+}
+
+.imgIconPerfil{
+    width: 20%;
+    background-color: #00072D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2% 0 2% 2%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.iconCardFuncionario{
+    width: 90%;
+    background-color: white;
+    border-radius: 20px;
+    border: 10px solid  #000000;
+}
+.atributos{
+    width: 80%;
+    height: 100%;
+    display: flex;
+}
+.metadeAtributos{
+    width: 50%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.individualAtributo{
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    width: 100%;
+    margin: 2% 0 0;
+    color: white;
+}
+.btnAlterar{
+    width: 30%;
+    background-color: #F1D302;
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btnAlterarApelido:hover{
+    background-color: yellow;
+    transition: 0.3s;
+}
+.cardFunc{
+    margin-top: 2%;
+    height: 100%;
+}
+.cardFuncPermissao{
+    color: white;
+    background-color:  #00072D;
 }
 
 @media only screen and (max-width: 600px) {
