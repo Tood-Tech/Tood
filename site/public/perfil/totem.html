@@ -18,7 +18,7 @@
             <div class="sidebar">
                 <div class="perfilNome">
                     <img class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
-                    <span class="nomePerfil">Nome do zé</span>
+                    <span class="nomePerfil">(nome usuário)</span>
                 </div>
                 <div class="perfilFranquia">
                     <a class="ancora" href="franquia.html"><img class="iconPerfil" src="../assets/img/franquia.png"
@@ -29,7 +29,7 @@
                             src="../assets/img/carteira-de-identidade.png" alt=""></a>
                 </div>
                 <div class="perfilDefinicoes">
-                    <a class="ancora" href="totem.html"><img class="iconPerfil" src="../assets/img/definicoes.png"
+                    <a class="ancora" href="totem.html"><img class="iconPerfil totem" src="../assets/img/definicoes.png"
                             alt=""></a>
                 </div>
                 <div class="perfilGrafico">
@@ -157,6 +157,78 @@
 
                         </div>
                     </div>
+                    <div id="teste">
+                        <div class="cardTotem">
+                            <div class="iconTotem">
+                                <img class="iconTotemSvg" src="../assets/img/totemSvg.svg" alt="imgTotem">
+                            </div>
+                            <div class="atributs">
+                                <div class="atributosTotem">
+                                    <div class="individualAtributo primeiro">
+                                        <p style="font-weight: bold;">Apelido: <span style="font-weight: 300;"
+                                                id="apelido">HXR-480</span></p>
+                                        <button class="btnAlterarApelido">Alterar</button>
+                                    </div>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold">Ram: <span style="font-weight: 300;"
+                                                id="ram">8GB</span></p>
+                                    </div>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold">Disco: <span style="font-weight: 300;"
+                                                id="disco">500GB</span></p>
+                                    </div>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold">Processador: <span style="font-weight: 300;"
+                                                id="processador">i7 10th</span></p>
+                                    </div>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold">Gpu: <span style="font-weight: 300;" id="gpu">1050
+                                                TI</span></p>
+                                    </div>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold">Marca: <span style="font-weight: 300;"
+                                                id="marca">Asus</span></p>
+                                    </div>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold;">Modelo: <span style="font-weight: 300;"
+                                                id="modelo">????</span></p>
+                                    </div>
+                                    <div class="individualAtributo ultimo">
+                                        <p style="font-weight: bold">Software: <span style="font-weight: 300;"
+                                                id="software">Domingo's software</span></p>
+                                    </div>
+                                </div>
+                                <div class="parametrosTotem">
+                                    <h1 class="tituloParametrosTotem">Parâmetros para os Alertas</h1>
+                                    <div class="individualAtributo parametrosAlterar">
+                                        <p style="font-weight: bold;">Processador: <span style="font-weight: 300;"
+                                                id="processador">90%</span></p>
+                                        <button class="btnAlterarApelido">Alterar</button>
+                                    </div>
+                                    <div class="individualAtributo parametrosAlterar">
+                                        <p style="font-weight: bold;">Ram: <span style="font-weight: 300;"
+                                                id="processador">80%</span></p>
+                                        <button class="btnAlterarApelido">Alterar</button>
+                                    </div>
+                                    <div class="individualAtributo parametrosAlterar">
+                                        <p style="font-weight: bold;">Disco: <span style="font-weight: 300;"
+                                                id="processador">75%</span></p>
+                                        <button class="btnAlterarApelido">Alterar</button>
+                                    </div>
+                                    <div class="individualAtributo parametrosAlterar">
+                                        <p style="font-weight: bold;">Gpu: <span style="font-weight: 300;"
+                                                id="processador">70%</span></p>
+                                        <button class="btnAlterarApelido">Alterar</button>
+                                    </div>
+                                    <button class="btnDeletarMaquina">
+                                        Deletar
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+>>>>>>> 740fb3c5345626beb5f1545d969a0db642e987f0
+                    </div>
                 </div>
             </div>
             </div>
@@ -205,6 +277,7 @@
                         idAlertaRam = `alertaRam${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
                         idAlertaDisco = `alertaDisco${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
                         idAlertaGpu = `alertaGpu${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
+
 
                         teste.innerHTML += `
                         <div class="cardTotem">
@@ -450,7 +523,5 @@
         });
     }
 
-
-    // <button onclick="btnAlterarGpu(${publicacao.idTotem}, ${publicacao.alertaGpu}, gpu${publicacao.idTotem})" class="btnAlterarApelido">Alterar</button>
 
 </script>

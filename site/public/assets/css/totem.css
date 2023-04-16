@@ -242,3 +242,8 @@
 .deletar {
     background-color: rgb(208, 84, 84);
 }
+.totem {
+    box-shadow: 4px 4px 1px black;
+    background-color: #1B98E0;
+    width: 45%;
+}
