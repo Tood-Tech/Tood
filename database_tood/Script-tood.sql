@@ -54,13 +54,13 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Totem` (
   `idTotem` INT NOT NULL AUTO_INCREMENT,
   `fkEstabelecimento` INT NOT NULL,
-  `processador` VARCHAR(45) NULL,
+  `processador` INT NULL,
   `alertaProcessador` INT NULL,
-  `ram` VARCHAR(45) NULL,
+  `ram` INT NULL,
   `alertaRam` INT NULL,
-  `gpu` VARCHAR(45) NULL,
+  `gpu` INT NULL,
   `alertaGpu` INT NULL,
-  `disco` VARCHAR(45) NULL,
+  `disco` INT NULL,
   `alertaDisco` INT NULL,
   PRIMARY KEY (`idTotem`, `fkEstabelecimento`),
   INDEX `fk_Totem_Estabelecimento1_idx` (`fkEstabelecimento` ASC) VISIBLE,
@@ -78,10 +78,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ToodDatabase`.`DadoTotem` (
   `idDadosTotem` INT NOT NULL AUTO_INCREMENT,
   `fkTotem` INT NOT NULL,
-  `dataHora` DATETIME NULL,
-  `statusRam` VARCHAR(45) NULL,
-  `statusGpu` VARCHAR(45) NULL,
-  `statusDisco` VARCHAR(45) NULL,
+  `dataHora` INT NULL,
+  `qtdRam` INT NULL,
+  `qtdGpu` INT NULL,
+  `qtdDisco` INT NULL,
+  `qtdProcessador` INT NULL,
   PRIMARY KEY (`idDadosTotem`, `fkTotem`),
   INDEX `fk_dados_sensores_idx` (`fkTotem` ASC) VISIBLE,
   CONSTRAINT `fk_dados_sensores`
@@ -117,14 +118,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ToodDatabase`.`AlertaSensor` (
   `idAlertaSensor` INT NOT NULL AUTO_INCREMENT,
-  `fkSensor` INT NOT NULL,
+  `fkDadoTotem` INT NOT NULL,
+  `fkTotem` INT NOT NULL,
   `dtAlerta` DATETIME NULL,
   `tipo` VARCHAR(45) NULL,
-  PRIMARY KEY (`idAlertaSensor`, `fkSensor`),
-  INDEX `fk_Alerta_has_Sensores_Sensores1_idx` (`fkSensor` ASC) VISIBLE,
-  CONSTRAINT `fk_Alerta_has_Sensores_Sensores1`
-    FOREIGN KEY (`fkSensor`)
-    REFERENCES `ToodDatabase`.`Totem` (`idTotem`)
+  PRIMARY KEY (`idAlertaSensor`, `fkDadoTotem`, `fkTotem`),
+  INDEX `fk_AlertaSensor_DadoTotem1_idx` (`fkDadoTotem` ASC, `fkTotem` ASC) VISIBLE,
+  CONSTRAINT `fk_AlertaSensor_DadoTotem1`
+    FOREIGN KEY (`fkDadoTotem` , `fkTotem`)
+    REFERENCES `ToodDatabase`.`DadoTotem` (`idDadosTotem` , `fkTotem`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

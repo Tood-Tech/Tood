@@ -219,3 +219,26 @@
     background-color: red;
     transition: 0.3s;
 }
+
+.botoesTotem{
+    display: flex;
+    width: 100%;
+}
+
+.botoesTotem button {
+    width: 50%;
+    height: 80%;
+    margin: 5px;
+}
+
+.editar {
+    background-color: #F1D302;
+}
+
+.confirmar {
+    background-color: green;
+}
+
+.deletar {
+    background-color: rgb(208, 84, 84);
+}
