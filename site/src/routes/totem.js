@@ -7,7 +7,7 @@ router.get("/", function (req, res) {
     totemController.testarTotem(req, res);
 });
 
-router.get("/listarTotem", function (req, res) {
+router.get("/listarTotem/:idEmpresa", function (req, res) {
     totemController.listarTotem(req, res);
 });
 

@@ -1,14 +1,14 @@
-var totemController = require("../models/totemModel");
+var franquiaController = require("../models/franquiaModel");
 
 function testarTotem(req, res) {
-    console.log("ENTRAMOS NO totemController");
+    console.log("ENTRAMOS NO franquiaController");
     res.send("ENTRAMOS NO TOTEM CONTROLLER");
 }
 
-function listarTotem(req, res) {
-    var idEmpresa = req.params.idEmpresa;
+function listarFranquia(req, res) {
+    var fkEmpresa = req.params.fkEmpresa;
 
-    totemController.listarTotem(idEmpresa).then(function (resultado) {
+    franquiaController.listarFranquia(fkEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -21,10 +21,10 @@ function listarTotem(req, res) {
     });
 }
 
-function listarFranquiaTotem(req, res) {
-    var idUsuario = req.params.idUsuario;
+function listarFranquiaEmpresa(req, res) {
+    var fkEmpresa = req.params.fkEmpresa;
 
-    totemController.listarFranquiaTotem(idUsuario)
+    franquiaController.listarFranquiaEmpresa(fkEmpresa)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -49,7 +49,7 @@ function listarFranquiaTotem(req, res) {
 function pesquisarTotem(req, res) {
     var descricao = req.params.descricao;
 
-    totemController.pesquisarTotem(descricao)
+    franquiaController.pesquisarTotem(descricao)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -79,7 +79,7 @@ function publicarTotem(req, res) {
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        totemController.publicarTotem(titulo, descricao, idUsuario)
+        franquiaController.publicarTotem(titulo, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -107,7 +107,7 @@ function editarTotem(req, res) {
     var alertaDisco = req.body.alertaDisco;
     var alertaGpu = req.body.alertaGpu;
 
-    totemController.editarTotem(idTotem, fkEstabelecimento, disco, processador, gpu, ram, alertaProcess, alertaRam, alertaDisco, alertaGpu)
+    franquiaController.editarTotem(idTotem, fkEstabelecimento, disco, processador, gpu, ram, alertaProcess, alertaRam, alertaDisco, alertaGpu)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -127,7 +127,7 @@ function deletarTotem(req, res) {
     var idTotem = req.params.idTotem;
     var fkEstabelecimento = req.params.fkEstabelecimento;
 
-    totemController.deletarTotem(idTotem, fkEstabelecimento)
+    franquiaController.deletarTotem(idTotem, fkEstabelecimento)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -144,8 +144,8 @@ function deletarTotem(req, res) {
 
 module.exports = {
     testarTotem,
-    listarTotem,
-    listarFranquiaTotem,
+    listarFranquia,
+    listarFranquiaEmpresa,
     pesquisarTotem,
     publicarTotem,
     editarTotem,

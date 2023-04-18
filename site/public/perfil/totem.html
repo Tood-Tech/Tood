@@ -45,9 +45,10 @@
                         <h1 class="title-form">Cadastre seu totem</h1>
                         <div class="form-inputs">
                             <div class="parteForm">
-                                <input id="apelidoTotem" class="inputs" type="text" placeholder="Apelido">
-                                <input id="franquiaTotem" class="inputs" type="text"
-                                    placeholder="Franquia Fazer comboBox">
+                                <input id="apelidoTotem" class="inputs" type="text" placeholder="Número Serial">
+                                <select name="" id="selectFranquia" class="comboBox" placeholder="Apelido">
+                                    <option value="">Franquia</option>
+                                </select>
                                 <input id="discoTotem" class="inputs" type="text" placeholder="Disco">
                             </div>
                             <div class="parteForm">
@@ -177,8 +178,12 @@
 <script>
 
     function atualizarFeed() {
+        // ATUALIZAR AQUI PARA DEPOIS O SESSION STORAGE
+
+        idEmpresa = 1;
+
         //aguardar();
-        fetch("/totem/listarTotem").then(function (resposta) {
+        fetch(`/totem/listarTotem/${idEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -217,7 +222,7 @@
                                     <p style="font-weight: bold;">Id: <span style="font-weight: 300;" id="apelido">${publicacao.idTotem}</span></p>
                                 </div>
                                 <div class="individualAtributo">
-                                    <p style="font-weight: bold">Franquia: <span style="font-weight: 300;" id="franquia">${publicacao.fkEstabelecimento}</span></p>
+                                    <p style="font-weight: bold">Franquia: <span style="font-weight: 300;" id="franquia">${publicacao.nome}</span></p>
                                 </div>
                                 <div class="individualAtributo">
                                     <p style="font-weight: bold">Disco: <span style="font-weight: 300;" id="${idDisco}">${publicacao.disco}</span></p>
@@ -449,6 +454,48 @@
         });
     }
 
+    function mostrarFranquia(fkEmpresa) {
+        fkEmpresa = 1;
+                //aguardar();
+                fetch(`/franquia/listarFranquiaEmpresa/${fkEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    // var feed = document.getElementById("feed_container");
+                    // var mensagem = document.createElement("span");
+                    // mensagem.innerHTML = "Nenhum resultado encontrado."
+                    // feed.appendChild(mensagem);
+                    // throw "Nenhum resultado encontrado!!";
+                }
+
+                // COLOCAR DEPOIS O SESSION STORAGE DA EMPRESA ABAIXO
+                // ------------------------------------------------------------------------------------------------------
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    teste.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        selectFranquia.innerHTML += `
+                        <option value="${publicacao.idEstabelecimento}">${publicacao.nome}</option>
+                        `
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    mostrarFranquia();
 
     // <button onclick="btnAlterarGpu(${publicacao.idTotem}, ${publicacao.alertaGpu}, gpu${publicacao.idTotem})" class="btnAlterarApelido">Alterar</button>
 
