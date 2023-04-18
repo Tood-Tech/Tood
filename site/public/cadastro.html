@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="assets/css/cadastro.css">
 </head>
+
 <body>
     <main>
 
@@ -19,24 +21,32 @@
                 </div>
 
                 <div class="caixa-formulario">
-                        <h2>Crie sua conta</h2><br>
-                        <div class="campo">
-                          <input type="text" id="iptRazaoSocial" placeholder="Razão Social">
-                        </div><br>
-                        <div class="campo">
-                          <input type="text" id="iptNomeFantasia" placeholder="Nome Fantasia">
-                        </div><br>
-                        <div class="campo">
-                            <input type="text" id="iptCNPJ" placeholder="CNPJ">
-                          </div><br>
-                          <div class="campo">
-                            <input type="email" id="iptEmail" placeholder="E-mail">
-                          </div><br>
-                          <div class="campo">
-                            <input type="password" id="iptSenha" placeholder="Senha">
-                          </div>
-                          <button onclick="">Cadastrar</button>
-                         <a href="./login.html"><h1>Já tenho uma conta</h1></a>
+                    <h2>Crie sua conta</h2><br>
+                    <div class="campo">
+                        <input type="text" id="iptRazaoSocial" placeholder="Razão Social">
+                    </div><br>
+                    <div class="campo">
+                        <input type="text" id="iptNomeFantasia" placeholder="Nome Fantasia">
+                    </div><br>
+                    <div class="campo">
+                        <input type="text" id="iptCnpj" placeholder="CNPJ">
+                    </div><br>
+                    <div class="campo">
+                        <input type="number" id="iptTelefone" placeholder="Telefone">
+                    </div><br>
+                    <div class="campo">
+                        <input type="text" id="iptNome" placeholder="Nome">
+                    </div><br>
+                    <div class="campo">
+                        <input type="email" id="iptEmail" placeholder="E-mail">
+                    </div><br>
+                    <div class="campo">
+                        <input type="password" id="iptSenha" placeholder="Senha">
+                    </div>
+                    <button onclick="confirmarCadastro()">Cadastrar</button>
+                    <a href="./login.html">
+                        <h1>Já tenho uma conta</h1>
+                    </a>
                 </div>
             </div>
 
@@ -44,10 +54,115 @@
 
     </main>
 </body>
+
 </html>
 
 <script>
+    function confirmarCadastro() {
+        var razaoSocial = iptRazaoSocial.value;
+        var nomeFantasia = iptNomeFantasia.value;
+        var cnpj = iptCnpj.value;
+        var telefone = iptTelefone.value;
+        var nome = iptNome.value;
+        var senha = iptSenha.value;
+        var email = iptEmail.value;
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                razaoSocial,
+                nomeFantasia,
+                cnpj,
+                telefone,
+                nome,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                buscarUltimaEmpresa(nome, senha, email);
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
 
 
-  
+
+        return false
+    }
+
+    function buscarUltimaEmpresa(nome, senha, email) {
+        //aguardar();
+        fetch("/usuarios/buscarEmpresa").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var idEmpresa = resposta[0].idEmpresa;
+
+                    cadastrarUsuario(nome, senha, email, idEmpresa);
+
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function cadastrarUsuario(nome, senha, email, idEmpresa){
+        var nome = nome;
+        var idEmpresa = idEmpresa;
+        var senha = senha;
+        var email = email;
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nome,
+                email,
+                senha,
+                idEmpresa,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+
+
+        return false
+    }
+
+
 </script>

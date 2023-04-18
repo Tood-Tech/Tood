@@ -11,7 +11,19 @@ router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
 
+router.get("/buscarEmpresa", function (req, res) {
+    usuarioController.buscarEmpresa(req, res);
+});
+
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
+router.post("/cadastrarEmpresa", function (req, res) {
+    usuarioController.cadastrarEmpresa(req, res);
+})
+
+router.post("/cadastrarUsuario", function (req, res) {
+    usuarioController.cadastrarUsuario(req, res);
+})
+
 router.post("/cadastrarFuncionario", function (req, res) {
     usuarioController.cadastrarFuncionario(req, res);
 })
