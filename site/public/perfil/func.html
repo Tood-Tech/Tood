@@ -21,7 +21,7 @@
                 </div>
                 <div class="perfilNome">
                     <img  class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
-                    <span class="nomePerfil">(nome usuário)</span>
+                    <span id="spanNome" class="nomePerfil"></span>
                 </div>
                 <div class="perfilFranquia">
                     <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png" alt=""><p class="identificacao">Franquias</p></a>
@@ -113,6 +113,8 @@
 </html>
 
 <script>
+    var nome = sessionStorage.NOME_USUARIO;
+    spanNome.innerHTML = nome;
     
     function cadastrarFuncionario() {
                 //Recupere o valor da nova input pelo nome do id

@@ -27,7 +27,7 @@
                             <input type="password" id="iptSenha" placeholder="Senha">
                         </div><br>
                     </div>
-                    <button onclick="acessarLogin()">Entrar</button>
+                    <button onclick="confirmarLogin()">Entrar</button>
                 </div>
 
                 <div class="logo">
@@ -45,7 +45,57 @@
 <script>
 
     // Função para entrar na Dashboard
-    function acessarLogin() {
-        window.location = "./perfil/func.html";
-    }
+    function confirmarLogin(){
+    var email = iptEmail.value;
+    var senha = iptSenha.value;
+
+    console.log("FORM LOGIN: ", email);
+    console.log("FORM SENHA: ", senha);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            senha,
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                sessionStorage.CARGO = json.cargo;
+
+                setTimeout(function () {
+                    window.location = "./perfil/dashboard.html";
+                }, 0); 
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao tentar realizar o login!");
+            alert("Username e/ou senha inválidos(s)")
+            resposta.text().then(texto => {
+                console.error(texto);
+                // finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
 </script>

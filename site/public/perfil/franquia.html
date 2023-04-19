@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,75 +10,85 @@
     <link rel="stylesheet" href="../assets/css/franq.css">
     <title>Document</title>
 </head>
+
 <body>
     <section class="main">
 
         <!-- SIDE BAR -->
-            <div class="sidebar">
-                <div class="perfilNome">
-                    <img  class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
-                    <span class="nomePerfil">(nome usuário)</span>
-                </div>
-                <div class="perfilFranquia">
-                    <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png" alt=""></a>
-                </div>
-                <div class="perfilFuncionario">
-                    <a class="ancora" href="func.html"><img class="iconPerfil func" src="../assets/img/carteira-de-identidade.png" alt=""></a>
-                </div>
-                <div class="perfilDefinicoes">
-                    <a class="ancora" href="totem.html"><img class="iconPerfil totem" src="../assets/img/definicoes.png" alt=""></a>
-                </div>
-                <div class="perfilGrafico">
-                    <a class="ancora" href="dashboard.html"><img class="iconPerfil" src="../assets/img/grafico-preditivo.png" alt=""></a>
-                </div>
-                <button class="btnSair">Sair</button>
+        <div class="sidebar">
+            <div class="perfilNome">
+                <img class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
+                <span id="spanNome" class="nomePerfil"></span>
             </div>
-            <!-- FIM DA SIDEBAR -->
+            <div class="perfilFranquia">
+                <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png"
+                        alt=""></a>
+            </div>
+            <div class="perfilFuncionario">
+                <a class="ancora" href="func.html"><img class="iconPerfil func"
+                        src="../assets/img/carteira-de-identidade.png" alt=""></a>
+            </div>
+            <div class="perfilDefinicoes">
+                <a class="ancora" href="totem.html"><img class="iconPerfil totem" src="../assets/img/definicoes.png"
+                        alt=""></a>
+            </div>
+            <div class="perfilGrafico">
+                <a class="ancora" href="dashboard.html"><img class="iconPerfil"
+                        src="../assets/img/grafico-preditivo.png" alt=""></a>
+            </div>
+            <button class="btnSair">Sair</button>
+        </div>
+        <!-- FIM DA SIDEBAR -->
 
-           
-                <div class="form">
-                    <h1 class="tituloFunc">Cadastre sua empresa</h1>
-                   
-                    <div class="contentForm">
-                        <div class="parteForm">
-                        <span class="tituloInp">Nome:</span>
-                        <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
-                        <span class="tituloInp">CNPJ:</span>
-                        <input id="cnpjFunc" class="inputs" type="text" placeholder="XX.XXX.XXX/0001-XX">
-                    </div>
-                    <div class="parteForm">
-                        <span class="tituloInp">Telefone:</span>
-                        <input id="telFunc" class="inputs" type="text" placeholder="(00)99999-9999">
-                        <span class="tituloInp">Responsável:</span>
-                        <input id="respFunc" class="inputs" type="text" placeholder="">
-                    </div>
+
+        <div class="form">
+            <h1 class="tituloFunc">Cadastre sua empresa</h1>
+
+            <div class="contentForm">
+                <div class="parteForm">
+                    <span class="tituloInp">Nome:</span>
+                    <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
+                    <span class="tituloInp">CNPJ:</span>
+                    <input id="cnpjFunc" class="inputs" type="text" placeholder="XX.XXX.XXX/0001-XX">
                 </div>
-                    <div class="btnsForm">
-                        <button onclick="cadastrarFranquia()" class="btnConfirmar">Cadastrar</button>
+                <div class="parteForm">
+                    <span class="tituloInp">Telefone:</span>
+                    <input id="telFunc" class="inputs" type="text" placeholder="(00)99999-9999">
+                    <span class="tituloInp">Responsável:</span>
+                    <input id="respFunc" class="inputs" type="text" placeholder="">
                 </div>
-                <h4>Empresas Cadastradas</h4>
-                <div class="historico">
-<div class="histEmpresa">
-    <h1>Nome:</h1>
-    <div id="ttl">####</div>
-</div>
-<div class="histEmpresa">
-    <h1>CNPJ:</h1>
-    <div id="ttl">####</div>
-</div>
-<div class="histEmpresa">
-    <h1>Telefone:</h1>
-    <div id="ttl">####</div>
-</div>
-<div class="histEmpresa">
-    <h1>Responsável:</h1>
-    <div id="ttl">####</div>
-</div>
-</div>
-<div class="btnsForm u">
-    <button onclick="utilizarFranquia()" class="btnConfirmar">Utilizar</button>
-</div>
-</div>
-</section>
+            </div>
+            <div class="btnsForm">
+                <button onclick="cadastrarFranquia()" class="btnConfirmar">Cadastrar</button>
+            </div>
+            <h4>Empresas Cadastradas</h4>
+            <div class="historico">
+                <div class="histEmpresa">
+                    <h1>Nome:</h1>
+                    <div id="ttl">####</div>
+                </div>
+                <div class="histEmpresa">
+                    <h1>CNPJ:</h1>
+                    <div id="ttl">####</div>
+                </div>
+                <div class="histEmpresa">
+                    <h1>Telefone:</h1>
+                    <div id="ttl">####</div>
+                </div>
+                <div class="histEmpresa">
+                    <h1>Responsável:</h1>
+                    <div id="ttl">####</div>
+                </div>
+            </div>
+            <div class="btnsForm u">
+                <button onclick="utilizarFranquia()" class="btnConfirmar">Utilizar</button>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
+<script>
+    var nome = sessionStorage.NOME_USUARIO;
+    spanNome.innerHTML = nome;
+</script>

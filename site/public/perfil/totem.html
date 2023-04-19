@@ -18,7 +18,7 @@
             <div class="sidebar">
                 <div class="perfilNome">
                     <img class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
-                    <span class="nomePerfil">Nome do zé</span>
+                    <span id="spanNome" class="nomePerfil"></span>
                 </div>
                 <div class="perfilFranquia">
                     <a class="ancora" href="franquia.html"><img class="iconPerfil" src="../assets/img/franquia.png"
@@ -176,6 +176,8 @@
 </html>
 
 <script>
+    var nome = sessionStorage.NOME_USUARIO;
+    spanNome.innerHTML = nome;
 
     function atualizarFeed() {
         // ATUALIZAR AQUI PARA DEPOIS O SESSION STORAGE
