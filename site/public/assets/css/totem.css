@@ -118,6 +118,12 @@
     color: white;
 
 }
+
+.totem{
+    box-shadow: 4px 4px 1px black;
+    background-color: #1B98E0;
+    width: 45%;
+}
 /* PARTE DE READ, UPDATE AND DELETE (cards de cada máquina)*/
 .cardTotem{
     width: 100%;
