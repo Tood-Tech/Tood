@@ -77,12 +77,54 @@ function entrar(req, res) {
 
 }
 
+function listarFuncionarios(req, res) {
+    var fkEmpresa = req.params.idEmpresa;
+
+    usuarioModel.listarFuncionarios(fkEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function deletarUsuario(req, res) {
+    var fkEmpresa = req.params.fkEmpresa;
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.deletarUsuario(fkEmpresa, idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
 function cadastrarFuncionario(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cargo = req.body.cargoServer;
+    var empresa = req.body.empresaServer;
+    var telefone = req.body.telServer;
+    var cpf = req.body.cpfServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -96,7 +138,7 @@ function cadastrarFuncionario(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarFuncionario(nome, email, senha, cargo)
+        usuarioModel.cadastrarFuncionario(nome, email, senha, cargo, empresa, telefone, cpf)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -191,6 +233,32 @@ function cadastrarEmpresa(req, res) {
     }
 }
 
+function editarUsuario(req, res) {
+    var empresa = req.params.empresa;
+    var usuario = req.body.usuario;
+    var nome = req.body.nome;
+    var email = req.body.email;
+    var senha = req.body.senha;
+    var cargo = req.body.cargo;
+    var telefone = req.body.telefone;
+    var cpf = req.body.cpf;
+
+    usuarioModel.editarUsuario(empresa, usuario, nome, email, senha, cargo, telefone, cpf)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
     entrar,
     cadastrarFuncionario,
@@ -199,4 +267,7 @@ module.exports = {
     cadastrarUsuario,
     cadastrarEmpresa,
     buscarEmpresa,
+    listarFuncionarios,
+    deletarUsuario,
+    editarUsuario
 }

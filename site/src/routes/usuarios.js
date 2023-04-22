@@ -11,6 +11,10 @@ router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
 
+router.get("/listarFuncionarios/:idEmpresa", function (req, res) {
+    usuarioController.listarFuncionarios(req, res);
+});
+
 router.get("/buscarEmpresa", function (req, res) {
     usuarioController.buscarEmpresa(req, res);
 });
@@ -31,5 +35,13 @@ router.post("/cadastrarFuncionario", function (req, res) {
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
+
+router.delete("/deletarUsuario/:fkEmpresa/:idUsuario", function (req, res) {
+    usuarioController.deletarUsuario(req, res);
+});
+
+router.put("/editarFuncionario/:empresa/:usuario", function (req, res) {
+    usuarioController.editarUsuario(req, res);
+})
 
 module.exports = router;

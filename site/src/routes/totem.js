@@ -15,12 +15,12 @@ router.get("/listarFranquiaTotem/:idUsuario", function (req, res) {
     totemController.listarFranquiaTotem(req, res);
 });
 
-router.get("/pesquisarTotem/:descricao", function (req, res) {
-    totemController.pesquisarDescricao(req, res);
+router.post("/publicarTotem/:fkEstabelecimento", function (req, res) {
+    totemController.publicarTotem(req, res);
 });
 
-router.post("/publicarTotem/:idUsuario", function (req, res) {
-    totemController.publicarTotem(req, res);
+router.get("/pesquisarTotem/:descricao", function (req, res) {
+    totemController.pesquisarDescricao(req, res);
 });
 
 router.put("/editarTotem/:idTotem/:fkEstabelecimento", function (req, res) {

@@ -67,34 +67,6 @@ function pesquisarTotem(req, res) {
         );
 }
 
-function publicarTotem(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
-    var idUsuario = req.params.idUsuario;
-
-    if (titulo == undefined) {
-        res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
-        res.status(400).send("A descrição está indefinido!");
-    } else if (idUsuario == undefined) {
-        res.status(403).send("O id do usuário está indefinido!");
-    } else {
-        totemController.publicarTotem(titulo, descricao, idUsuario)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            )
-            .catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
-
 function editarTotem(req, res) {
     var idTotem = req.params.idTotem;
     var fkEstabelecimento = req.body.fkEstabelecimento;
@@ -140,6 +112,41 @@ function deletarTotem(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
+}
+
+function publicarTotem(req, res) {
+    var fkEstabelecimento = req.body.fkEstabelecimentoServer;
+    var numeroSerial = req.body.numeroSerialServer;
+    var processador = req.body.processadorServer;
+    var alertaProcessador = req.body.alertaProcessadorServer;
+    var ram = req.body.ramServer;
+    var alertaRam = req.body.alertaRamServer;
+    var gpu = req.body.gpuServer;
+    var alertaGpu = req.body.alertaGpuServer;
+    var disco = req.body.discoServer;
+    var alertaDisco = req.body.alertaDiscoServer;
+
+    if (fkEstabelecimento == undefined) {
+        res.status(400).send("O título está indefinido!");
+    } else if (numeroSerial == undefined) {
+        res.status(400).send("A descrição está indefinido!");
+    } else if (processador == undefined) {
+        res.status(403).send("O id do usuário está indefinido!");
+    } else {
+        totemController.publicarTotem(fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, gpu, alertaGpu, disco, alertaDisco)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 }
 
 module.exports = {

@@ -103,7 +103,7 @@
 }
 /* Cards de funcionários */
 .card-func{
-    width: 80%;
+    width: 100%;
     background-color: #00072D;
     display: flex;
     align-items: center;
@@ -169,6 +169,36 @@
 .cardFuncPermissao{
     color: white;
     background-color:  #00072D;
+}
+
+.botoesTotem button{
+    margin: 2% 0 0 0;
+}
+
+.btnDeletarMaquina{
+    margin-top: 5%;
+    margin-left: 1%;
+    width: 40%;
+    border: none;
+    background-color: rgb(208, 84, 84);
+    font-weight: bold;
+    color: black;
+    border-radius: 2px;
+    height: 80%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.editar {
+    background-color: #F1D302;
+}
+
+.confirmar {
+    background-color: green;
+}
+
+.deletar {
+    background-color: rgb(208, 84, 84);
 }
 
 @media only screen and (max-width: 600px) {

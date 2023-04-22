@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,124 +11,157 @@
     <script src="../assets/js/menu.js"></script>
     <title>Document</title>
 </head>
-<body>
-    
+
+<body onload="atualizarFeed()">
+
     <section class="main">
 
         <!-- SIDE BAR -->
-            <div class="sidebar">
-                <div class="mobile-menu-close-perfil-icon">
-                    <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/close_white_36dp.svg" alt=""></button>
-                </div>
-                <div class="perfilNome">
-                    <img  class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
-                    <span id="spanNome" class="nomePerfil"></span>
-                </div>
-                <div class="perfilFranquia">
-                    <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png" alt=""><p class="identificacao">Franquias</p></a>
-                </div>
-                <div class="perfilFuncionario">
-                    <a class="ancora" href="func.html"><img class="iconPerfil func" src="../assets/img/carteira-de-identidade.png" alt=""><p class="identificacao">Funcionários</p></a>
-                </div>
-                <div class="perfilDefinicoes">
-                    <a class="ancora" href="totem.html"><img class="iconPerfil totem" src="../assets/img/definicoes.png" alt=""><p class="identificacao">Máquinas</p></a>
-                </div>
-                <div class="perfilGrafico">
-                    <a class="ancora" href="dashboard.html"><img class="iconPerfil" src="../assets/img/grafico-preditivo.png" alt=""><p class="identificacao">Gráficos</p></a>
-                </div>
-                <button onclick="voltar()" class="btnSair">Sair</button>
+        <div class="sidebar">
+            <div class="mobile-menu-close-perfil-icon">
+                <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/close_white_36dp.svg"
+                        alt=""></button>
             </div>
+            <div class="perfilNome">
+                <img class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
+                <span id="spanNome" class="nomePerfil"></span>
+            </div>
+            <div class="perfilFranquia">
+                <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png"
+                        alt="">
+                    <p class="identificacao">Franquias</p>
+                </a>
+            </div>
+            <div class="perfilFuncionario">
+                <a class="ancora" href="func.html"><img class="iconPerfil func"
+                        src="../assets/img/carteira-de-identidade.png" alt="">
+                    <p class="identificacao">Funcionários</p>
+                </a>
+            </div>
+            <div class="perfilDefinicoes">
+                <a class="ancora" href="totem.html"><img class="iconPerfil totem" src="../assets/img/definicoes.png"
+                        alt="">
+                    <p class="identificacao">Máquinas</p>
+                </a>
+            </div>
+            <div class="perfilGrafico">
+                <a class="ancora" href="dashboard.html"><img class="iconPerfil"
+                        src="../assets/img/grafico-preditivo.png" alt="">
+                    <p class="identificacao">Gráficos</p>
+                </a>
+            </div>
+            <button onclick="voltar()" class="btnSair">Sair</button>
+        </div>
         <!-- FIM DA SIDEBAR -->
 
-            <div class="content">
-                <div class="content-main">
-                    <div class="mobile-menu-perfil-icon">
-                        <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/menu_black_36dp.svg" alt=""></button>
-                    </div>
-                    <div class="form">
-                        <h1 class="tituloFunc">Cadastre seu funcionário</h1>
-                        <div class="contentForm">
-                            <div class="parteForm">
-                                <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
-                                <input id="emailFunc" class="inputs" type="text" placeholder="E-mail">
-                                <input id="senhaFunc" class="inputs lastInput" type="password" placeholder="Senha">
-                            </div>
-                            <div class="parteForm">
-                                <input class="inputs" type="text" placeholder="Telefone">
-                                <input class="inputs" type="text" placeholder="CPF">
-                                <div class="btnsForm">
-                                    <select class="selectPermissao" name="Permissao" id="cargoFunc">
-                                        <option value="gerente">Gerente</option>
-                                        <option value="suporte">Suporte</option>
-                                    </select>
-                                    <button onclick="cadastrarFuncionario()" class="btnConfirmar">Confirmar</button>
-                                </div>
+        <div class="content">
+            <div class="content-main">
+                <div class="mobile-menu-perfil-icon">
+                    <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/menu_black_36dp.svg"
+                            alt=""></button>
+                </div>
+                <div class="form">
+                    <h1 class="tituloFunc">Cadastre seu funcionário</h1>
+                    <div class="contentForm">
+                        <div class="parteForm">
+                            <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
+                            <input id="emailFunc" class="inputs" type="text" placeholder="E-mail">
+                            <input id="senhaFunc" class="inputs lastInput" type="password" placeholder="Senha">
+                        </div>
+                        <div class="parteForm">
+                            <input class="inputs" type="text" placeholder="Telefone" id="telefoneIpt">
+                            <input class="inputs" type="text" placeholder="CPF" id="cpfIpt">
+                            <div class="btnsForm">
+                                <select class="selectPermissao" name="Permissao" id="cargoFunc">
+                                    <option value="gerente">Gerente</option>
+                                    <option value="suporte">Suporte</option>
+                                </select>
+                                <button onclick="cadastrarFuncionario()" class="btnConfirmar">Confirmar</button>
                             </div>
                         </div>
                     </div>
-                    <div class="card-func">
+                </div>
+                <!-- aq TIRAR ISSO DEPOIS -->
+                <div id="cardsFunc">
+                    <!-- <div class="card-func">
                         <div class="imgIconPerfil">
                             <img class="iconCardFuncionario" src="../assets/img/iconUser.svg" alt="">
                         </div>
                         <div class="atributos">
                             <div class="metadeAtributos">
                                 <div class="individualAtributo primeiro">
-                                    <p style="font-weight: bold;">Nome: <span style="font-weight: 300;" id="apelido">Carlos</span></p>
-                                    <button class="btnAlterar">Alterar</button>
+                                    <p style="font-weight: bold;">Nome: <span style="font-weight: 300;"
+                                            id="apelido">Carlos</span></p>
                                 </div>
                                 <div class="individualAtributo">
-                                    <p style="font-weight: bold;">Email: <span style="font-weight: 300;" id="apelido">carlinhos@gmail.com</span></p>
-                                    <button class="btnAlterar">Alterar</button>
+                                    <p style="font-weight: bold;">Email: <span style="font-weight: 300;"
+                                            id="apelido">carlinhos@gmail.com</span></p>
                                 </div>
                                 <div class="individualAtributo">
-                                    <p style="font-weight: bold;">Senha: <span style="font-weight: 300;" id="apelido">12345</span></p>
-                                    <button class="btnAlterar">Alterar</button>
+                                    <p style="font-weight: bold;">Senha: <span style="font-weight: 300;"
+                                            id="apelido">12345</span></p>
                                 </div>
                             </div>
                             <div class="metadeAtributos">
                                 <div class="individualAtributo primeiro">
-                                    <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;" id="apelido">11985893186</span></p>
-                                    <button class="btnAlterar">Alterar</button>
+                                    <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;"
+                                            id="apelido">11985893186</span></p>
                                 </div>
                                 <div class="individualAtributo">
-                                    <p style="font-weight: bold;">CPF: <span style="font-weight: 300;" id="apelido">12345678901234</span></p>
-                                    <button class="btnAlterar">Alterar</button>
+                                    <p style="font-weight: bold;">CPF: <span style="font-weight: 300;"
+                                            id="apelido">12345678901234</span></p>
                                 </div>
                                 <div class="btnsForm cardFunc">
-                                    <select class="selectPermissao cardFuncPermissao" name="Permissao" id="cargoFunc">
-                                        <option value="gerente">Gerente</option>
-                                        <option value="suporte">Suporte</option>
-                                    </select>
-                                    <button class="btnAlterar">Alterar</button>
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold;">Cargo: <span style="font-weight: 300;"
+                                                id="SelectCargo">Gerente</span></p>
+                                    </div>
+                                </div>
+                                <div id="divBotoesTotem" class="botoesTotem">
+                                    <button id="btnConfirmar" onclick="alterarInfoTotem()"
+                                        class="btnDeletarMaquina editar">
+                                        Alterar
+                                    </button>
+                                    <button id="btnDeletar" onclick="perguntarDeletar()"
+                                        class="btnDeletarMaquina deletar">
+                                        Deletar
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+                <!-- aq -->
             </div>
-        </section>
+        </div>
+    </section>
 
 
 
 </body>
+
 </html>
 
 <script>
-    var nome = sessionStorage.NOME_USUARIO;
-    spanNome.innerHTML = nome;
-    
+    var nomes = sessionStorage.NOME_USUARIO;
+    spanNome.innerHTML = nomes;
+
     function cadastrarFuncionario() {
-                //Recupere o valor da nova input pelo nome do id
+        //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeVar = nomeFunc.value;
         var emailVar = emailFunc.value;
         var senhaVar = senhaFunc.value;
         var cargoVar = cargoFunc.value;
+        var empresaVar = sessionStorage.ID_EMPRESA;
+        var telVar = telefoneIpt.value;
+        var cpf = cpfIpt.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || cargoVar == "") {
 
 
-            finalizarAguardar();
+            // finalizarAguardar();
+            alert("Cadastro inválido")
             return false;
         }
         else {
@@ -146,7 +180,10 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                cargoServer: cargoVar
+                cargoServer: cargoVar,
+                empresaServer: empresaVar,
+                telServer: telVar,
+                cpfServer: cpf
             })
         }).then(function (resposta) {
 
@@ -159,7 +196,7 @@
 
                 setTimeout(() => {
                     window.location = "func.html";
-                }, "2000")
+                }, "1000")
 
                 // limparFormulario();
                 // finalizarAguardar();
@@ -174,5 +211,235 @@
         return false;
     }
 
+    function atualizarFeed() {
+
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+
+        fetch(`/usuarios/listarFuncionarios/${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    cardsFunc.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        cardsFunc.innerHTML += `
+                    <div class="card-func">
+                        <div class="imgIconPerfil">
+                            <img class="iconCardFuncionario" src="../assets/img/iconUser.svg" alt="">
+                        </div>
+                        <div class="atributos">
+                            <div class="metadeAtributos">
+                                <div class="individualAtributo primeiro">
+                                    <p style="font-weight: bold;">Nome: <span style="font-weight: 300;" id="nome${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.nomeUsuario}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Email: <span style="font-weight: 300;" id="email${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.email}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Senha: <span style="font-weight: 300;" id="senha${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.senha}</span></p>
+                                </div>
+                            </div>
+                            <div class="metadeAtributos">
+                                <div class="individualAtributo primeiro">
+                                    <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;" id="telefone${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.telefone}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">CPF: <span style="font-weight: 300;" id="cpf${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.cpf}</span></p>
+                                </div>
+                                <div class="btnsForm cardFunc">
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold;">Cargo: <span style="font-weight: 300;"
+                                                id="cargo${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.cargo}</span></p>
+                                    </div>
+                                </div>
+                                <div id="divBotoesTotem${publicacao.fkEmpresa}${publicacao.idUsuario}" class="botoesTotem">
+                                    <button id="btnConfirmar${publicacao.fkEmpresa}${publicacao.idUsuario}" onclick="alterarInfoTotem(${publicacao.fkEmpresa}, ${publicacao.idUsuario}, '${publicacao.nomeUsuario}', '${publicacao.email}', '${publicacao.senha}', '${publicacao.telefone}', '${publicacao.cpf}', '${publicacao.cargo}')" class="btnDeletarMaquina editar">
+                                    Alterar
+                                </button>
+                                <button id="btnDeletar${publicacao.fkEmpresa}${publicacao.idUsuario}" onclick="perguntarDeletar(${publicacao.fkEmpresa}, ${publicacao.idUsuario}, '${publicacao.nomeUsuario}', '${publicacao.email}', '${publicacao.senha}', '${publicacao.cargo}', '${publicacao.telefone}', '${publicacao.cpf}')" class="btnDeletarMaquina deletar">
+                                    Deletar
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function perguntarDeletar(empresa, usuario, nome, email, senha, cargo, telefone, cpf) {
+        mudarBotoes = document.getElementById(`divBotoesTotem${empresa}${usuario}`);
+
+        mudarBotoes.innerHTML = `
+        <button id="btnConfirmar${empresa}${usuario}" onclick="deletar(${empresa}, ${usuario})" class="btnDeletarMaquina deletar">
+                                    Confirmar
+                                </button>
+                                <button id="btnDeletar${empresa}${usuario}" onclick="desfazerAlteracoes(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina editar">
+                                    Desfazer
+                                </button>`
+    }
+
+
+    function desfazerAlteracoes(empresa, usuario, nome, email, senha, cargo, telefone, cpf) {
+
+        idNome = document.getElementById(`nome${empresa}${usuario}`);
+        idEmail = document.getElementById(`email${empresa}${usuario}`);
+        idSenha = document.getElementById(`senha${empresa}${usuario}`)
+        idCargo = document.getElementById(`cargo${empresa}${usuario}`)
+        idTelefone = document.getElementById(`telefone${empresa}${usuario}`)
+        idCpf = document.getElementById(`cpf${empresa}${usuario}`)
+
+        mudarBotoes = document.getElementById(`divBotoesTotem${empresa}${usuario}`);
+
+        idNome.innerHTML = `${nome}`;
+        idEmail.innerHTML = `${email}`;
+        idSenha.innerHTML = `${senha}`;
+        idTelefone.innerHTML = `${telefone}`;
+        idCpf.innerHTML = `${cpf}`;
+        idCargo.innerHTML = `${cargo}`;
+
+        mudarBotoes.innerHTML = `
+<button id="btnConfirmar${empresa}${usuario}" onclick="alterarInfoTotem(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina editar">
+                            Alterar
+                        </button>
+                        <button id="btnDeletar${empresa}${usuario}" onclick="perguntarDeletar(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina">
+                            Deletar
+                        </button>`
+    }
+
+    function deletar(empresa, usuario) {
+        console.log("Criar função de apagar post escolhido - ID" + empresa);
+        fetch(`/usuarios/deletarUsuario/${empresa}/${usuario}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                // window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+
+                // Colocar algum alerta aqui
+
+                window.location = "/perfil/func.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function alterarInfoTotem(empresa, usuario, nome, email, senha, telefone, cpf, cargo) {
+
+        mudarBotoes = document.getElementById(`divBotoesTotem${empresa}${usuario}`);
+
+        idNome = document.getElementById(`nome${empresa}${usuario}`);
+        idEmail = document.getElementById(`email${empresa}${usuario}`);
+        idSenha = document.getElementById(`senha${empresa}${usuario}`)
+        idCargo = document.getElementById(`cargo${empresa}${usuario}`)
+        idTelefone = document.getElementById(`telefone${empresa}${usuario}`)
+        idCpf = document.getElementById(`cpf${empresa}${usuario}`)
+
+        idNome.innerHTML = `<input id="iptnome${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${nome}">`;
+        idEmail.innerHTML = `<input id="iptemail${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${email}">`;
+        idSenha.innerHTML = `<input type="password" id="iptsenha${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${senha}">`;
+        // idCargo.innerHTML = `<input id="iptcargo${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${cargo}">`;
+        idTelefone.innerHTML = `<input id="ipttelefone${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${telefone}">`;
+        idCpf.innerHTML = `<input id="iptcpf${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${cpf}">`;
+
+        mudarBotoes.innerHTML = `
+<button onclick="enviarInfoTotem(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina confirmar">
+                            Confirmar
+                        </button>
+                        <button id="btnDeletar${empresa}${usuario}" onclick="desfazerAlteracoes(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina editar">
+                            Desfazer
+                        </button>
+`;
+
+    }
+
+    function enviarInfoTotem(empresa, usuario, nome, email, senha, cargo, telefone, cpf) {
+
+        cargo = "";
+
+        idNome = document.getElementById(`iptnome${empresa}${usuario}`);
+        idEmail = document.getElementById(`iptemail${empresa}${usuario}`);
+        idSenha = document.getElementById(`iptsenha${empresa}${usuario}`);;
+        idTelefone = document.getElementById(`ipttelefone${empresa}${usuario}`);
+        idCpf = document.getElementById(`iptcpf${empresa}${usuario}`);
+
+        if (idNome.value != "") {
+            nome = idNome.value
+        }
+
+        if (idEmail.value != "") {
+            email = idEmail.value
+        }
+
+        if (idSenha.value != "") {
+            senha = idSenha.value
+        }
+
+        if (idTelefone.value != "") {
+            telefone = idTelefone.value
+        }
+
+        if (idCpf.value != "") {
+            cpf = idCpf.value
+        }
+
+        fetch(`/usuarios/editarFuncionario/${empresa}/${usuario}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                empresa: empresa,
+                usuario: usuario,
+                nome: nome,
+                senha: senha,
+                email: email,
+                telefone: telefone,
+                cpf: cpf
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                // window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/perfil/func.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 
 </script>

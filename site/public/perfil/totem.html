@@ -62,27 +62,27 @@
                             <p class="pDescricao">Digite a "%" de uso para gerarmos um alerta para cada componente.</p>
                             <div class="labelIpt">
                                 <label for="processadorTotem" class="labelComponentes">Processador:</label>
-                                <input id="processadorTotem" class="inputs parametrizarIpts" type="number" min="1"
+                                <input id="processadorTotemA" class="inputs parametrizarIpts" type="number" min="1"
                                     max="100" placeholder="%">
                             </div>
                             <div class="labelIpt">
                                 <label for="ramTotem" class="labelComponentes">Ram:</label>
-                                <input id="ramTotem" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                <input id="ramTotemA" class="inputs parametrizarIpts" type="number" min="1" max="100"
                                     placeholder="%">
                             </div>
                             <div class="labelIpt">
                                 <label for="discoTotem" class="labelComponentes">Disco:</label>
-                                <input id="discoTotem" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                <input id="discoTotemA" class="inputs parametrizarIpts" type="number" min="1" max="100"
                                     placeholder="%">
                             </div>
                             <div class="labelIpt">
                                 <label for="gpuTotem" class="labelComponentes">GPU:</label>
-                                <input id="gpuTotem" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                <input id="gpuTotemA" class="inputs parametrizarIpts" type="number" min="1" max="100"
                                     placeholder="%">
                             </div>
                         </div>
                         <div class="div-btnConfirmar">
-                            <button class="btnConfirmar">
+                            <button onclick="criarTotem()" class="btnConfirmar">
                                 Confirmar
                             </button>
                         </div>
@@ -182,7 +182,7 @@
     function atualizarFeed() {
         // ATUALIZAR AQUI PARA DEPOIS O SESSION STORAGE
 
-        idEmpresa = 1;
+        idEmpresa = sessionStorage.ID_EMPRESA;
 
         //aguardar();
         fetch(`/totem/listarTotem/${idEmpresa}`).then(function (resposta) {
@@ -457,7 +457,7 @@
     }
 
     function mostrarFranquia(fkEmpresa) {
-        fkEmpresa = 1;
+        fkEmpresa = sessionStorage.ID_EMPRESA;
                 //aguardar();
                 fetch(`/franquia/listarFranquiaEmpresa/${fkEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
@@ -499,6 +499,79 @@
 
     mostrarFranquia();
 
-    // <button onclick="btnAlterarGpu(${publicacao.idTotem}, ${publicacao.alertaGpu}, gpu${publicacao.idTotem})" class="btnAlterarApelido">Alterar</button>
+    function criarTotem() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var fkEstabelecimentoVar = selectFranquia.value;
+        var numeroSerialVar = apelidoTotem.value;
+        var processadorVar = processadorTotem.value;
+        var alertaProcessadorVar = processadorTotemA.value;
+        var ramVar = ramTotem.value;
+        var alertaRamVar = ramTotemA.value;
+        var gpuVar = cpuTotem.value;
+        var alertaGpuVar = gpuTotemA.value;
+        var discoVar = discoTotem.value;
+        var alertaDiscoVar = discoTotemA.value;
+
+        // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        // Enviando o valor da nova input
+        fetch(`/totem/publicarTotem/${fkEstabelecimentoVar}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                fkEstabelecimentoServer: fkEstabelecimentoVar,
+                numeroSerialServer: numeroSerialVar,
+                processadorServer: processadorVar,
+                alertaProcessadorServer: alertaProcessadorVar,
+                ramServer: ramVar,
+                alertaRamServer: alertaRamVar,
+                gpuServer: gpuVar,
+                alertaGpuServer: alertaGpuVar,
+                discoServer: discoVar,
+                alertaDiscoServer: alertaDiscoVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                //APARECE UMA MENSAGEM DE CADASTRO REALIZADO
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "/perfil/totem.html";
+                }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
 
 </script>
