@@ -40,48 +40,60 @@
         </div>
         <!-- FIM DA SIDEBAR -->
 
+        <div class="content-main">
+            <div class="content">
+                <div class="form">
+                    <h1 class="tituloFunc">Cadastre sua empresa</h1>
+                    <div class="contentForm">
+                        <div class="parteForm">
+                            <span class="tituloInp">Nome:</span>
+                            <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
+                            <span class="tituloInp">CNPJ:</span>
+                            <input id="cnpjFunc" class="inputs" type="text" placeholder="XX.XXX.XXX/0001-XX">
+                        </div>
+                        <div class="parteForm">
+                            <span class="tituloInp">Telefone:</span>
+                            <input id="telFunc" class="inputs" type="text" placeholder="(00)99999-9999">
+                            <span class="tituloInp">Responsável:</span>
+                            <input id="respFunc" class="inputs" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="btnsForm">
+                        <button onclick="cadastrarFranquia()" class="btnConfirmar">Cadastrar</button>
+                    </div>
+                </div>
 
-        <div class="form">
-            <h1 class="tituloFunc">Cadastre sua empresa</h1>
-
-            <div class="contentForm">
-                <div class="parteForm">
-                    <span class="tituloInp">Nome:</span>
-                    <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
-                    <span class="tituloInp">CNPJ:</span>
-                    <input id="cnpjFunc" class="inputs" type="text" placeholder="XX.XXX.XXX/0001-XX">
+                <div class="card-franquia">
+                    <div class="div-img">
+                        <img class="iconFranquia" src="../assets/img/loja.svg" alt="">
+                    </div>
+                    <div class="div-atributos">
+                        <div class="parteAtributos">
+                            <div class="individualAtributo">
+                                <p style="font-weight: bold;">CPF: <span style="font-weight: 300;"
+                                        id="apelido">12345678901234</span></p>
+                            </div>
+                            <div class="individualAtributo">
+                                <p style="font-weight: bold;">CNPJ: <span style="font-weight: 300;"
+                                        id="cnpj">12345678901234</span></p>
+                            </div>
+                        </div>
+                        <div class="parteAtributos">
+                            <div class="individualAtributo">
+                                <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;"
+                                        id="telefone">12345678901234</span></p>
+                            </div>
+                            <div class="individualAtributo">
+                                <p style="font-weight: bold;">Responsável: <span style="font-weight: 300;"
+                                        id="responsavel">Guilherme</span></p>
+                            </div>
+                            <div class="btnsAlterarDeletar">
+                                <button class="btnDeletarMaquina editar" onclick="alterarInfoFranquia()">Alterar</button>
+                                <button class="btnDeletarMaquina deletar" onclick="perguntarDeletar()">Deletar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="parteForm">
-                    <span class="tituloInp">Telefone:</span>
-                    <input id="telFunc" class="inputs" type="text" placeholder="(00)99999-9999">
-                    <span class="tituloInp">Responsável:</span>
-                    <input id="respFunc" class="inputs" type="text" placeholder="">
-                </div>
-            </div>
-            <div class="btnsForm">
-                <button onclick="cadastrarFranquia()" class="btnConfirmar">Cadastrar</button>
-            </div>
-            <h4>Empresas Cadastradas</h4>
-            <div class="historico">
-                <div class="histEmpresa">
-                    <h1>Nome:</h1>
-                    <div id="ttl">####</div>
-                </div>
-                <div class="histEmpresa">
-                    <h1>CNPJ:</h1>
-                    <div id="ttl">####</div>
-                </div>
-                <div class="histEmpresa">
-                    <h1>Telefone:</h1>
-                    <div id="ttl">####</div>
-                </div>
-                <div class="histEmpresa">
-                    <h1>Responsável:</h1>
-                    <div id="ttl">####</div>
-                </div>
-            </div>
-            <div class="btnsForm u">
-                <button onclick="utilizarFranquia()" class="btnConfirmar">Utilizar</button>
             </div>
         </div>
     </section>
