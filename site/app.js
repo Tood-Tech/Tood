@@ -13,7 +13,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var totemRouter = require("./src/routes/totem");
-var franquiaRouter = require("./src/routes/franquia");
+var franquiaRouter = require("./src/routes/franquias");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,7 +26,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/totem", totemRouter);
-app.use("/franquia", franquiaRouter);
+app.use("/franquias", franquiaRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

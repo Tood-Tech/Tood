@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/totem.css">
-    <title>Document</title>
+    <title>Cadastro Totem</title>
 </head>
 
 <body onload="atualizarFeed()">
@@ -178,6 +178,8 @@
 <script>
     var nome = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nome;
+
+    mostrarFranquia();
 
     function atualizarFeed() {
         // ATUALIZAR AQUI PARA DEPOIS O SESSION STORAGE
@@ -459,7 +461,7 @@
     function mostrarFranquia(fkEmpresa) {
         fkEmpresa = sessionStorage.ID_EMPRESA;
                 //aguardar();
-                fetch(`/franquia/listarFranquiaEmpresa/${fkEmpresa}`).then(function (resposta) {
+                fetch(`/franquias/listarFranquiaEmpresa/${fkEmpresa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     // var feed = document.getElementById("feed_container");
@@ -496,8 +498,6 @@
             // finalizarAguardar();
         });
     }
-
-    mostrarFranquia();
 
     function criarTotem() {
         // aguardar();

@@ -67,19 +67,23 @@ function pesquisarTotem(req, res) {
         );
 }
 
-function publicarTotem(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
-    var idUsuario = req.params.idUsuario;
+function publicarFranquia(req, res) {
+    var nome = req.body.nomeServer;
+    var cpnj = req.body.cpnjfServer;
+    var tel = req.body.telServer;
+    var cep = req.body.cepServer;
+    var empresa = req.body.empresaServer;
+    var fkempresa = req.body.fkEmpresa;
 
-    if (titulo == undefined) {
+
+    if (nome == undefined) {
         res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
+    } else if (cpnj == undefined) {
         res.status(400).send("A descrição está indefinido!");
-    } else if (idUsuario == undefined) {
+    } else if (tel == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        franquiaController.publicarTotem(titulo, descricao, idUsuario)
+        franquiaController.publicarFranquia(nome, cpnj, tel, cep, empresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -96,18 +100,14 @@ function publicarTotem(req, res) {
 }
 
 function editarTotem(req, res) {
-    var idTotem = req.params.idTotem;
-    var fkEstabelecimento = req.body.fkEstabelecimento;
-    var disco= req.body.disco;
-    var processador = req.body.processador;
-    var gpu = req.body.gpu;
-    var ram = req.body.ram;
-    var alertaProcess = req.body.alertaProcess;
-    var alertaRam = req.body.alertaRam;
-    var alertaDisco = req.body.alertaDisco;
-    var alertaGpu = req.body.alertaGpu;
+    var empresa = req.body.empresa;
+    var fkEstabelecimento = req.body.estabelecimento;
+    var nome = req.body.nome;
+    var cnpj = req.body.cnpj;
+    var telefone = req.body.telefone;
+    var cep = req.body.responsavel;
 
-    franquiaController.editarTotem(idTotem, fkEstabelecimento, disco, processador, gpu, ram, alertaProcess, alertaRam, alertaDisco, alertaGpu)
+    franquiaController.editarTotem(empresa, fkEstabelecimento, nome , cnpj, telefone, cep)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -124,8 +124,8 @@ function editarTotem(req, res) {
 }
 
 function deletarTotem(req, res) {
-    var idTotem = req.params.idTotem;
-    var fkEstabelecimento = req.params.fkEstabelecimento;
+    var idTotem = req.params.fkEmpresa;
+    var fkEstabelecimento = req.params.idEstabelecimento;
 
     franquiaController.deletarTotem(idTotem, fkEstabelecimento)
         .then(
@@ -147,7 +147,7 @@ module.exports = {
     listarFranquia,
     listarFranquiaEmpresa,
     pesquisarTotem,
-    publicarTotem,
+    publicarFranquia,
     editarTotem,
     deletarTotem
 }

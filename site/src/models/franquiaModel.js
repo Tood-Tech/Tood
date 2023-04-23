@@ -43,28 +43,28 @@ function listarFranquiaEmpresa(fkEmpresa) {
     return database.executar(instrucao);
 }
 
-function publicarTotem(titulo, descricao, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
+function publicarFranquia(nome,cpnj,tel,cep, empresa) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", nome,cpnj,tel,cep, empresa);
     var instrucao = `
-        INSERT INTO aviso (titulo, descricao, fk_usuario) VALUES ('${titulo}', '${descricao}', ${idUsuario});
+        INSERT INTO estabelecimento (fkempresa, nome, cnpj, telefone, responsavel) VALUES (${empresa}, '${nome}', '${cpnj}', '${tel}', '${cep}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function editarTotem(idTotem, fkEstabelecimento, disco, processador, gpu, ram, alertaProcess, alertaRam, alertaDisco, alertaGpu) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", idTotem, fkEstabelecimento, disco, processador, gpu, ram, alertaProcess, alertaRam, alertaDisco, alertaGpu);
+function editarTotem(empresa, idEstabelecimento, nome , cnpj, telefone, cep) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", empresa, idEstabelecimento, nome , cnpj, telefone, cep);
     var instrucao = `
-        UPDATE totem SET disco = '${disco}' , processador = '${processador}' , gpu = '${gpu}' , ram = '${ram}' , alertaProcessador = '${alertaProcess}' , alertaRam = '${alertaRam}' , alertaDisco = ${alertaDisco} , alertaGpu = ${alertaGpu} WHERE idtotem = ${idTotem} and fkestabelecimento = ${fkEstabelecimento};
+        UPDATE estabelecimento SET nome = '${nome}' , cnpj = '${cnpj}' , telefone = '${telefone}' , responsavel = '${cep}'WHERE fkEmpresa = ${empresa} and idEstabelecimento = ${idEstabelecimento};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function deletarTotem(idTotem, fkEstabelecimento) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idTotem, fkEstabelecimento);
+function deletarTotem(fkEmpresa, idEstabelecimento) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", fkEmpresa, idEstabelecimento);
     var instrucao = `
-        DELETE FROM totem WHERE idtotem = ${idTotem} AND fkEstabelecimento = ${fkEstabelecimento};
+        DELETE FROM estabelecimento WHERE fkEmpresa = ${fkEmpresa} AND idEstabelecimento = ${idEstabelecimento};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -74,7 +74,7 @@ module.exports = {
     listarFranquiaEmpresa,
     listarFranquia,
     pesquisarTotem,
-    publicarTotem,
+    publicarFranquia,
     editarTotem,
     deletarTotem
 }

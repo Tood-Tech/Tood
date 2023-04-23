@@ -101,6 +101,11 @@
     background-color: #1B98E0;
     width: 45%;
 }
+
+.funcCards {
+    width: 80%;
+}
+
 /* Cards de funcionários */
 .card-func{
     width: 100%;

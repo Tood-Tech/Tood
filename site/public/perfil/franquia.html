@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/franq.css">
-    <title>Document</title>
+    <title>Cadastro Franquia</title>
 </head>
 
-<body>
+<body onload="atualizarFeed()">
     <section class="main">
 
         <!-- SIDE BAR -->
@@ -21,7 +21,7 @@
                 <span id="spanNome" class="nomePerfil"></span>
             </div>
             <div class="perfilFranquia">
-                <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png"
+                <a class="ancora" href="franquia.html"><img class="iconPerfil franquia" src="../assets/img/franquia.png"
                         alt=""></a>
             </div>
             <div class="perfilFuncionario">
@@ -43,7 +43,7 @@
         <div class="content-main">
             <div class="content">
                 <div class="form">
-                    <h1 class="tituloFunc">Cadastre sua empresa</h1>
+                    <h1 class="tituloFunc">Cadastre sua franquia</h1>
                     <div class="contentForm">
                         <div class="parteForm">
                             <span class="tituloInp">Nome:</span>
@@ -54,8 +54,8 @@
                         <div class="parteForm">
                             <span class="tituloInp">Telefone:</span>
                             <input id="telFunc" class="inputs" type="text" placeholder="(00)99999-9999">
-                            <span class="tituloInp">Responsável:</span>
-                            <input id="respFunc" class="inputs" type="text" placeholder="">
+                            <span class="tituloInp">Cep:</span>
+                            <input id="cepFunc" class="inputs" type="text" placeholder="">
                         </div>
                     </div>
                     <div class="btnsForm">
@@ -63,33 +63,37 @@
                     </div>
                 </div>
 
-                <div class="card-franquia">
-                    <div class="div-img">
-                        <img class="iconFranquia" src="../assets/img/loja.svg" alt="">
-                    </div>
-                    <div class="div-atributos">
-                        <div class="parteAtributos">
-                            <div class="individualAtributo">
-                                <p style="font-weight: bold;">CPF: <span style="font-weight: 300;"
-                                        id="apelido">12345678901234</span></p>
-                            </div>
-                            <div class="individualAtributo">
-                                <p style="font-weight: bold;">CNPJ: <span style="font-weight: 300;"
-                                        id="cnpj">12345678901234</span></p>
-                            </div>
+                <div id="cardsFunc" class="funcCards">
+                    <div class="card-franquia">
+                        <div class="div-img">
+                            <img class="iconFranquia" src="../assets/img/loja.svg" alt="">
                         </div>
-                        <div class="parteAtributos">
-                            <div class="individualAtributo">
-                                <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;"
-                                        id="telefone">12345678901234</span></p>
+                        <div class="div-atributos">
+                            <div class="parteAtributos">
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">CPF: <span style="font-weight: 300;"
+                                            id="apelido">12345678901234</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">CNPJ: <span style="font-weight: 300;"
+                                            id="cnpj">12345678901234</span></p>
+                                </div>
                             </div>
-                            <div class="individualAtributo">
-                                <p style="font-weight: bold;">Responsável: <span style="font-weight: 300;"
-                                        id="responsavel">Guilherme</span></p>
-                            </div>
-                            <div class="btnsAlterarDeletar">
-                                <button class="btnDeletarMaquina editar" onclick="alterarInfoFranquia()">Alterar</button>
-                                <button class="btnDeletarMaquina deletar" onclick="perguntarDeletar()">Deletar</button>
+                            <div class="parteAtributos">
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;"
+                                            id="telefone">12345678901234</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Cep: <span style="font-weight: 300;"
+                                            id="cpf">Guilherme</span></p>
+                                </div>
+                                <div class="btnsAlterarDeletar">
+                                    <button class="btnDeletarMaquina editar"
+                                        onclick="alterarInfoFranquia()">Alterar</button>
+                                    <button class="btnDeletarMaquina deletar"
+                                        onclick="perguntarDeletar()">Deletar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -103,4 +107,279 @@
 <script>
     var nome = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nome;
+
+    function cadastrarFranquia() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nomeFunc.value;
+        var cpnjVar = cnpjFunc.value;
+        var telVar = telFunc.value;
+        var cepVar = cepFunc.value;
+        var empresaVar = sessionStorage.ID_EMPRESA;
+
+        if (nomeVar == "" || cpnjVar == "" || telVar == "" || cepVar == "") {
+
+
+            // finalizarAguardar();
+            alert("Cadastro inválido")
+            return false;
+        }
+        else {
+            // setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch(`/franquias/publicarFranquia/${empresaVar}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                cpnjfServer: cpnjVar,
+                telServer: telVar,
+                cepServer: cepVar,
+                empresaServer: empresaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "franquia.html";
+                }, "1000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+
+
+    function atualizarFeed() {
+
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+
+        fetch(`/franquias/listarFranquiaEmpresa/${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    cardsFunc.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        cardsFunc.innerHTML += `
+                        <div class="card-franquia">
+                        <div class="div-img">
+                            <img class="iconFranquia" src="../assets/img/loja.svg" alt="">
+                        </div>
+                        <div class="div-atributos">
+                            <div class="parteAtributos">
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Nome: <span style="font-weight: 300;"
+                                            id="apelido${publicacao.fkEmpresa}${publicacao.idEstabelecimento}">${publicacao.nome}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">CNPJ: <span style="font-weight: 300;"
+                                            id="cnpj${publicacao.fkEmpresa}${publicacao.idEstabelecimento}">${publicacao.cnpj}</span></p>
+                                </div>
+                            </div>
+                            <div class="parteAtributos">
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;"
+                                            id="telefone${publicacao.fkEmpresa}${publicacao.idEstabelecimento}">${publicacao.telefone}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Cep: <span style="font-weight: 300;"
+                                            id="cep${publicacao.fkEmpresa}${publicacao.idEstabelecimento}">${publicacao.responsavel}</span></p>
+                                </div>
+                                <div id="divBotoesTotem${publicacao.fkEmpresa}${publicacao.idEstabelecimento}" class="btnsAlterarDeletar">
+                                    <button id="btnConfirmar${publicacao.fkEmpresa}${publicacao.idEstabelecimento}" class="btnDeletarMaquina editar"
+                                        onclick="alterarInfoFranquia(${publicacao.fkEmpresa}, ${publicacao.idEstabelecimento}, '${publicacao.nome}', '${publicacao.cnpj}', '${publicacao.telefone}', '${publicacao.responsavel}')">Alterar</button>
+                                    <button id="btnDeletar${publicacao.fkEmpresa}${publicacao.idEstabelecimento}" class="btnDeletarMaquina deletar"
+                                        onclick="perguntarDeletar(${publicacao.fkEmpresa}, ${publicacao.idEstabelecimento}, '${publicacao.nome}', '${publicacao.cnpj}', '${publicacao.telefone}', '${publicacao.responsavel}')">Deletar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function perguntarDeletar(empresa, estabelecimento, nome, cnpj, telefone, responsavel) {
+        mudarBotoes = document.getElementById(`divBotoesTotem${empresa}${estabelecimento}`);
+
+        mudarBotoes.innerHTML = `
+        <button id="btnConfirmar${empresa}${estabelecimento}" onclick="deletar(${empresa}, ${estabelecimento})" class="btnDeletarMaquina deletar">
+                                    Confirmar
+                                </button>
+                                <button id="btnDeletar${empresa}${estabelecimento}" onclick="desfazerAlteracoes(${empresa}, ${estabelecimento}, '${nome}', '${cnpj}', '${telefone}', '${responsavel}')" class="btnDeletarMaquina editar">
+                                    Desfazer
+                                </button>`
+    }
+
+    function deletar(empresa, estabelecimento) {
+        console.log("Criar função de apagar post escolhido - ID" + estabelecimento);
+        fetch(`/franquias/deletarTotem/${empresa}/${estabelecimento}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                // window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+
+                // Colocar algum alerta aqui
+
+                window.location = "/perfil/franquia.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function desfazerAlteracoes(empresa, estabelecimento, nome, cnpj, telefone, responsavel) {
+
+        idApelido = document.getElementById(`apelido${empresa}${estabelecimento}`);
+        idCnpj = document.getElementById(`cnpj${empresa}${estabelecimento}`);
+        idTelefone = document.getElementById(`telefone${empresa}${estabelecimento}`)
+        idCep = document.getElementById(`cep${empresa}${estabelecimento}`)
+
+        mudarBotoes = document.getElementById(`divBotoesTotem${empresa}${estabelecimento}`);
+
+        idApelido.innerHTML = `${nome}`;
+        idCnpj.innerHTML = `${cnpj}`;
+        idTelefone.innerHTML = `${telefone}`;
+        idCep.innerHTML = `${responsavel}`;
+
+        mudarBotoes.innerHTML = `
+<button id="btnConfirmar${empresa}${estabelecimento}" onclick="alterarInfoFranquia(${empresa}, ${estabelecimento}, '${nome}', '${cnpj}', '${telefone}', '${responsavel}')" class="btnDeletarMaquina editar">
+                    Alterar
+                </button>
+                <button id="btnDeletar${empresa}${estabelecimento}" onclick="perguntarDeletar(${empresa}, ${estabelecimento}, '${nome}', '${cnpj}', '${telefone}', '${responsavel}')" class="btnDeletarMaquina">
+                    Deletar
+                </button>`
+    }
+
+    function alterarInfoFranquia(empresa, estabelecimento, nome, cnpj, telefone, responsavel) {
+
+        idApelido = document.getElementById(`apelido${empresa}${estabelecimento}`);
+        idCnpj = document.getElementById(`cnpj${empresa}${estabelecimento}`);
+        idTelefone = document.getElementById(`telefone${empresa}${estabelecimento}`)
+        idCep = document.getElementById(`cep${empresa}${estabelecimento}`)
+
+        mudarBotoes = document.getElementById(`divBotoesTotem${empresa}${estabelecimento}`);
+
+        idApelido.innerHTML = `<input id="apelidoIpt${empresa}${estabelecimento}" style="width: 200px;" class="inputss" placeholder="${nome}">`;
+        idCnpj.innerHTML = `<input id="cnpjIpt${empresa}${estabelecimento}" style="width: 200px;" class="inputss" placeholder="${cnpj}">`;
+        idTelefone.innerHTML = `<input id="telefoneIpt${empresa}${estabelecimento}" style="width: 200px;" class="inputss" placeholder="${telefone}">`;
+        idCep.innerHTML = `<input id="cepIpt${empresa}${estabelecimento}" style="width: 200px;" class="inputss" placeholder="${responsavel}">`;
+
+        mudarBotoes.innerHTML = `
+<button onclick="enviarInfoTotem(${empresa}, ${estabelecimento}, '${nome}', '${cnpj}', '${telefone}', '${responsavel}')" class="btnDeletarMaquina confirmar">
+                    Confirmar
+                </button>
+                <button id="btnDeletar${empresa}${estabelecimento}" onclick="desfazerAlteracoes(${empresa}, ${estabelecimento}, '${nome}', '${cnpj}', '${telefone}', '${responsavel}')" class="btnDeletarMaquina editar">
+                    Desfazer
+                </button>
+`;
+
+    }
+
+    function enviarInfoTotem(empresa, estabelecimento, nome, cnpj, telefone, responsavel) {
+
+        cargo = "";
+
+        idApelido = document.getElementById(`apelidoIpt${empresa}${estabelecimento}`);
+        idCnpj = document.getElementById(`cnpjIpt${empresa}${estabelecimento}`);
+        idTelefone = document.getElementById(`telefoneIpt${empresa}${estabelecimento}`)
+        idCep = document.getElementById(`cepIpt${empresa}${estabelecimento}`)
+
+        console.log(idApelido.value)
+
+        if (idApelido.value != "") {
+            nome = idApelido.value
+        }
+
+        if (idCnpj.value != "") {
+            cnpj = idCnpj.value
+        }
+
+        if (idTelefone.value != "") {
+            telefone = idTelefone.value
+        }
+
+        if (idCep.value != "") {
+            responsavel = idCep.value
+        }
+
+        fetch(`/franquias/editarTotem/${empresa}/${estabelecimento}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                empresa: empresa,
+                estabelecimento: estabelecimento,
+                nome: nome,
+                cnpj: cnpj,
+                telefone: telefone,
+                responsavel: responsavel
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                // window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/perfil/franquia.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
 </script>

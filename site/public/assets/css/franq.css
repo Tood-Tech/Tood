@@ -99,9 +99,10 @@
 
 /* Card franquia */
 .card-franquia{
-    width: 85%;
-    background-color: #00072d;
+    width: 100%;
+    background-color: #00072D;
     display: flex;
+    margin-bottom: 2%;
     border-radius: 20px;
 }
 .div-img{
@@ -173,4 +174,25 @@
 
 .deletar {
     background-color: rgb(208, 84, 84);
+}
+
+.franquia {
+    box-shadow: 4px 4px 1px black;
+    background-color: #1B98E0;
+    width: 45%;
+}
+
+.funcCards {
+    width: 85%;
+}
+
+.inputss {
+        width: 100%;
+        height: 3vh;
+        margin-bottom: 5%;
+        padding-left: 2%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
 }
