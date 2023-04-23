@@ -1,0 +1,117 @@
+
+.dash {
+    background-color:#070b1f;
+    height: 100%;
+}
+
+.kpis {
+    margin-left: 15%;
+    margin-right: 67px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.kpi {
+    margin-top: 4%;
+    width: 240px;
+    height: 160px;
+    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    background-color: #FAF9FF;
+    border-radius: 6px;
+}
+
+.kpi span {
+    width: 80%;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.kpi h1 {
+
+    width: 80%;
+    font-size: 45px;
+    color: #FF1616;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-family: 'poppins';
+    margin-left: 5%;
+}
+
+.kpi h5 {
+    width: 80%;
+    font-weight: 500;
+    font-size: 12px;
+    margin-top: 0;
+    font-family: 'inter';
+    margin: 10PX;
+
+}
+
+.kpi h5::after {
+    content: "";
+    border-bottom: solid 2px black;
+    width: 110%;
+    display: block;
+    height: 2px;
+}
+.kpi.d{
+    width: 170px;
+}
+.graficos{
+    height: 70%;
+    display: flex;
+    margin-left: 10%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+   
+}
+
+
+.div_chart01{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart01{
+    height: 64vh;
+    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    width: 30vw;
+    background-color: #FAF9FF;
+    border-radius: 20px;
+}
+
+.div_chart1{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart1{
+    height: 42vh;
+    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    width: 40vw;
+    background-color: #FAF9FF;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.texto_kpi{
+    width: 80%;
+    font-weight: 500;
+    font-size: 17px;
+    margin-top: 0;
+    font-family: 'inter';
+    margin: 1px 0 0 5px;
+}
