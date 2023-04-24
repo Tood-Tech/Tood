@@ -1,7 +1,6 @@
-
 .dash {
-    background-color:#070b1f;
-    height: fit-content;
+    background-color: #070b1f;
+    height: 100%;
 }
 
 .kpis {
@@ -58,29 +57,31 @@
     display: block;
     height: 2px;
 }
-.kpi.d{
+
+.kpi.d {
     width: 170px;
 }
-.graficos{
+
+.graficos {
     height: 70%;
     display: flex;
     margin-left: 10%;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-   
+
 }
 
 
-.div_chart01{
+.div_chart01 {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.chart01{
-    height: 64vh;
+.chart01 {
+    height: 42vh;
     box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
     -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
@@ -89,14 +90,14 @@
     border-radius: 20px;
 }
 
-.div_chart1{
+.div_chart1 {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.chart1{
+.chart1 {
     height: 42vh;
     box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
     -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
@@ -107,11 +108,31 @@
     border-radius: 10px;
 }
 
-.texto_kpi{
+.texto_kpi {
     width: 80%;
     font-weight: 500;
     font-size: 17px;
     margin-top: 0;
     font-family: 'inter';
     margin: 1px 0 0 5px;
+}
+
+.detalheTotem {
+
+    margin-left: 15%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.detalhe {
+    text-align: center;
+    width: 12rem;
+    height: 8rem;
+    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    background-color: #FAF9FF;
+    border-radius: 20px;
+    margin-bottom: 4%;
 }
