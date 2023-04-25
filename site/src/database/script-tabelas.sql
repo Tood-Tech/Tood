@@ -1,49 +1,153 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+-- -----------------------------------------------------
+-- Schema ToodDatabase
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `ToodDatabase` DEFAULT CHARACTER SET utf8 ;
+USE `ToodDatabase` ;
 
-/*
-comandos para mysql - banco local - ambiente de desenvolvimento
-*/
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`Empresa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Empresa` (
+  `idEmpresa` INT NOT NULL AUTO_INCREMENT,
+  `razaoSocial` VARCHAR(45) NULL,
+  `nomeFantasia` VARCHAR(45) NULL,
+  `cnpj` CHAR(14) NULL,
+  `telefone` VARCHAR(13) NULL,
+  `responsavel` VARCHAR(45) NULL,
+  PRIMARY KEY (`idEmpresa`))
+ENGINE = InnoDB;
 
-CREATE DATABASE aquatech;
 
-USE aquatech;
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`Estabelecimento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Estabelecimento` (
+  `idEstabelecimento` INT NOT NULL AUTO_INCREMENT,
+  `fkEmpresa` INT NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  `cnpj` VARCHAR(45) NULL,
+  `telefone` VARCHAR(45) NULL,
+  `responsavel` VARCHAR(45) NULL,
+  PRIMARY KEY (`idEstabelecimento`),
+  INDEX `fk_Freezer_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_Freezer_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `ToodDatabase`.`Empresa` (`idEmpresa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
-);
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`Totem`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Totem` (
+  `idTotem` INT NOT NULL AUTO_INCREMENT,
+  `fkEstabelecimento` INT NOT NULL,
+  `numeroSerial` VARCHAR(45) NULL,
+  `processador` INT NULL,
+  `alertaProcessador` INT NULL,
+  `ram` INT NULL,
+  `alertaRam` INT NULL,
+  `gpu` INT NULL,
+  `alertaGpu` INT NULL,
+  `disco` INT NULL,
+  `alertaDisco` INT NULL,
+  PRIMARY KEY (`idTotem`, `fkEstabelecimento`),
+  INDEX `fk_Totem_Estabelecimento1_idx` (`fkEstabelecimento` ASC) VISIBLE,
+  CONSTRAINT `fk_Totem_Estabelecimento1`
+    FOREIGN KEY (`fkEstabelecimento`)
+    REFERENCES `ToodDatabase`.`Estabelecimento` (`idEstabelecimento`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300)
-);
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`DadoTotem`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`DadoTotem` (
+  `idDadosTotem` INT NOT NULL AUTO_INCREMENT,
+  `fkTotem` INT NOT NULL,
+  `dataHora` INT NULL,
+  `qtdRam` INT NULL,
+  `qtdGpu` INT NULL,
+  `qtdDisco` INT NULL,
+  `qtdProcessador` INT NULL,
+  PRIMARY KEY (`idDadosTotem`, `fkTotem`),
+  INDEX `fk_dados_sensores_idx` (`fkTotem` ASC) VISIBLE,
+  CONSTRAINT `fk_dados_sensores`
+    FOREIGN KEY (`fkTotem`)
+    REFERENCES `ToodDatabase`.`Totem` (`idTotem`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
+
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`Usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Usuario` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `fkEmpresa` INT NOT NULL,
+  `nomeUsuario` VARCHAR(45) NULL,
+  `email` VARCHAR(50) NULL,
+  `senha` VARCHAR(16) NULL,
+  `cargo` VARCHAR(20) NULL,
+  `telefone` VARCHAR(45) NULL,
+  `cpf` VARCHAR(45) NULL,
+  PRIMARY KEY (`idUsuario`, `fkEmpresa`),
+  INDEX `fk_Usuario_Empresa1_idx` (`fkEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuario_Empresa1`
+    FOREIGN KEY (`fkEmpresa`)
+    REFERENCES `ToodDatabase`.`Empresa` (`idEmpresa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`AlertaSensor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`AlertaSensor` (
+  `idAlertaSensor` INT NOT NULL AUTO_INCREMENT,
+  `fkDadoTotem` INT NOT NULL,
+  `fkTotem` INT NOT NULL,
+  `dtAlerta` DATETIME NULL,
+  `tipo` VARCHAR(45) NULL,
+  PRIMARY KEY (`idAlertaSensor`, `fkDadoTotem`, `fkTotem`),
+  INDEX `fk_AlertaSensor_DadoTotem1_idx` (`fkDadoTotem` ASC, `fkTotem` ASC) VISIBLE,
+  CONSTRAINT `fk_AlertaSensor_DadoTotem1`
+    FOREIGN KEY (`fkDadoTotem` , `fkTotem`)
+    REFERENCES `ToodDatabase`.`DadoTotem` (`idDadosTotem` , `fkTotem`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ToodDatabase`.`Endereco`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Endereco` (
+  `idEndereco` INT NOT NULL AUTO_INCREMENT,
+  `fkEstabelecimento` INT NOT NULL,
+  `logradouro` VARCHAR(45) NULL,
+  `numero` INT NULL,
+  `bairro` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NULL,
+  `estado` CHAR(2) NULL,
+  PRIMARY KEY (`idEndereco`),
+  INDEX `fk_Endereco_Estabelecimento1_idx` (`fkEstabelecimento` ASC) VISIBLE,
+  CONSTRAINT `fk_Endereco_Estabelecimento1`
+    FOREIGN KEY (`fkEstabelecimento`)
+    REFERENCES `ToodDatabase`.`Estabelecimento` (`idEstabelecimento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 /*
