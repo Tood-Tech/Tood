@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.content-main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.content{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #070b1f;
+}
+.totemCard{
+    width: 20%;
+    height: 60%;
+    border-radius: 20px;
+    background-color: #00072D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid #F1D302;
+    color: white;
+}
+.itens{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2%;
+}
+.itemExclusivo{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.titleTotem{
+    width: 90%;
+    border-bottom: 1px solid white;
+
+}
+.btnVerMaisTotem{
+    width: 40%;
+    height: 8%;
+    background-color: #F1D302;
+    font-size: 75%;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.iconOkayWrong{
+    width: 10%;
+}

@@ -266,3 +266,7 @@
         height: 50%;
     }
 }
+
+.invisible{
+    display: none;
+}

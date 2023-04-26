@@ -46,40 +46,50 @@
         <div class="dash">
             <div class="titulo"> Dashboard - Suporte </div>
             <div class="kpis">
-                <div class="kpi"><span>Totem 1</span>
-                    <h5 class="kpitexto">Situação: Desativado</h5>
-                    <span class="texto_relogio">18:15</span>
-                    <h6 class="texto_kpi" id="kpiTxt">CPU: 0%</h6>
+                <div class="kpi"><h1 class="titleKpi">Horário de pico estimado</h1>
+                    <h5 class="kpitexto">Utilização do totem com base no histórico</h5>
+                    <h3 class="componente">Previsão de pico: 13:15h<br> Uso estimado CPU: 85%</h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:08</span>
                 </div>
-                <div class="kpi"><span>Totem 2</span>
-                    <h5 class="kpitexto">Situação: Normal</h5>
-                    <span class="texto_relogio">18:15</span>
-                    <h6 class="texto_kpi" id="kpiTxt">CPU: 50%</h6>
+                <div class="kpi"><h1 class="titleKpi">Uso máximo registrado da CPU</h1>
+                    <h5 class="kpitexto">Registrado na última semana</h5>
+                    <h3 class="componente">CPU: 92%</h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
-                <div class="kpi"><span>Totem 3</span>
-                    <h5 class="kpitexto">Situação: Normal</h5>
-                    <span class="texto_relogio">18:15</span>
-                    <h6 class="texto_kpi" id="kpiTxt">CPU: 67%</h6>
+                <div class="kpi"><h1 class="titleKpi">Armazenamento total de DISCOS</h1>
+                    <h5 class="kpitexto">Tamanho total e utilizado em GB's</h5>
+                    <h3 class="componente">Total: 500GB <br> Utilizado: 255GB</h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
-                <div class="kpi"><span>Totem 4</span>
-                    <h5 class="kpitexto">Situação: Risco</h5>
-                    <span class="texto_relogio">18:15</span>
-                    <h6 class="texto_kpi" id="kpiTxt">CPU: 90%</h6>
+                <div class="kpi"><h1 class="titleKpi">Último componente sobre stress</h1>
+                    <h5 class="kpitexto">Nos últimos registros</h5>
+                    <h3 class="componente">RAM com 95%</h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
             </div>
             <div class="graficos">
-
                 <div class="div_chart1">
                     <div class="chart1">
                         <canvas class="canva" id="myChart1"></canvas>
                     </div>
                 </div>
 
-                <div class="div_chart01">
-                    <div class="chart01">
-                        <canvas id="myChart"></canvas>
+                <div class="div_chart1">
+                    <div class="chart1">
+                        <canvas id="myChart2"></canvas>
                     </div>
-
+                </div>
+            </div>
+            <div class="graficos">
+                <div class="div_chart1">
+                    <div class="chart1">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                </div>
+                <div class="div_chart1">
+                    <div class="chart1">
+                        <canvas class="graph4" id="myChart4"></canvas>
+                    </div>
                 </div>
             </div>
             <div class="detalheTotem">
@@ -118,29 +128,76 @@
         window.location = "../index.html"
     }
 
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Desativados', 'Ativos'],
-            datasets: [{
-                label: 'Totens',
-                data: [1, 3],
-                borderWidth: 1
-            }]
-        },
-    });
 
     const ctx1 = document.getElementById('myChart1');
+    const ctx2 = document.getElementById('myChart2');
+    const ctx3 = document.getElementById('myChart3');
+    const ctx4 = document.getElementById('myChart4');
 
     new Chart(ctx1, {
         type: 'line',
         data: {
-            labels: ['', 'Toten 1', 'Toten 2', 'Toten 3', 'Toten 4', 'Toten 5'],
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
             datasets: [{
-                label: 'Quantidade de erros',
-                data: [12, 19, 3, 5, 2, 1],
+                label: 'Utilização Processador',
+                data: [12, 19, 3, 5, 2, 1, 10],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
+            datasets: [{
+                label: 'Utilização Ram',
+                data: [12, 19, 3, 5, 2, 1, 9],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
+            datasets: [{
+                label: 'Utilização Disco',
+                data: [12, 19, 3, 5, 2, 1, 8],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctx4, {
+        type: 'polarArea',
+        data: {
+            labels: ['CPU', 'RAM', 'DISCO'],
+            datasets: [{
+                label: 'Utilização Disco',
+                data: [4, 6, 5],
                 borderWidth: 1
             }]
         },

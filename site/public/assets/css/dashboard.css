@@ -19,21 +19,27 @@
     display: flex;
     justify-content: space-evenly;
 }
+.componente{
+    margin-left: 3%;
 
+}
 .kpi {
     margin-top: 4%;
-    width: 240px;
-    height: 160px;
+    width: 20%;
     box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
     -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     background-color: #FAF9FF;
-    border-radius: 6px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1%;
 }
 
 .kpi span {
     width: 80%;
-    font-size: 15px;
+    font-size: 10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     margin: 5px;
@@ -41,11 +47,10 @@
 
 .kpi h1 {
 
-    width: 80%;
-    font-size: 45px;
-    color: #FF1616;
+    width: 100%;
+    font-size: 100%;
     margin-bottom: 0;
-    font-weight: 500;
+    font-weight: bold;
     font-family: 'poppins';
     margin-left: 5%;
 }
@@ -92,9 +97,6 @@
 
 .chart01 {
     height: 42vh;
-    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     width: 30vw;
     background-color: #FAF9FF;
     border-radius: 20px;
@@ -109,15 +111,12 @@
 
 .chart1 {
     height: 42vh;
-    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     width: 40vw;
     background-color: #FAF9FF;
-    padding: 10px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 .texto_kpi {
     width: 80%;
     font-weight: 500;
@@ -128,7 +127,6 @@
 }
 
 .detalheTotem {
-
     margin-left: 15%;
     display: flex;
     justify-content: space-evenly;
@@ -140,9 +138,6 @@
     text-align: center;
     width: 12rem;
     height: 8rem;
-    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     background-color: #FAF9FF;
     border-radius: 20px;
     margin-bottom: 4%;

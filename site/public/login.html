@@ -76,7 +76,13 @@
                 sessionStorage.CARGO = json.cargo;
 
                 setTimeout(function () {
-                    window.location = "./perfil/dashboard.html";
+                    var cargo = sessionStorage.CARGO;
+                    if(cargo == "suporte"){
+                        window.location = "./perfil/selecaoTotem.html";
+                    } else {
+                        window.location = "./perfil/dashGerente.html";
+                    }
+                    
                 }, 0); 
 
             });

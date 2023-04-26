@@ -60,7 +60,7 @@
                     <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/menu_black_36dp.svg"
                             alt=""></button>
                 </div>
-                <div class="form">
+                <div id="formularioInserir" class="form">
                     <h1 class="tituloFunc">Cadastre seu funcionário</h1>
                     <div class="contentForm">
                         <div class="parteForm">
@@ -143,6 +143,12 @@
 </html>
 
 <script>
+    var cargo = sessionStorage.CARGO;
+    if(cargo == "suporte"){
+        var form = document.getElementById("formularioInserir");
+        form.className = "invisible";
+    }
+
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/selecao.css">
+    <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="main">
+
+        <!-- SIDE BAR -->
+        <div class="sidebar">
+            <div class="mobile-menu-close-perfil-icon">
+                <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/close_white_36dp.svg"
+                        alt=""></button>
+            </div>
+            <div class="perfilNome">
+                <img class="iconPerfilNome" src="../assets/img/usuario-de-perfil.png" alt="">
+                <span id="spanNome" class="nomePerfil"></span>
+            </div>
+            <div class="perfilFranquia">
+                <a class="ancora" href="franquia.html"><img class="iconPerfil franq" src="../assets/img/franquia.png"
+                        alt="">
+                    <p class="identificacao">Franquias</p>
+                </a>
+            </div>
+            <div class="perfilFuncionario">
+                <a class="ancora" href="func.html"><img class="iconPerfil func"
+                        src="../assets/img/carteira-de-identidade.png" alt="">
+                    <p class="identificacao">Funcionários</p>
+                </a>
+            </div>
+            <div class="perfilDefinicoes">
+                <a class="ancora" href="totem.html"><img class="iconPerfil totem" src="../assets/img/definicoes.png"
+                        alt="">
+                    <p class="identificacao">Máquinas</p>
+                </a>
+            </div>
+            <div class="perfilGrafico">
+                <a class="ancora" href="dashboard.html"><img class="iconPerfil"
+                        src="../assets/img/grafico-preditivo.png" alt="">
+                    <p class="identificacao">Gráficos</p>
+                </a>
+            </div>
+            <button onclick="voltar()" class="btnSair">Sair</button>
+        </div>
+        <!-- FIM DA SIDEBAR -->
+
+        <div class="content-main">
+            <div class="content">
+                <div class="totemCard">
+                    <h1 class="titleTotem">TOTEM 1</h1>
+                    <div class="itens">
+                        <div class="itemExclusivo">
+                            <span>Serial: </span><span>09109</span>
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Ram: 80%</span><img class="iconOkayWrong" src="../assets/img/wrong.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Disco: 70%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Processador: 60%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                    </div>
+                </div>
+                <div class="totemCard">
+                    <h1 class="titleTotem">TOTEM 2</h1>
+                    <div class="itens">
+                        <div class="itemExclusivo">
+                            <span>Apelido: </span><span>98HG8931</span>
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Ram: 90%</span><img class="iconOkayWrong" src="../assets/img/wrong.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Disco: 60%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Processador: 30%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                    </div>
+                </div>
+                <div class="totemCard">
+                    <h1 class="titleTotem">TOTEM 3</h1>
+                    <div class="itens">
+                        <div class="itemExclusivo">
+                            <span>Apelido: </span><span>10319FKJA</span>
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Ram: 80%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Disco: 90%</span><img class="iconOkayWrong" src="../assets/img/wrong.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span>Processador: 50%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    function levarDash(){
+        window.location = "dashboard.html"
+    }
+</script>
