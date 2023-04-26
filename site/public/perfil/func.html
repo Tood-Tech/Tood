@@ -254,7 +254,7 @@
                                     <p style="font-weight: bold;">Email: <span style="font-weight: 300;" id="email${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.email}</span></p>
                                 </div>
                                 <div class="individualAtributo">
-                                    <p style="font-weight: bold;">Senha: <span style="font-weight: 300;" id="senha${publicacao.fkEmpresa}${publicacao.idUsuario}">${publicacao.senha}</span></p>
+                                    <p style="font-weight: bold;">Senha: <span style="font-weight: 300;" id="senha${publicacao.fkEmpresa}${publicacao.idUsuario}">*******</span></p>
                                 </div>
                             </div>
                             <div class="metadeAtributos">
@@ -321,13 +321,13 @@
 
         idNome.innerHTML = `${nome}`;
         idEmail.innerHTML = `${email}`;
-        idSenha.innerHTML = `${senha}`;
+        // idSenha.innerHTML = `${senha}`;
         idTelefone.innerHTML = `${telefone}`;
         idCpf.innerHTML = `${cpf}`;
         idCargo.innerHTML = `${cargo}`;
 
         mudarBotoes.innerHTML = `
-<button id="btnConfirmar${empresa}${usuario}" onclick="alterarInfoTotem(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina editar">
+<button id="btnConfirmar${empresa}${usuario}" onclick="alterarInfoTotem(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${telefone}', '${cpf}', '${cargo}')" class="btnDeletarMaquina editar">
                             Alterar
                         </button>
                         <button id="btnDeletar${empresa}${usuario}" onclick="perguntarDeletar(${empresa}, ${usuario}, '${nome}', '${email}', '${senha}', '${cargo}', '${telefone}', '${cpf}')" class="btnDeletarMaquina">
@@ -373,7 +373,7 @@
 
         idNome.innerHTML = `<input id="iptnome${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${nome}">`;
         idEmail.innerHTML = `<input id="iptemail${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${email}">`;
-        idSenha.innerHTML = `<input type="password" id="iptsenha${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${senha}">`;
+        // idSenha.innerHTML = `<input type="password" id="iptsenha${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${senha}">`;
         // idCargo.innerHTML = `<input id="iptcargo${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${cargo}">`;
         idTelefone.innerHTML = `<input id="ipttelefone${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${telefone}">`;
         idCpf.innerHTML = `<input id="iptcpf${empresa}${usuario}" style="width: 200px;" class="inputs" placeholder="${cpf}">`;
@@ -407,9 +407,6 @@
             email = idEmail.value
         }
 
-        if (idSenha.value != "") {
-            senha = idSenha.value
-        }
 
         if (idTelefone.value != "") {
             telefone = idTelefone.value

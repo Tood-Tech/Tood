@@ -57,7 +57,7 @@ function listarFranquiaTotem(idUsuario) {
 function publicarTotem(fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, gpu, alertaGpu, disco, alertaDisco, empresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, gpu, alertaGpu, disco, alertaDisco);
     var instrucao = `
-        INSERT INTO totem (fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, gpu, alertaGpu, disco, alertaDisco) VALUES (${fkEstabelecimento}, '${numeroSerial}', ${processador}, ${alertaProcessador}, ${ram}, ${alertaRam}, ${gpu}, ${alertaGpu}, ${disco}, ${alertaDisco});
+        INSERT INTO totem (fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, gpu, alertaGpu, disco, alertaDisco) VALUES (${fkEstabelecimento}, '${numeroSerial}', '${processador}', ${alertaProcessador}, '${ram}', ${alertaRam}, '${gpu}', ${alertaGpu}, '${disco}', ${alertaDisco});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
