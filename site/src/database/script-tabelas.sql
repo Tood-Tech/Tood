@@ -59,7 +59,8 @@ CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Totem` (
     FOREIGN KEY (`fkEstabelecimento`)
     REFERENCES `ToodDatabase`.`Estabelecimento` (`idEstabelecimento`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
+  )
 ENGINE = InnoDB;
 
 
@@ -80,7 +81,8 @@ CREATE TABLE IF NOT EXISTS `ToodDatabase`.`DadoTotem` (
     FOREIGN KEY (`fkTotem`)
     REFERENCES `ToodDatabase`.`Totem` (`idTotem`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
+)
 ENGINE = InnoDB;
 
 
@@ -102,7 +104,8 @@ CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Usuario` (
     FOREIGN KEY (`fkEmpresa`)
     REFERENCES `ToodDatabase`.`Empresa` (`idEmpresa`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
+)
 ENGINE = InnoDB;
 
 
@@ -201,3 +204,79 @@ EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
 
 EXEC sys.sp_addrolemember @rolename = N'db_datareader',
 @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+
+
+
+
+-------------------------------------------------------------------
+CREATE TABLE [dbo].[Empresa] (
+  [idEmpresa] INT NOT NULL IDENTITY(1,1),
+  [razaoSocial] VARCHAR(45) NULL,
+  [nomeFantasia] VARCHAR(45) NULL,
+  [cnpj] CHAR(30) NULL,
+  [telefone] VARCHAR(13) NULL,
+  [responsavel] VARCHAR(45) NULL,
+  CONSTRAINT [PK_Empresa] PRIMARY KEY ([idEmpresa])
+);
+
+CREATE TABLE [dbo].[Estabelecimento] (
+  [idEstabelecimento] INT NOT NULL IDENTITY(1,1),
+  [fkEmpresa] INT NOT NULL,
+  [nome] VARCHAR(45) NULL,
+  [cnpj] VARCHAR(45) NULL,
+  [telefone] VARCHAR(45) NULL,
+  [responsavel] VARCHAR(45) NULL,
+  CONSTRAINT [PK_Estabelecimento] PRIMARY KEY CLUSTERED ([idEstabelecimento] ASC),
+  CONSTRAINT [FK_Estabelecimento_Empresa] FOREIGN KEY ([fkEmpresa]) REFERENCES [dbo].[Empresa] ([idEmpresa])
+);
+
+CREATE TABLE [dbo].[Totem] (
+idTotem INT NOT NULL IDENTITY(1,1),
+fkEstabelecimento INT NOT NULL,
+numeroSerial VARCHAR(45) NULL,
+processador VARCHAR(45) NULL,
+alertaProcessador INT NULL,
+ram VARCHAR(45) NULL,
+alertaRam INT NULL,
+gpu VARCHAR(45) NULL,
+alertaGpu INT NULL,
+disco VARCHAR(45) NULL,
+alertaDisco INT NULL,
+CONSTRAINT PK_Totem PRIMARY KEY CLUSTERED (idTotem, fkEstabelecimento),
+CONSTRAINT FK_Totem_Estabelecimento FOREIGN KEY (fkEstabelecimento)
+REFERENCES [dbo].[Estabelecimento] ([idEstabelecimento])
+ON DELETE CASCADE
+ON UPDATE NO ACTION
+)
+
+CREATE TABLE [dbo].[DadoTotem] (
+  idDadosTotem INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  fkTotem INT NOT NULL,
+  dataHora DATETIME NULL,
+  qtdRam INT NULL,
+  qtdGpu INT NULL,
+  qtdDisco INT NULL,
+  qtdProcessador INT NULL,
+  CONSTRAINT fk_dados_sensores
+    FOREIGN KEY (fkTotem)
+    REFERENCES [dbo].[Totem] ([idTotem])
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+CREATE TABLE [dbo].[Usuario] (
+  idUsuario INT NOT NULL IDENTITY(1,1),
+  fkEmpresa INT NOT NULL,
+  nomeUsuario VARCHAR(45) NULL,
+  email VARCHAR(50) NULL,
+  senha VARCHAR(16) NULL,
+  cargo VARCHAR(20) NULL,
+  telefone VARCHAR(45) NULL,
+  cpf VARCHAR(45) NULL,
+  PRIMARY KEY (idUsuario, fkEmpresa),
+  CONSTRAINT fk_Usuario_Empresa1
+    FOREIGN KEY (fkEmpresa)
+    REFERENCES [dbo].[Empresa] ([idEmpresa])
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
