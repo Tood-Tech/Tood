@@ -144,7 +144,7 @@
 
 <script>
     var cargo = sessionStorage.CARGO;
-    if(cargo == "suporte"){
+    if (cargo == "suporte") {
         var form = document.getElementById("formularioInserir");
         form.className = "invisible";
     }
@@ -233,14 +233,19 @@
 
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-
+                    var publicacaoEspecifica;
                     cardsFunc.innerHTML = "";
+                    id = sessionStorage.ID_USUARIO;
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
+                        if(id == publicacao.idUsuario && cargo == publicacao.cargo){
+                            publicacaoEspecifica = resposta[i];
+                        }
+
 
                         // criando e manipulando elementos do HTML via JavaScript
 
-                        cardsFunc.innerHTML += `
+                            cardsFunc.innerHTML += `
                     <div class="card-func">
                         <div class="imgIconPerfil">
                             <img class="iconCardFuncionario" src="../assets/img/iconUser.svg" alt="">
@@ -283,6 +288,52 @@
                     </div>
                         `
                     }
+                    if(publicacaoEspecifica.cargo == "suporte"){
+                        cardsFunc.innerHTML = `
+                    <div class="card-func">
+                        <div class="imgIconPerfil">
+                            <img class="iconCardFuncionario" src="../assets/img/iconUser.svg" alt="">
+                        </div>
+                        <div class="atributos">
+                            <div class="metadeAtributos">
+                                <div class="individualAtributo primeiro">
+                                    <p style="font-weight: bold;">Nome: <span style="font-weight: 300;" id="nome${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}">${publicacaoEspecifica.nomeUsuario}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Email: <span style="font-weight: 300;" id="email${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}">${publicacaoEspecifica.email}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">Senha: <span style="font-weight: 300;" id="senha${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}">*******</span></p>
+                                </div>
+                            </div>
+                            <div class="metadeAtributos">
+                                <div class="individualAtributo primeiro">
+                                    <p style="font-weight: bold;">Telefone: <span style="font-weight: 300;" id="telefone${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}">${publicacaoEspecifica.telefone}</span></p>
+                                </div>
+                                <div class="individualAtributo">
+                                    <p style="font-weight: bold;">CPF: <span style="font-weight: 300;" id="cpf${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}">${publicacaoEspecifica.cpf}</span></p>
+                                </div>
+                                <div class="btnsForm cardFunc">
+                                    <div class="individualAtributo">
+                                        <p style="font-weight: bold;">Cargo: <span style="font-weight: 300;"
+                                                id="cargo${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}">${publicacaoEspecifica.cargo}</span></p>
+                                    </div>
+                                </div>
+                                <div id="divBotoesTotem${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}" class="botoesTotem">
+                                    <button id="btnConfirmar${publicacaoEspecifica.fkEmpresa}${publicacaoEspecifica.idUsuario}" onclick="alterarInfoTotem(${publicacaoEspecifica.fkEmpresa}, ${publicacaoEspecifica.idUsuario}, '${publicacaoEspecifica.nomeUsuario}', '${publicacaoEspecifica.email}', '${publicacaoEspecifica.senha}', '${publicacaoEspecifica.telefone}', '${publicacaoEspecifica.cpf}', '${publicacaoEspecifica.cargo}')" class="btnDeletarMaquina editar">
+                                    Alterar
+                                </button>
+                                <button id="btnDeletar${publicacao.fkEmpresa}${publicacao.idUsuario}" onclick="perguntarDeletar(${publicacao.fkEmpresa}, ${publicacao.idUsuario}, '${publicacao.nomeUsuario}', '${publicacao.email}', '${publicacao.senha}', '${publicacao.cargo}', '${publicacao.telefone}', '${publicacao.cpf}')" class="btnDeletarMaquina deletar">
+                                    Deletar
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `
+                    }
+
+
 
                     // finalizarAguardar();
                 });
