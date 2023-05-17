@@ -12,7 +12,7 @@ function listar() {
 function buscarEmpresa() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscarEmpresa()");
     var instrucao = `
-        SELECT idEmpresa FROM Empresa order by idEmpresa desc limit 1;
+        SELECT top 1 [dbo].[Empresa].[idEmpresa] FROM [dbo].[Empresa] order by [dbo].[Empresa].[idEmpresa] desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
