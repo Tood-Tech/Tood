@@ -24,3 +24,13 @@ function menuPerfilMobile(){
 function voltar(){
     window.location = "../index.html";
 }
+
+
+$('#carrossel').slick({
+    // infinite: true,
+    slidesToShow: 1,
+    // centerMode: true,
+    slidesToScroll: 1,
+    dots: true,
+    arrows: true
+});

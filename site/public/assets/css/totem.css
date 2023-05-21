@@ -70,21 +70,26 @@
     margin-bottom: 3vh;
 }
 .btnConfirmar{
-    width: 20%;
-    height: 70%;
-    background-color: #F1D302;
-    font-weight: bold;
+    background: #F1D302;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 100%;
-    border-radius: 5px;
+    padding: 10px 25px;
+    outline: none;
+    margin: 15px 0px;
     cursor: pointer;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    transition: 0.1s;
+    border: none;
+}
+
+.btnConfirmar:hover{
+    background: #ffe749;
+    padding: 10px 29px;
 }
 
 .parametrizar{
     height: 40%;
-    width: 50%;
-    margin-top: 5%;
+    width: 50%; 
     display: flex;
     flex-direction: column;
     align-items: center;

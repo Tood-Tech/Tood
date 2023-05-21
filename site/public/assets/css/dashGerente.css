@@ -1,46 +1,75 @@
-
 .dash {
-    background-color:#070b1f;
-    height: 100%;
+    background: rgb(201, 201, 201);
+    height: 100vh;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #DA291C;
+    height: 23%;
+}
+
+.titulo {
+    margin-left: 5%;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.img-mcdonalds img {
+    width: 15%;
+    margin-left: 115%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .kpis {
     margin-left: 15%;
-    margin-right: 67px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.componente {
+    margin-left: 3%;
+
 }
 
 .kpi {
-    border: black solid 4px;
     margin-top: 4%;
-    width: 200px;
-    height: 70px;
-    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+    width: 20%;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     background-color: #FAF9FF;
-    border-radius: 6px;
+    border-radius: 2px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 1%;
 }
 
 .kpi span {
-    font-size: 12px;
+    width: 80%;
+    font-size: 10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 5px;
+    margin: 5px;
 }
 
 .kpi h1 {
-    width: 80%;
-    font-size: 45px;
-    color: #FF1616;
+
+    width: 100%;
+    font-size: 100%;
     margin-bottom: 0;
-    font-weight: 500;
+    font-weight: bold;
     font-family: 'poppins';
     margin-left: 5%;
 }
@@ -62,61 +91,81 @@
     display: block;
     height: 2px;
 }
-.kpi.d{
+
+.kpi.d {
     width: 170px;
 }
-.graficos{
-    height: 78%;
+
+.graficos {
     display: flex;
-    margin-left: 10%;
+    margin-left: 15%;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-   
+    margin-top: 3rem;
+    margin-bottom: 5%;
 }
 
 
-.div_chart01{
+.div_chart01 {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.chart01{
-    height: 64vh;
-    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
+.chart01 {
+    height: 42vh;
     width: 30vw;
     background-color: #FAF9FF;
     border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
 }
 
-.div_chart1{
+.div_chart1 {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.chart1{
+.chart1 {
     height: 42vh;
-    box-shadow: -1px 10px 18px -1px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: -1px 5px 18px -1px rgba(0, 0, 0, 0.22);
     width: 40vw;
     background-color: #FAF9FF;
-    padding: 10px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+
 }
 
-.texto_kpi{
+.texto_kpi {
+    width: 80%;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 17px;
     margin-top: 0;
     font-family: 'inter';
-    border: black solid 1px;
-    margin: 0 0 0 0px;
-    padding: 0 0 0 5px;
+    margin: 1px 0 0 5px;
+}
+
+.detalheTotem {
+    margin-left: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+
+}
+
+.detalhe {
+    text-align: center;
+    width: 12rem;
+    height: 8rem;
+    background-color: #FAF9FF;
+    border-radius: 20px;
+    margin-bottom: 4%;
 }

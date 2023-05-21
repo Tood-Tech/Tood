@@ -1,36 +1,50 @@
 .container-login {
-width: 100vw;
-height: 100vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 .banner {
-    background-color: #00072D;
+    background: rgb(93, 224, 230);
+    background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
     display: flex;
     height: 100vh;
 }
 
 
-.caixa-formulario { 
-    background-color: #00073F;
+.caixa-formulario {
+    background-color: white;
     width: 40%;
-    height: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5%;
     border-radius: 10px;
+    padding: 30px 0;
 }
 
-h2 {
-    color: #1B98E0;
+.caixa-formulario .img_logo{
+    width: 150px;
+}
+.cadastroText {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.cadastroText h2 {
+    color: #00072D;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 150%;
+    font-size: 40px;
 }
 
-.campos{
+.cadastroText .white{
+    color: white;
+    margin-top: 10px;
+}
+
+.campos {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -47,11 +61,8 @@ h2 {
 
 .campo input {
     width: 100%;
-    border: 3px solid #FFFFFF;
-    background-color: #00073F;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
+    border-bottom: 3px solid rgb(93, 224, 230);
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -60,22 +71,43 @@ h2 {
 }
 
 .caixa-formulario button {
-    width: 30%;
-    height: 8%;
     background: #F1D302;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: 700;
     font-size: 100%;
+    padding: 10px 25px;
+    outline: none;
+    margin: 15px 0px;
+    cursor: pointer;
+    transition: 0.1s;
+    border: none;
 }
-@media only screen and (max-width: 600px){
-    .container{
+
+.caixa-formulario button:hover {
+    background: #ffe749;
+    padding: 10px 29px;
+}
+
+.caixa-formulario a{
+    display: inline-block;
+    font-family: 'Inter';
+    text-decoration: none;
+    color: #00073F;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
         display: flex;
         flex-direction: column;
     }
-    .caixa-formulario{
+
+    .caixa-formulario {
         width: 80%;
         height: 80%;
     }
+
     .logo {
         width: 80%;
         height: 40%;
@@ -83,10 +115,12 @@ h2 {
         justify-content: center;
         align-items: center;
     }
-        .img_logo {
+
+    .img_logo {
         width: 60%;
     }
-    .logo a{
+
+    .logo a {
         display: flex;
         justify-content: center;
         align-items: center;

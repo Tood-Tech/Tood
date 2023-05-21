@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seja Bem-vindo!</title>
     <link rel="stylesheet" href="./assets/css/estilos-gerais.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <script src="./assets/js/menu.js"></script>
+    <link rel="stylesheet" href="./assets/css/index.css">				
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 </head>
 
 <body>
@@ -42,60 +42,80 @@
     <main>
         <div class="banner">
             <div class="texto-inicio">
-                <h1>Tecnologia para<br>o seu negócio</h1>
+                <h1>Tecnologia para o seu negócio</h1>
+                <p>Soluções em tecnologia com a finalidade de 
+                    monitorar terminais de autoatendimento.</p>
                 <a>Saiba Mais</a>
             </div>
-        </div>
-        <div class="pageTwo">
-            <div class="page2_img">
+            <div class="icone-inicio">
                 <img src="./assets/img/img-landing-page-2.png" alt="">
             </div>
-            <div class="page2_txt">
-                <span> Nossa trabalho é ser líder em soluções de monitoramento de totem de autoatendimento, oferecendo serviços inovadores e de alta qualidade que agreguem valor aos nossos clientes e parceiros. </span>
-            </div>
         </div>
-        <div class="social">
-            <div class="container">
-                <div class="boxes">
-                    <div class="box">
-                        <h1 class="titleSocial">MISSÃO</h1>
+        <!-- <div class="pageTwo">
+            <div class="page2_img">
+            <img src="../public/assets/img/ceo-img.png" alt="">
+            </div>
+            <div class="page2_txt">
+                <span> "Além de elevar a produtividade das filiais evitando longos períodos de inatividade dos terminais, também levamos em consideração a importância em prever falhas e atuar antes que ocorram de fato." <br>- CEO Tood Tech </span>
+            </div>
+        </div> -->  <!-- <div class="social">
+            <div class="container"> -->
+                <ul id="carrossel" class="boxes">
+                    <li class="box">
+                        <h2 class="titleSocial">NOSSA MISSÃO</h2>
                         <div class="box-circulo">
                             <img src="./assets/img/img-landing-page-5.png">
-                        </div>
-                        <div class="box-quadrado">
-                            <p>Nossa missão é fornecer soluções de monitoramento de totem de autoatendimento para o setor de fast-food, garantindo a satisfação do cliente, eficiência operacional e aumento da receita dos nossos clientes.</p>
-                        </div>
-                    </div>
+                            <div class="box-quadrado">
+                                <p>Nossa missão é fornecer soluções de monitoramento de totem de autoatendimento para o setor de fast-food, garantindo a satisfação do cliente, eficiência operacional e aumento da receita dos nossos clientes.</p>
+                            </div>
+                        </div><br>
+                    </li>
 
-                    <div class="box">
-                        <h1 class="titleSocial">VISÃO</h1>
+                    <li class="box">
+                        <h2 class="titleSocial"> NOSSA VISÃO</h2>
                         <div class="box-circulo">
+                            <div class="box-quadrado invert">
+                                <p>Nossa visão é ser líder em soluções de monitoramento de totem de autoatendimento, oferecendo serviços inovadores e de alta qualidade que agreguem valor aos nossos clientes e parceiros.</p>
+                            </div>
                             <img src="./assets/img/img-landing-page-3.png">
-                        </div>
-                        <div class="box-quadrado">
-                            <p>Nossa visão é ser líder em soluções de monitoramento de totem de autoatendimento, oferecendo serviços inovadores e de alta qualidade que agreguem valor aos nossos clientes e parceiros.</p>
-                        </div>
-                    </div>
+                        </div><br>
+                    </li>
 
-                    <div class="box">
-                        <h1 class="titleSocial">VALORES</h1>
+                    <li class="box">
+                        <h2 class="titleSocial">NOSSOS VALORES</h2>
                         <div class="box-circulo">
                             <img src="./assets/img/img-landing-page-4.png">
-                        </div>
-                        <div class="box-quadrado">
-                            <p>Nossos valores incluem a excelência no atendimento ao cliente, a transparência e ética em todos os nossos negócios, o compromisso em inovar e melhorar continuamente nossas soluções, e a responsabilidade social e ambiental em nossas atividades.</p>
-                        </div>
-                    </div>
-                </div>
+                            <div class="box-quadrado">
+                                <p>Nossos valores incluem a excelência no atendimento ao cliente, a transparência e ética em todos os nossos negócios, o compromisso em inovar e melhorar continuamente nossas soluções, e a responsabilidade social e ambiental em nossas atividades.</p>
+                            </div>
+                        </div><br>
+                    </li>
+                </ul>
+            <!-- </div>
+        </div> -->
+        <div class="voceSabia">
+            <h2>A importância dos Totens nos estabelecimentos </h2>
+            <div class="voceSabia-box">
+                <p>Pesquisas apontam que cerca de <b>63%</b> 
+                    dos consumidores de fast-food optam por ter autonomia 
+                    e pedir pelo <b>terminal de autoatendimento</b>.</p>
+                <img src="./assets/img/In no time-pana.png" alt="gráfico">
             </div>
-
-
+            <div class="justify-box">
+                <img src="./assets/img/Visual data-pana.png" alt="justificativa">
+                <p>Quando um totem de atendimento apresenta instabilidade,
+                     desencadeia um efeito cascata, gerando uma grande demanda para os funcionários,
+                      e filas maiores para os clientes. O suporte técnico acaba levando mais tempo para solucionar a questão
+                       pois não há um sistema efetivo e detalhado para o monitoramento dessas máquinas.
+                    Com a nossa aplicação Web Cliente oferecemos uma dashboard dinâmica para o suporte técnico e gerente. </p>
+            </div>
         </div>
+      
         <footer>
             <img class="logoFooter" src="./assets/img/tood-logo-white.png" alt="">
             <div class="barra"></div>
             <div class="informacoesFooter">
-                <h1>Fale Conosco</h1>
+                <h3>Fale Conosco</h3>
                 <p>E-mail: toodtech@outlook.com</p>
                 <p>Telefone: 3003-8888</p>
                 <p>Rua. Haddock Lobo, 820 - Consolação</p>
@@ -106,7 +126,7 @@
 
 </body>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="./assets/js/menu.js"></script>
 </html>
-<script>
-    
-</script>
