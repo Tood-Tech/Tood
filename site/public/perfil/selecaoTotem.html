@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="atualizarFeed()">
     <section class="main">
 
         <!-- SIDE BAR -->
@@ -58,16 +58,19 @@
                     <h1 class="titleTotem">TOTEM 1</h1>
                     <div class="itens">
                         <div class="itemExclusivo">
-                            <span>Serial: </span><span>09109</span>
+                            <span id="spanT1">Serial: </span>
                         </div>
                         <div class="itemExclusivo">
-                            <span>Ram: 80%</span><img class="iconOkayWrong" src="../assets/img/wrong.svg" alt="">
+                            <span id="ramT1">Ram: </span><img id="imgRamT1" class="iconOkayWrong"
+                                src="../assets/img/wrong.svg" alt="">
                         </div>
                         <div class="itemExclusivo">
-                            <span>Disco: 70%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                            <span id="discoT1">Disco: </span><img id="imgDiscoT1" class="iconOkayWrong"
+                                src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="itemExclusivo">
-                            <span>Processador: 60%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                            <span id="processadorT1">Processador: </span><img id="imgProcessadorT1"
+                                class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
                     </div>
@@ -76,34 +79,103 @@
                     <h1 class="titleTotem">TOTEM 2</h1>
                     <div class="itens">
                         <div class="itemExclusivo">
-                            <span>Apelido: </span><span>98HG8931</span>
+                            <span id="spanT2">Serial: </span>
                         </div>
                         <div class="itemExclusivo">
-                            <span>Ram: 90%</span><img class="iconOkayWrong" src="../assets/img/wrong.svg" alt="">
+                            <span id="ramT2">Ram: </span><img id="imgRamT2" class="iconOkayWrong"
+                                src="../assets/img/wrong.svg" alt="">
                         </div>
                         <div class="itemExclusivo">
-                            <span>Disco: 60%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                            <span id="discoT2">Disco: </span><img id="imgDiscoT2" class="iconOkayWrong"
+                                src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="itemExclusivo">
-                            <span>Processador: 30%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                            <span id="processadorT2">Processador: </span><img id="imgProcessadorT2"
+                                class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
                     </div>
                 </div>
                 <div class="totemCard">
-                    <h1 class="titleTotem">TOTEM 3</h1>
+                    <h1 class="titleTotem">TOTEM 2</h1>
                     <div class="itens">
                         <div class="itemExclusivo">
-                            <span>Apelido: </span><span>10319FKJA</span>
+                            <span id="spanT3">Serial: </span>
                         </div>
                         <div class="itemExclusivo">
-                            <span>Ram: 80%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                            <span id="ramT3">Ram: </span><img id="imgRamT3" class="iconOkayWrong"
+                                src="../assets/img/wrong.svg" alt="">
                         </div>
                         <div class="itemExclusivo">
-                            <span>Disco: 90%</span><img class="iconOkayWrong" src="../assets/img/wrong.svg" alt="">
+                            <span id="discoT3">Disco: </span><img id="imgDiscoT3" class="iconOkayWrong"
+                                src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="itemExclusivo">
-                            <span>Processador: 50%</span><img class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                            <span id="processadorT3">Processador: </span><img id="imgProcessadorT3"
+                                class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                    </div>
+                </div>
+                <div class="totemCard">
+                    <h1 class="titleTotem">TOTEM 2</h1>
+                    <div class="itens">
+                        <div class="itemExclusivo">
+                            <span id="spanT4">Serial: </span>
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="ramT4">Ram: </span><img id="imgRamT4" class="iconOkayWrong"
+                                src="../assets/img/wrong.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="discoT4">Disco: </span><img id="imgDiscoT4" class="iconOkayWrong"
+                                src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="processadorT4">Processador: </span><img id="imgProcessadorT4"
+                                class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                    </div>
+                </div>
+                <div class="totemCard">
+                    <h1 class="titleTotem">TOTEM 2</h1>
+                    <div class="itens">
+                        <div class="itemExclusivo">
+                            <span id="spanT5">Serial: </span>
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="ramT5">Ram: </span><img id="imgRamT5" class="iconOkayWrong"
+                                src="../assets/img/wrong.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="discoT5">Disco: </span><img id="imgDiscoT5" class="iconOkayWrong"
+                                src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="processadorT5">Processador: </span><img id="imgProcessadorT5"
+                                class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                    </div>
+                </div>
+                <div class="totemCard">
+                    <h1 class="titleTotem">TOTEM 2</h1>
+                    <div class="itens">
+                        <div class="itemExclusivo">
+                            <span id="spanT6">Serial: </span>
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="ramT6">Ram: </span><img id="imgRamT6" class="iconOkayWrong"
+                                src="../assets/img/wrong.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="discoT6">Disco: </span><img id="imgDiscoT6" class="iconOkayWrong"
+                                src="../assets/img/okay.svg" alt="">
+                        </div>
+                        <div class="itemExclusivo">
+                            <span id="processadorT6">Processador: </span><img id="imgProcessadorT6"
+                                class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
                     </div>
@@ -115,10 +187,81 @@
 
 </html>
 <script>
+    function atualizarFeed() {
+
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        for (var i = 1; i < 5; i++) {
+            var idTotem = i;
+            fetch(`/totem/listarDadosTotem/${idEmpresa}/${idTotem}`).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        throw "Nenhum resultado encontrado!!";
+                    }
+
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+                        var totem = resposta[0];
+                        var span = document.getElementById(`spanT${i}`);
+                        var ramSpan = document.getElementById(`ramT${i}`);
+                        var discoSpan = document.getElementById(`discoT${i}`);
+                        var processadorSpan = document.getElementById(`processadorT${i}`);
+                        span.innerHTML = "Serial: " + totem.numeroSerial;
+
+                        var ram = totem.qtdRam.replace("gb", "");
+                        ram = ram.replace(",", ".");
+                        ram = parseFloat(ram);
+
+                        var porcentagemRam = (ram * 100.0) / 8.0;
+                        ramSpan.innerHTML = "Ram: " + porcentagemRam + "%";
+
+                        var disco = totem.qtdDisco.replace("gb");
+                        disco = disco.replace(",", ".");
+                        disco = parseFloat(disco);
+
+                        var porcentagemDisco = (disco * 100.0) / 500.0;
+                        discoSpan.innerHTML = "Disco: " + porcentagemDisco + "%";
+
+                        processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+
+                        var alertaRam = totem.alertaRam;
+                        var imgRam = document.getElementById(`imgRamT${i}`);
+                        var alertaDisco = totem.alertaDisco;
+                        var imgDisco = document.getElementById(`imgDiscoT${i}`);
+                        var alertaProcessador = totem.alertaProcessador;
+                        var imgProcessador = document.getElementById(`imgProcessadorT${i}`);
+
+                        if (porcentagemRam > alertaRam) {
+                            imgRam.src = "../assets/img/wrong.svg";
+                        } else {
+                            imgRam.src = "../assets/img/okay.svg";
+                        }
+
+                        if (porcentagemDisco > alertaDisco) {
+                            imgDisco.src = "../assets/img/wrong.svg";
+                        } else {
+                            imgDisco.src = "../assets/img/okay.svg";
+                        }
+
+                        if (totem.qtdProcessador > alertaProcessador) {
+                            imgProcessador.src = "../assets/img/wrong.svg";
+                        } else {
+                            imgProcessador.src = "../assets/img/okay.svg";
+                        }
+                    });
+                } else {
+                    throw ('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
+                // finalizarAguardar();
+            });
+        }
+    }
+
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
 
-    function levarDash(){
+    function levarDash() {
         window.location = "dashboard.html";
     }
 </script>

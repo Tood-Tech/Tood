@@ -26,6 +26,19 @@ function listarTotem(idEmpresa) {
     return database.executar(instrucao);
 }
 
+function listarDadosTotem(idEmpresa, idTotem) {
+
+    instrucao = `select top 10 * from [dbo].[Totem] 
+                    inner join [dbo].[DadoTotem] on [dbo].[Totem].[idTotem] = [dbo].[DadoTotem].[fkTotem]
+                        where [dbo].[Totem].[idTotem] = ${idTotem} and [dbo].[Totem].[fkEstabelecimento] = ${idEmpresa}
+                            order by [dbo].[DadoTotem].[idDadosTotem] desc;`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function listarFranquiaTotem(idUsuario) {
 
     var instrucao = '';
@@ -100,5 +113,6 @@ module.exports = {
     listarTotem,
     publicarTotem,
     editarTotem,
-    deletarTotem
+    deletarTotem,
+    listarDadosTotem,
 }
