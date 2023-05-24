@@ -37,7 +37,7 @@
                         alt=""></a>
             </div>
             <div class="perfilGrafico">
-                <a class="ancora" href="dashboard.html"><img class="iconPerfil dashboard"
+                <a id="ancoraGrafico" class="ancora" href="dashGerente.html"><img class="iconPerfil dashboard"
                         src="../assets/img/grafico-preditivo.png" alt=""></a>
             </div>
             <button onclick="sairDashboard()" class="btnSair">Sair</button>
@@ -92,6 +92,13 @@
 </html>
 
 <script>
+     if(sessionStorage.CARGO == "suporte"){
+        var ancora = document.getElementById("ancoraGrafico");
+        ancora.href = "selecaoTotem.html";
+    } else {
+        var ancora = document.getElementById("ancoraGrafico");
+        ancora.href = "dashGerente.html";
+    }
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
 

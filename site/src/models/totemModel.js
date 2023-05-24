@@ -28,7 +28,7 @@ function listarTotem(idEmpresa) {
 
 function listarDadosTotem(idEmpresa, idTotem) {
 
-    instrucao = `select top 10 * from [dbo].[Totem] 
+    instrucao = `select top 1 * from [dbo].[Totem] 
                     inner join [dbo].[DadoTotem] on [dbo].[Totem].[idTotem] = [dbo].[DadoTotem].[fkTotem]
                         where [dbo].[Totem].[idTotem] = ${idTotem} and [dbo].[Totem].[fkEstabelecimento] = ${idEmpresa}
                             order by [dbo].[DadoTotem].[idDadosTotem] desc;`

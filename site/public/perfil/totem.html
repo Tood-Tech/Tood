@@ -33,10 +33,10 @@
                             alt=""></a>
                 </div>
                 <div class="perfilGrafico">
-                    <a class="ancora" href="dashGerente.html"><img class="iconPerfil"
+                    <a id="ancoraGrafico" class="ancora" href="dashGerente.html"><img class="iconPerfil"
                             src="../assets/img/grafico-preditivo.png" alt=""></a>
                 </div>
-                <button class="btnSair">Sair</button>
+                <button class="btnSair" onclick="sair()">Sair</button>
             </div>
             <!-- FIM DA SIDEBAR -->
             <div class="content-form">
@@ -161,6 +161,17 @@
 </html>
 
 <script>
+    function sair(){
+        window.location = "../index.html";
+    }
+    if(sessionStorage.CARGO == "suporte"){
+        var ancora = document.getElementById("ancoraGrafico");
+        ancora.href = "selecaoTotem.html";
+    } else {
+        var ancora = document.getElementById("ancoraGrafico");
+        ancora.href = "dashGerente.html";
+    }
+
     var nome = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nome;
 
