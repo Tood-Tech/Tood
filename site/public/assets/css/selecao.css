@@ -1,34 +1,64 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.content-main{
+
+.content-main {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-end;
 }
-.content{
+
+.content {
     width: 85%;
     height: 100%;
-    display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #070b1f;
+    background: rgb(93, 224, 230);
+    background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
+    
 }
-.totemCard{
-    width: 20%;
-    height: 60%;
-    border-radius: 20px;
-    background-color: #00072D;
+
+.totens-fileira-1 {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    /* height: 100%; */
+    /* margin-top: -41px; */
+    /* margin-top: 90px; */
+    padding: 20px 0 25px 0;
+}
+
+.totens-fileira-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    /* height: 100%; */
+    background: rgb(93, 224, 230);
+    background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
+    
+}
+
+.totemCard {
+    width: 280px;
+    height: 275px;
+    background: #FAF9FF;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    border: 1px solid #F1D302;
-    color: white;
+    color: #00072D;
+    padding: 15px 0px 1px 15px;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
 }
-.itens{
+
+.itens {
     width: 100%;
     height: 80%;
     display: flex;
@@ -36,26 +66,80 @@
     align-items: center;
     justify-content: space-evenly;
     gap: 2%;
+    font-weight: bold;
 }
-.itemExclusivo{
+
+.itemExclusivo {
     width: 70%;
     display: flex;
     justify-content: space-between;
 }
-.titleTotem{
+
+.titleTotem {
     width: 90%;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid #00072D;
+    display: flex;
+    justify-content: center;
+    padding: 0 0 5px 0px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2%;
 
 }
-.btnVerMaisTotem{
-    width: 40%;
-    height: 8%;
-    background-color: #F1D302;
-    font-size: 75%;
-    font-weight: bold;
-    border-radius: 5px;
+
+.btnVerMaisTotem {
+    background: #F1D302;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    outline: none;
+    margin: 15px 10px 0px 0px;
     cursor: pointer;
+    transition: 0.1s;
+    border: none;
+    width: 95px;
+    height: 37px;
+    
 }
-.iconOkayWrong{
+
+.btnVerMaisTotem:hover {
+    background: #ffe749;
+    font-size: 14px;
+    width: 100px;
+    height: 37px;
+    
+}
+
+.btnReiniciarTotem {
+    background: #DA291C;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    outline: none;
+    margin: 15px 0px;
+    cursor: pointer;
+    transition: 0.1s;
+    border: none;
+    width: 95px;
+    height: 37px;
+    color: white;
+   
+}
+
+.btnReiniciarTotem:hover {
+    background: #DA291C;
+    font-size: 14px;
+    width: 100px;
+    height: 37px;
+    
+}
+
+.iconOkayWrong {
     width: 10%;
 }

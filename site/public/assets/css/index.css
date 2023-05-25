@@ -29,6 +29,7 @@
     font-size: 28px;
     /* background-color: #00072D; */
     padding: 35px 0px 10px 0px;
+    border-bottom: #ffe749 2px solid;
     
 }
 
@@ -85,18 +86,26 @@
     font-weight: bold;
 }
 
-.texto-inicio a {
+.btnSaibaMais {
     background-color: #f1d302;
     color: #00072D;
-    border-radius: 35px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 20px;
-    width: 40%;
-    height: 7%;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.1s;
+    border: none;
+    padding: 10px 110px;
+    margin-left: 110px;
+}
 
+.btnSaibaMais:hover{
+    background: #ffe749;
+    padding: 10px 140px;
 }
 
 .icone-inicio {

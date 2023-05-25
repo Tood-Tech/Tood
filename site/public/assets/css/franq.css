@@ -1,10 +1,11 @@
-.content-main{
+.content-main {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.content{
+
+.content {
     width: 85%;
     display: flex;
     flex-direction: column;
@@ -16,21 +17,27 @@
 
 .form {
     width: 85%;
-    background-color: #00072d;
+    background-color: white;
     border-radius: 20px;
     padding-bottom: 2%;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+
 }
 
 .tituloFunc {
     width: 100%;
     height: 6%;
-    background-color: #F1D302;
+    background-color: #020c42;
     display: flex;
     justify-content: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom: 3px solid #1B98E0;
+    color: white;
 }
+
 .contentForm {
     width: 100%;
     height: 42%;
@@ -44,6 +51,7 @@
     width: 40%;
     height: 60%;
 }
+
 .inputs {
     width: 100%;
     height: 3vh;
@@ -51,40 +59,42 @@
     padding-left: 2%;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 3px solid #1B98E0;
     color: white;
 }
 
-.btnsForm{
-    margin: 0 0 0 40%;
+.btnsForm {
+    display: flex;
+    justify-content: center;
 }
 
-.btnsForm.u{
+.btnsForm.u {
     margin: 10px 0 0 40%;
 }
 
-.tituloInp{
-    color: #f4f4f4;
+.tituloInp {
+    color: #020c42;
 }
 
 .btnConfirmar {
-    width: 30%;
-    height: 100%;
-    background-color: #F1D302;
-    color: black;
-    border-radius: 5px;
-    font-weight: bold;
+    background: #F1D302;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 100%;
+    padding: 10px 25px;
+    outline: none;
+    margin: 15px 0px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.1s;
+    border: none;
 }
 
 .btnConfirmar:hover {
-    box-shadow: 3px 3px 1px black;
-    transition: 0.3s;
+    background: #ffe749;
+    padding: 10px 29px;
 }
 
-.historico{
+.historico {
     background-color: #020c42;
     display: flex;
     justify-content: space-around;
@@ -93,19 +103,20 @@
     align-items: center;
 }
 
-.histEmpresa{
+.histEmpresa {
     color: #f4f4f4;
 }
 
 /* Card franquia */
-.card-franquia{
+.card-franquia {
     width: 100%;
     background-color: #00072D;
     display: flex;
     margin-bottom: 2%;
     border-radius: 20px;
 }
-.div-img{
+
+.div-img {
     width: 20%;
     background-color: #00072D;
     display: flex;
@@ -115,14 +126,16 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
-.iconFranquia{
+
+.iconFranquia {
     width: 50%;
     background-color: white;
     border-radius: 20px;
     padding: 1%;
-    border: 10px solid  #000000;
+    border: 10px solid #000000;
 }
-.div-atributos{
+
+.div-atributos {
     width: 80%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -131,14 +144,16 @@
     justify-content: center;
     align-items: center;
 }
-.parteAtributos{
+
+.parteAtributos {
     width: 48%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
-.individualAtributo{
+
+.individualAtributo {
     display: flex;
     justify-content: space-between;
     gap: 5%;
@@ -146,13 +161,15 @@
     margin: 2% 0 0;
     color: white;
 }
-.btnsAlterarDeletar{
+
+.btnsAlterarDeletar {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center
 }
-.btnDeletarMaquina{
+
+.btnDeletarMaquina {
     width: 30%;
     border: none;
     height: 150%;
@@ -187,12 +204,12 @@
 }
 
 .inputss {
-        width: 100%;
-        height: 3vh;
-        margin-bottom: 5%;
-        padding-left: 2%;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid white;
-        color: white;
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 5%;
+    padding-left: 2%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
 }
