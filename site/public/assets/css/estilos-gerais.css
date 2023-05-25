@@ -50,13 +50,16 @@ header {
   text-decoration: none;
 }
 
+.navegacao a:hover{
+  color: #F1D302;
+  border-bottom: 1px solid #F1D302;
+  transition: 0.1s;
+
+}
+
 .navegacao ul li {
   font-size: 15px;
   cursor: pointer;
-}
-
-.now {
-  font-weight: bold;
 }
 
 /* MENU MOBILE */
@@ -246,6 +249,7 @@ footer {
   text-align: center;
   margin-top: 20px;
   padding: 30px 0 0 0;
+  border-bottom: #ffe749 2px solid;
 }
 
 /* carrossel */
