@@ -11,6 +11,10 @@ router.get("/listarTotem/:idEmpresa", function (req, res) {
     totemController.listarTotem(req, res);
 });
 
+router.get("/componenteMax/:idTotem", function (req, res) {
+    totemController.componenteMax(req, res);
+});
+
 router.get("/listarDadosTotem/:idEmpresa/:idTotem", function (req, res) {
     totemController.listarDadosTotem(req, res);
 });

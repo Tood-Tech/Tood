@@ -15,7 +15,7 @@
     <title>Dashboard - Suporte</title>
 </head>
 
-<body>
+<body onload="componenteMax()">
     <section class="main">
 
         <!-- SIDE BAR -->
@@ -58,7 +58,7 @@
                 </div>
                 <div class="kpi"><h1 class="titleKpi">Uso máximo registrado da CPU</h1>
                     <h5 class="kpitexto">Registrado na última semana</h5>
-                    <h3 class="componente">CPU: 92%</h3>
+                    <h3 id="componenteMaxSpan" class="componente">CPU:</h3>
                     <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
                 <div class="kpi"><h1 class="titleKpi">Armazenamento total de DISCOS</h1>
@@ -110,6 +110,35 @@
     } else {
         ancora.href = "dashGerente.html";
     }
+
+    var idTotem = sessionStorage.ID_TOTEM;
+
+    function componenteMax() {
+        // ATUALIZAR AQUI PARA DEPOIS O SESSION STORAGE
+
+        //aguardar();
+        fetch(`/totem/componenteMax/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var span = document.getElementById("componenteMaxSpan");
+                    span.innerHTML = `CPU: ${resposta[0].maximoProcessador}%`
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
 
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;

@@ -72,7 +72,7 @@
                             <span id="processadorT1">Processador: </span><img id="imgProcessadorT1"
                                 class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
-                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                        <button class="btnVerMaisTotem" onclick="levarDash(1)">VER MAIS</button>
                     </div>
                 </div>
                 <div class="totemCard">
@@ -93,7 +93,7 @@
                             <span id="processadorT2">Processador: </span><img id="imgProcessadorT2"
                                 class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
-                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                        <button class="btnVerMaisTotem" onclick="levarDash(2)">VER MAIS</button>
                     </div>
                 </div>
                 <div class="totemCard">
@@ -114,7 +114,7 @@
                             <span id="processadorT3">Processador: </span><img id="imgProcessadorT3"
                                 class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
-                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                        <button class="btnVerMaisTotem" onclick="levarDash(3)">VER MAIS</button>
                     </div>
                 </div>
                 <div class="totemCard">
@@ -135,7 +135,7 @@
                             <span id="processadorT4">Processador: </span><img id="imgProcessadorT4"
                                 class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
-                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                        <button class="btnVerMaisTotem" onclick="levarDash(4)">VER MAIS</button>
                     </div>
                 </div>
                 <div class="totemCard">
@@ -156,7 +156,7 @@
                             <span id="processadorT5">Processador: </span><img id="imgProcessadorT5"
                                 class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
-                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                        <button class="btnVerMaisTotem" onclick="levarDash(5)">VER MAIS</button>
                     </div>
                 </div>
                 <div class="totemCard">
@@ -177,7 +177,7 @@
                             <span id="processadorT6">Processador: </span><img id="imgProcessadorT6"
                                 class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
-                        <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                        <button class="btnVerMaisTotem" onclick="levarDash(6)">VER MAIS</button>
                     </div>
                 </div>
             </div>
@@ -211,8 +211,6 @@
                         var totem = resposta[0];
                         if (totem.idTotem == 1) {
 
-
-
                             var span = document.getElementById(`spanT1`);
                             var ramSpan = document.getElementById(`ramT1`);
                             var discoSpan = document.getElementById(`discoT1`);
@@ -230,7 +228,7 @@
                             disco = disco.replace(",", ".");
                             disco = parseFloat(disco);
 
-                            var porcentagemDisco = (disco * 100.0) / 500.0;
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
                             discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
                             processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
@@ -279,7 +277,7 @@
                             disco = disco.replace(",", ".");
                             disco = parseFloat(disco);
 
-                            var porcentagemDisco = (disco * 100.0) / 500.0;
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
                             discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
                             processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
@@ -329,7 +327,7 @@
                             disco = disco.replace(",", ".");
                             disco = parseFloat(disco);
 
-                            var porcentagemDisco = (disco * 100.0) / 500.0;
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
                             discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
                             processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
@@ -381,7 +379,7 @@
                             disco = disco.replace(",", ".");
                             disco = parseFloat(disco);
 
-                            var porcentagemDisco = (disco * 100.0) / 500.0;
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
                             discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
                             processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
@@ -430,7 +428,7 @@
                             disco = disco.replace(",", ".");
                             disco = parseFloat(disco);
 
-                            var porcentagemDisco = (disco * 100.0) / 500.0;
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
                             discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
                             processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
@@ -479,7 +477,7 @@
                             disco = disco.replace(",", ".");
                             disco = parseFloat(disco);
 
-                            var porcentagemDisco = (disco * 100.0) / 500.0;
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
                             discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
                             processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
@@ -529,7 +527,8 @@
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
 
-    function levarDash() {
+    function levarDash(idTotem) {
         window.location = "dashboard.html";
+        sessionStorage.ID_TOTEM = idTotem;
     }
 </script>
