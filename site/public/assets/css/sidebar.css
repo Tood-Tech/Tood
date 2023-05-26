@@ -103,6 +103,25 @@
     padding: 10px 29px;
 }
 
+.btnChamado{
+    background: rgb(67 129 212);
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 100%;
+    padding: 10px 6px;
+    outline: none;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.1s;
+    border: none;
+}
+
+.btnChamado:hover{
+    background: #b536e4;
+    padding: 10px 15px;
+}
+
 
 .iconPerfil:hover{
     box-shadow: 4px 4px 1px black;

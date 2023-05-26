@@ -36,6 +36,7 @@
                     <a id="ancoraGrafico" class="ancora" href="dashGerente.html"><img class="iconPerfil"
                             src="../assets/img/grafico-preditivo.png" alt=""></a>
                 </div>
+                <button onclick="abrirChamado()" class="btnChamado">Abrir chamado</button>
                 <button class="btnSair" onclick="sair()">Sair</button>
             </div>
             <!-- FIM DA SIDEBAR -->
@@ -161,6 +162,9 @@
 </html>
 
 <script>
+        function abrirChamado() {
+  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
+}
     function sair(){
         window.location = "../index.html";
     }

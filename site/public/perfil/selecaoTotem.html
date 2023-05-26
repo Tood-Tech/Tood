@@ -48,6 +48,7 @@
                     <p class="identificacao">Gráficos</p>
                 </a>
             </div>
+            <button onclick="abrirChamado()" class="btnChamado">Abrir chamado</button>
             <button onclick="sair()" class="btnSair">Sair</button>
         </div>
         <!-- FIM DA SIDEBAR -->
@@ -213,6 +214,9 @@
 <script>
     var testando = 0;
     var testando2 = 1;
+    function abrirChamado() {
+  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
+}
     function sair(){
         window.location = "../index.html";
     }
