@@ -231,7 +231,7 @@ CREATE TABLE [dbo].[Estabelecimento] (
 );
 
 CREATE TABLE [dbo].[Totem] (
-idTotem INT NOT NULL IDENTITY(1,1),
+idTotem INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 fkEstabelecimento INT NOT NULL,
 numeroSerial VARCHAR(45) NULL,
 processador VARCHAR(45) NULL,
@@ -242,7 +242,6 @@ gpu VARCHAR(45) NULL,
 alertaGpu INT NULL,
 disco VARCHAR(45) NULL,
 alertaDisco INT NULL,
-CONSTRAINT PK_Totem PRIMARY KEY CLUSTERED (idTotem, fkEstabelecimento),
 CONSTRAINT FK_Totem_Estabelecimento FOREIGN KEY (fkEstabelecimento)
 REFERENCES [dbo].[Estabelecimento] ([idEstabelecimento])
 ON DELETE CASCADE
@@ -253,10 +252,9 @@ CREATE TABLE [dbo].[DadoTotem] (
   idDadosTotem INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
   fkTotem INT NOT NULL,
   dataHora DATETIME NULL,
-  qtdRam INT NULL,
-  qtdGpu INT NULL,
-  qtdDisco INT NULL,
-  qtdProcessador INT NULL,
+  qtdRam VARCHAR(45) NULL,
+  qtdDisco VARCHAR(45) NULL,
+  qtdProcessador VARCHAR(45) NULL,
   CONSTRAINT fk_dados_sensores
     FOREIGN KEY (fkTotem)
     REFERENCES [dbo].[Totem] ([idTotem])

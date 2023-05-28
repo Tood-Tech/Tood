@@ -48,7 +48,8 @@
                     <p class="identificacao">Gráficos</p>
                 </a>
             </div>
-            <button onclick="voltar()" class="btnSair">Sair</button>
+            <button onclick="abrirChamado()" class="btnChamado">Abrir chamado</button>
+            <button onclick="sair()" class="btnSair">Sair</button>
         </div>
         <!-- FIM DA SIDEBAR -->
 
@@ -74,7 +75,7 @@
                             class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="buttons">
-                            <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                            <button class="btnVerMaisTotem" onclick="levarDash(1)">VER MAIS</button>
                             <button class="btnReiniciarTotem" onclick="">REINICIAR</button>
                         </div>
                     </div>
@@ -98,7 +99,7 @@
                             class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="buttons">
-                            <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                            <button class="btnVerMaisTotem" onclick="levarDash(2)">VER MAIS</button>
                             <button class="btnReiniciarTotem" onclick="">REINICIAR</button>
                         </div>
 
@@ -123,7 +124,7 @@
                             class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="buttons">
-                            <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                            <button class="btnVerMaisTotem" onclick="levarDash(4)">VER MAIS</button>
                             <button class="btnReiniciarTotem" onclick="">REINICIAR</button>
                         </div>
 
@@ -150,10 +151,9 @@
                             class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="buttons">
-                            <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                            <button class="btnVerMaisTotem" onclick="levarDash(4)">VER MAIS</button>
                             <button class="btnReiniciarTotem" onclick="">REINICIAR</button>
                         </div>
-
                     </div>
                 </div>
                 <div class="totemCard">
@@ -175,10 +175,9 @@
                             class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="buttons">
-                            <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                            <button class="btnVerMaisTotem" onclick="levarDash(5)">VER MAIS</button>
                             <button class="btnReiniciarTotem" onclick="">REINICIAR</button>
                         </div>
-
                     </div>
                 </div>
                 <div class="totemCard">
@@ -200,10 +199,9 @@
                             class="iconOkayWrong" src="../assets/img/okay.svg" alt="">
                         </div>
                         <div class="buttons">
-                            <button class="btnVerMaisTotem" onclick="levarDash()">VER MAIS</button>
+                            <button class="btnVerMaisTotem" onclick="levarDash(6)">VER MAIS</button>
                             <button class="btnReiniciarTotem" onclick="">REINICIAR</button>
                         </div>
-
                     </div>
                 </div>
                 </div>
@@ -214,10 +212,19 @@
 
 </html>
 <script>
+    var testando = 0;
+    var testando2 = 1;
+    function abrirChamado() {
+  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
+}
+    function sair(){
+        window.location = "../index.html";
+    }
+
     function atualizarFeed() {
 
         var idEmpresa = sessionStorage.ID_EMPRESA;
-        for (var i = 1; i < 5; i++) {
+        for (var i = 1; i < 7; i++) {
             var idTotem = i;
             fetch(`/totem/listarDadosTotem/${idEmpresa}/${idTotem}`).then(function (resposta) {
                 if (resposta.ok) {
@@ -226,53 +233,308 @@
                     }
 
                     resposta.json().then(function (resposta) {
+                        console.log("TESTANDO ESTÁ COMO " + testando)
+                        testando += 1;
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
                         var totem = resposta[0];
-                        var span = document.getElementById(`spanT${i}`);
-                        var ramSpan = document.getElementById(`ramT${i}`);
-                        var discoSpan = document.getElementById(`discoT${i}`);
-                        var processadorSpan = document.getElementById(`processadorT${i}`);
-                        span.innerHTML = "Serial: " + totem.numeroSerial;
+                        if (totem.idTotem == 1) {
 
-                        var ram = totem.qtdRam.replace("gb", "");
-                        ram = ram.replace(",", ".");
-                        ram = parseFloat(ram);
+                            var span = document.getElementById(`spanT1`);
+                            var ramSpan = document.getElementById(`ramT1`);
+                            var discoSpan = document.getElementById(`discoT1`);
+                            var processadorSpan = document.getElementById(`processadorT1`);
+                            span.innerHTML = "Serial: " + totem.numeroSerial;
 
-                        var porcentagemRam = (ram * 100.0) / 8.0;
-                        ramSpan.innerHTML = "Ram: " + porcentagemRam + "%";
+                            var ram = totem.qtdRam.replace("gb", "");
+                            ram = ram.replace(",", ".");
+                            ram = parseFloat(ram);
 
-                        var disco = totem.qtdDisco.replace("gb");
-                        disco = disco.replace(",", ".");
-                        disco = parseFloat(disco);
+                            var porcentagemRam = (ram * 100.0) / 8.0;
+                            ramSpan.innerHTML = "Ram: " + porcentagemRam.toFixed(2) + "%";
 
-                        var porcentagemDisco = (disco * 100.0) / 500.0;
-                        discoSpan.innerHTML = "Disco: " + porcentagemDisco + "%";
+                            var disco = totem.qtdDisco.replace("gb");
+                            disco = disco.replace(",", ".");
+                            disco = parseFloat(disco);
 
-                        processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
+                            discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
 
-                        var alertaRam = totem.alertaRam;
-                        var imgRam = document.getElementById(`imgRamT${i}`);
-                        var alertaDisco = totem.alertaDisco;
-                        var imgDisco = document.getElementById(`imgDiscoT${i}`);
-                        var alertaProcessador = totem.alertaProcessador;
-                        var imgProcessador = document.getElementById(`imgProcessadorT${i}`);
+                            processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
 
-                        if (porcentagemRam > alertaRam) {
-                            imgRam.src = "../assets/img/wrong.svg";
+                            var alertaRam = totem.alertaRam;
+                            var imgRam = document.getElementById(`imgRamT1`);
+                            var alertaDisco = totem.alertaDisco;
+                            var imgDisco = document.getElementById(`imgDiscoT1`);
+                            var alertaProcessador = totem.alertaProcessador;
+                            var imgProcessador = document.getElementById(`imgProcessadorT1`);
+
+                            if (porcentagemRam > alertaRam) {
+                                imgRam.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgRam.src = "../assets/img/okay.svg";
+                            }
+
+                            if (porcentagemDisco > alertaDisco) {
+                                imgDisco.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgDisco.src = "../assets/img/okay.svg";
+                            }
+
+                            if (totem.qtdProcessador > alertaProcessador) {
+                                imgProcessador.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgProcessador.src = "../assets/img/okay.svg";
+                            }
+                        } else if (totem.idTotem == 2) {
+
+
+                            var span = document.getElementById(`spanT2`);
+                            var ramSpan = document.getElementById(`ramT2`);
+                            var discoSpan = document.getElementById(`discoT2`);
+                            var processadorSpan = document.getElementById(`processadorT2`);
+                            span.innerHTML = "Serial: " + totem.numeroSerial;
+
+                            var ram = totem.qtdRam.replace("gb", "");
+                            ram = ram.replace(",", ".");
+                            ram = parseFloat(ram);
+
+                            var porcentagemRam = (ram * 100.0) / 8.0;
+                            ramSpan.innerHTML = "Ram: " + porcentagemRam.toFixed(2) + "%";
+
+                            var disco = totem.qtdDisco.replace("gb");
+                            disco = disco.replace(",", ".");
+                            disco = parseFloat(disco);
+
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
+                            discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
+
+                            processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+
+                            var alertaRam = totem.alertaRam;
+                            var imgRam = document.getElementById(`imgRamT2`);
+                            var alertaDisco = totem.alertaDisco;
+                            var imgDisco = document.getElementById(`imgDiscoT2`);
+                            var alertaProcessador = totem.alertaProcessador;
+                            var imgProcessador = document.getElementById(`imgProcessadorT2`);
+
+                            if (porcentagemRam > alertaRam) {
+                                imgRam.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgRam.src = "../assets/img/okay.svg";
+                            }
+
+                            if (porcentagemDisco > alertaDisco) {
+                                imgDisco.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgDisco.src = "../assets/img/okay.svg";
+                            }
+
+                            if (totem.qtdProcessador > alertaProcessador) {
+                                imgProcessador.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgProcessador.src = "../assets/img/okay.svg";
+                            }
+
+                        } else if (totem.idTotem == 3) {
+
+
+                            var span = document.getElementById(`spanT3`);
+                            var ramSpan = document.getElementById(`ramT3`);
+                            var discoSpan = document.getElementById(`discoT3`);
+                            var processadorSpan = document.getElementById(`processadorT3`);
+                            span.innerHTML = "Serial: " + totem.numeroSerial;
+
+                            var ram = totem.qtdRam.replace("gb", "");
+                            ram = ram.replace(",", ".");
+                            ram = parseFloat(ram);
+
+                            var porcentagemRam = (ram * 100.0) / 8.0;
+                            ramSpan.innerHTML = "Ram: " + porcentagemRam.toFixed(2) + "%";
+
+                            var disco = totem.qtdDisco.replace("gb");
+                            disco = disco.replace(",", ".");
+                            disco = parseFloat(disco);
+
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
+                            discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
+
+                            processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+
+                            var alertaRam = totem.alertaRam;
+                            var imgRam = document.getElementById(`imgRamT3`);
+                            var alertaDisco = totem.alertaDisco;
+                            var imgDisco = document.getElementById(`imgDiscoT3`);
+                            var alertaProcessador = totem.alertaProcessador;
+                            var imgProcessador = document.getElementById(`imgProcessadorT3`);
+
+                            if (porcentagemRam > alertaRam) {
+                                imgRam.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgRam.src = "../assets/img/okay.svg";
+                            }
+
+                            if (porcentagemDisco > alertaDisco) {
+                                imgDisco.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgDisco.src = "../assets/img/okay.svg";
+                            }
+
+                            if (totem.qtdProcessador > alertaProcessador) {
+                                imgProcessador.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgProcessador.src = "../assets/img/okay.svg";
+                            }
+
+
+                        } else if (totem.idTotem == 4) {
+
+
+
+                            var span = document.getElementById(`spanT4`);
+                            var ramSpan = document.getElementById(`ramT4`);
+                            var discoSpan = document.getElementById(`discoT4`);
+                            var processadorSpan = document.getElementById(`processadorT4`);
+                            span.innerHTML = "Serial: " + totem.numeroSerial;
+
+                            var ram = totem.qtdRam.replace("gb", "");
+                            ram = ram.replace(",", ".");
+                            ram = parseFloat(ram);
+
+                            var porcentagemRam = (ram * 100.0) / 8.0;
+                            ramSpan.innerHTML = "Ram: " + porcentagemRam.toFixed(2) + "%";
+
+                            var disco = totem.qtdDisco.replace("gb");
+                            disco = disco.replace(",", ".");
+                            disco = parseFloat(disco);
+
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
+                            discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
+
+                            processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+
+                            var alertaRam = totem.alertaRam;
+                            var imgRam = document.getElementById(`imgRamT4`);
+                            var alertaDisco = totem.alertaDisco;
+                            var imgDisco = document.getElementById(`imgDiscoT4`);
+                            var alertaProcessador = totem.alertaProcessador;
+                            var imgProcessador = document.getElementById(`imgProcessadorT4`);
+
+                            if (porcentagemRam > alertaRam) {
+                                imgRam.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgRam.src = "../assets/img/okay.svg";
+                            }
+
+                            if (porcentagemDisco > alertaDisco) {
+                                imgDisco.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgDisco.src = "../assets/img/okay.svg";
+                            }
+
+                            if (totem.qtdProcessador > alertaProcessador) {
+                                imgProcessador.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgProcessador.src = "../assets/img/okay.svg";
+                            }
+                        } else if (totem.idTotem == 5) {
+
+
+                            var span = document.getElementById(`spanT5`);
+                            var ramSpan = document.getElementById(`ramT5`);
+                            var discoSpan = document.getElementById(`discoT5`);
+                            var processadorSpan = document.getElementById(`processadorT5`);
+                            span.innerHTML = "Serial: " + totem.numeroSerial;
+
+                            var ram = totem.qtdRam.replace("gb", "");
+                            ram = ram.replace(",", ".");
+                            ram = parseFloat(ram);
+
+                            var porcentagemRam = (ram * 100.0) / 8.0;
+                            ramSpan.innerHTML = "Ram: " + porcentagemRam.toFixed(2) + "%";
+
+                            var disco = totem.qtdDisco.replace("gb");
+                            disco = disco.replace(",", ".");
+                            disco = parseFloat(disco);
+
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
+                            discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
+
+                            processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+
+                            var alertaRam = totem.alertaRam;
+                            var imgRam = document.getElementById(`imgRamT5`);
+                            var alertaDisco = totem.alertaDisco;
+                            var imgDisco = document.getElementById(`imgDiscoT5`);
+                            var alertaProcessador = totem.alertaProcessador;
+                            var imgProcessador = document.getElementById(`imgProcessadorT5`);
+
+                            if (porcentagemRam > alertaRam) {
+                                imgRam.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgRam.src = "../assets/img/okay.svg";
+                            }
+
+                            if (porcentagemDisco > alertaDisco) {
+                                imgDisco.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgDisco.src = "../assets/img/okay.svg";
+                            }
+
+                            if (totem.qtdProcessador > alertaProcessador) {
+                                imgProcessador.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgProcessador.src = "../assets/img/okay.svg";
+                            }
                         } else {
-                            imgRam.src = "../assets/img/okay.svg";
-                        }
 
-                        if (porcentagemDisco > alertaDisco) {
-                            imgDisco.src = "../assets/img/wrong.svg";
-                        } else {
-                            imgDisco.src = "../assets/img/okay.svg";
-                        }
 
-                        if (totem.qtdProcessador > alertaProcessador) {
-                            imgProcessador.src = "../assets/img/wrong.svg";
-                        } else {
-                            imgProcessador.src = "../assets/img/okay.svg";
+                            var span = document.getElementById(`spanT6`);
+                            var ramSpan = document.getElementById(`ramT6`);
+                            var discoSpan = document.getElementById(`discoT6`);
+                            var processadorSpan = document.getElementById(`processadorT6`);
+                            span.innerHTML = "Serial: " + totem.numeroSerial;
+
+                            var ram = totem.qtdRam.replace("gb", "");
+                            ram = ram.replace(",", ".");
+                            ram = parseFloat(ram);
+
+                            var porcentagemRam = (ram * 100.0) / 8.0;
+                            ramSpan.innerHTML = "Ram: " + porcentagemRam.toFixed(2) + "%";
+
+                            var disco = totem.qtdDisco.replace("gb");
+                            disco = disco.replace(",", ".");
+                            disco = parseFloat(disco);
+
+                            var porcentagemDisco = (disco * 100.0) / 30.0;
+                            discoSpan.innerHTML = "Disco: " + porcentagemDisco.toFixed(2) + "%";
+
+                            processadorSpan.innerHTML = "Processador: " + totem.qtdProcessador + "%";
+
+                            var alertaRam = totem.alertaRam;
+                            var imgRam = document.getElementById(`imgRamT6`);
+                            var alertaDisco = totem.alertaDisco;
+                            var imgDisco = document.getElementById(`imgDiscoT6`);
+                            var alertaProcessador = totem.alertaProcessador;
+                            var imgProcessador = document.getElementById(`imgProcessadorT6`);
+
+                            if (porcentagemRam > alertaRam) {
+                                imgRam.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgRam.src = "../assets/img/okay.svg";
+                            }
+
+                            if (porcentagemDisco > alertaDisco) {
+                                imgDisco.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgDisco.src = "../assets/img/okay.svg";
+                            }
+
+                            if (totem.qtdProcessador > alertaProcessador) {
+                                imgProcessador.src = "../assets/img/wrong.svg";
+                            } else {
+                                imgProcessador.src = "../assets/img/okay.svg";
+                            }
+
                         }
                     });
                 } else {
@@ -283,12 +545,18 @@
                 // finalizarAguardar();
             });
         }
+        testando = 0;
+        console.log("over!!!!!!!!!!!")
     }
+    setInterval(function () {
+        atualizarFeed();
+    }, 5000)
 
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
 
-    function levarDash() {
+    function levarDash(idTotem) {
         window.location = "dashboard.html";
+        sessionStorage.ID_TOTEM = idTotem;
     }
 </script>

@@ -28,12 +28,23 @@ function listarTotem(idEmpresa) {
 
 function listarDadosTotem(idEmpresa, idTotem) {
 
-    instrucao = `select top 10 * from [dbo].[Totem] 
+    instrucao = `select top 1 * from [dbo].[Totem] 
                     inner join [dbo].[DadoTotem] on [dbo].[Totem].[idTotem] = [dbo].[DadoTotem].[fkTotem]
                         where [dbo].[Totem].[idTotem] = ${idTotem} and [dbo].[Totem].[fkEstabelecimento] = ${idEmpresa}
                             order by [dbo].[DadoTotem].[idDadosTotem] desc;`
 
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function componenteMax(idTotem) {
+
+    instrucao = `select max(qtdProcessador) as maximoProcessador from [dbo].[DadoTotem] where dataHora >= DATEADD(WEEK, -1, GETDATE()) 
+                    AND dataHora <= GETDATE() and fkTotem = ${idTotem};`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function componenteMax()");
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -115,4 +126,5 @@ module.exports = {
     editarTotem,
     deletarTotem,
     listarDadosTotem,
+    componenteMax,
 }

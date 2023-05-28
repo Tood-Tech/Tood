@@ -45,12 +45,13 @@
                 </a>
             </div>
             <div class="perfilGrafico">
-                <a class="ancora" href="dashGerente.html"><img class="iconPerfil"
+                <a id="ancoraGrafico" class="ancora" href="dashGerente.html"><img class="iconPerfil"
                         src="../assets/img/grafico-preditivo.png" alt="">
                     <p class="identificacao">Gráficos</p>
                 </a>
             </div>
-            <button onclick="voltar()" class="btnSair">Sair</button>
+            <button onclick="abrirChamado()" class="btnChamado">Abrir chamado</button>
+            <button onclick="sair()" class="btnSair">Sair</button>
         </div>
         <!-- FIM DA SIDEBAR -->
 
@@ -148,6 +149,20 @@
 </html>
 
 <script>
+        function abrirChamado() {
+  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
+}
+    function sair(){
+        window.location = "../index.html";
+    }
+     if(sessionStorage.CARGO == "suporte"){
+        var ancora = document.getElementById("ancoraGrafico");
+        ancora.href = "selecaoTotem.html";
+    } else {
+        var ancora = document.getElementById("ancoraGrafico")
+        ancora.href = "dashGerente.html";
+    }
+
     var cargo = sessionStorage.CARGO;
     if (cargo == "suporte") {
         var form = document.getElementById("formularioInserir");
