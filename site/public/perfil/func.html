@@ -60,17 +60,22 @@
                     <button onclick="menuPerfilMobile()"><img class="icon" src="../assets/img/menu_black_36dp.svg"
                             alt=""></button>
                 </div>
+                <h1 class="tituloFunc">Cadastre seu funcionário</h1>
                 <div id="formularioInserir" class="form">
-                    <h1 class="tituloFunc">Cadastre seu funcionário</h1>
                     <div class="contentForm">
                         <div class="parteForm">
-                            <input id="nomeFunc" class="inputs" type="text" placeholder="Nome">
-                            <input id="emailFunc" class="inputs" type="text" placeholder="E-mail">
-                            <input id="senhaFunc" class="inputs lastInput" type="password" placeholder="Senha">
+                            <span class="tituloInp">Nome:</span>
+                            <input id="nomeFunc" class="inputs" type="text" placeholder="Maria da Silva">
+                            <span class="tituloInp">E-mail:</span>
+                            <input id="emailFunc" class="inputs" type="text" placeholder="seuemail@dominio.com.br">
+                            <span class="tituloInp">Senha:</span>
+                            <input id="senhaFunc" class="inputs lastInput" type="password" placeholder="*******">
                         </div>
                         <div class="parteForm">
-                            <input class="inputs" type="text" placeholder="Telefone" id="telefoneIpt">
-                            <input class="inputs" type="text" placeholder="CPF" id="cpfIpt">
+                            <span class="tituloInp">Telefone:</span>
+                            <input class="inputs" type="text" placeholder="(00)99999-9999" id="telefoneIpt">
+                            <span class="tituloInp">CPF:</span>
+                            <input class="inputs" type="text" placeholder="000.000.000-00" id="cpfIpt">
                             <div class="btnsForm">
                                 <select class="selectPermissao" name="Permissao" id="cargoFunc">
                                     <option value="gerente">Gerente</option>
