@@ -50,6 +50,64 @@ function componenteMax(idTotem) {
     return database.executar(instrucao);
 }
 
+function armazenamentoTotal(idTotem) {
+
+    instrucao = `select top 1 qtdDisco as faltaDisco from [dbo].[DadoTotem] 
+	                where fkTotem = ${idTotem} order by idDadosTotem desc;`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function armazenamentoTotal()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function memoriaRam(idTotem) {
+
+    instrucao = `select top 1 qtdRam as ram from [dbo].[DadoTotem] 
+	                    where fkTotem = ${idTotem} order by idDadosTotem desc;`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function memoriaRam()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function ramGrafico(idTotem) {
+
+    instrucao = `select top 1 qtdRam, format(dataHora, 'HH:mm') AS Hour from [dbo].[DadoTotem]
+	                where fkTotem = ${idTotem}
+		                order by idDadosTotem desc`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function memoriaRam()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function processadorGrafico(idTotem) {
+
+    instrucao = `select top 1 qtdProcessador, format(dataHora, 'HH:mm') AS Hour from [dbo].[DadoTotem]
+	                where fkTotem = ${idTotem}
+		                order by idDadosTotem desc`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function processadorGrafico()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function discoGrafico(idTotem) {
+
+    instrucao = `select top 1 qtdDisco, qtdRam, format(dataHora, 'HH:mm') AS Hour from [dbo].[DadoTotem]
+	                where fkTotem = ${idTotem}
+		                order by idDadosTotem desc`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function discoGrafico()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function listarFranquiaTotem(idUsuario) {
 
     var instrucao = '';
@@ -127,4 +185,9 @@ module.exports = {
     deletarTotem,
     listarDadosTotem,
     componenteMax,
+    armazenamentoTotal,
+    memoriaRam,
+    ramGrafico,
+    processadorGrafico,
+    discoGrafico,
 }

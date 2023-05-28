@@ -37,6 +37,86 @@ function componenteMax(req, res) {
     });
 }
 
+function armazenamentoTotal(req, res) {
+    var idTotem = req.params.idTotem;
+
+    totemController.armazenamentoTotal(idTotem).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function memoriaRam(req, res) {
+    var idTotem = req.params.idTotem;
+
+    totemController.memoriaRam(idTotem).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function ramGrafico(req, res) {
+    var idTotem = req.params.idTotem;
+
+    totemController.ramGrafico(idTotem).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function processadorGrafico(req, res) {
+    var idTotem = req.params.idTotem;
+
+    totemController.processadorGrafico(idTotem).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function discoGrafico(req, res) {
+    var idTotem = req.params.idTotem;
+
+    totemController.discoGrafico(idTotem).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function listarDadosTotem(req, res) {
     var idEmpresa = req.params.idEmpresa;
     var idTotem = req.params.idTotem;
@@ -188,4 +268,9 @@ module.exports = {
     deletarTotem,
     listarDadosTotem,
     componenteMax,
+    armazenamentoTotal,
+    memoriaRam,
+    ramGrafico,
+    processadorGrafico,
+    discoGrafico,
 }

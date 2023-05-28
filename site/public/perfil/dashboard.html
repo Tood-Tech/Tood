@@ -15,7 +15,7 @@
     <title>Dashboard - Suporte</title>
 </head>
 
-<body onload="componenteMax()">
+<body onload="componenteMax(), armazenamentoTotal(), memoriaRam(), puxarDadosGraficoRam(), puxarDadosGraficoProcessador(), puxarDadosGraficoDisco(), atualizarGraficoPolar()">
     <section class="main">
 
         <!-- SIDE BAR -->
@@ -51,24 +51,28 @@
                 </div>
             </div>
             <div class="kpis">
-                <div class="kpi"><h1 class="titleKpi">Horário de pico estimado</h1>
+                <div class="kpi">
+                    <h1 class="titleKpi">Horário de pico estimado</h1>
                     <h5 class="kpitexto">Utilização do totem com base no histórico</h5>
                     <h3 class="componente">Previsão de pico: 13:15h<br> Uso estimado CPU: 85%</h3>
                     <span class="datetime">Ultima atualização: 23/05/2023 19:08:08</span>
                 </div>
-                <div class="kpi"><h1 class="titleKpi">Uso máximo registrado da CPU</h1>
+                <div class="kpi">
+                    <h1 class="titleKpi">Uso máximo registrado da CPU</h1>
                     <h5 class="kpitexto">Registrado na última semana</h5>
                     <h3 id="componenteMaxSpan" class="componente">CPU:</h3>
                     <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
-                <div class="kpi"><h1 class="titleKpi">Armazenamento total de DISCOS</h1>
+                <div class="kpi">
+                    <h1 class="titleKpi">Armazenamento total de DISCOS</h1>
                     <h5 class="kpitexto">Tamanho total e utilizado em GB's</h5>
-                    <h3 class="componente">Total: 500GB <br> Utilizado: 255GB</h3>
+                    <h3 class="componente" id="gigas">Total: 30GB <br>Utilizado:</h3>
                     <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
-                <div class="kpi"><h1 class="titleKpi">Último componente sobre stress</h1>
+                <div class="kpi">
+                    <h1 class="titleKpi">Último componente sobre stress</h1>
                     <h5 class="kpitexto">Nos últimos registros</h5>
-                    <h3 class="componente">RAM com 95%</h3>
+                    <h3 class="componente" id="ramGigas"></h3>
                     <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
             </div>
@@ -104,7 +108,8 @@
 </html>
 
 <script>
-     if(sessionStorage.CARGO == "suporte"){
+
+    if (sessionStorage.CARGO == "suporte") {
         var ancora = document.getElementById("ancoraGrafico");
         ancora.href = "selecaoTotem.html";
     } else {
@@ -112,6 +117,63 @@
     }
 
     var idTotem = sessionStorage.ID_TOTEM;
+
+    function memoriaRam() {
+        fetch(`/totem/memoriaRam/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var ramPorcentagem = resposta[0].ram.replace("GiB", "");
+                    ramPorcentagem = ramPorcentagem.replace(",", ".");
+                    ramPorcentagem = parseFloat(ramPorcentagem);
+                    ramPorcentagem = (ramPorcentagem * 100) / 8.0;
+                    porcentagemRam = ramPorcentagem;
+                    var span = document.getElementById("ramGigas");
+                    span.innerHTML = `RAM com ${ramPorcentagem.toFixed(1)}%`;
+
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function armazenamentoTotal() {
+        fetch(`/totem/armazenamentoTotal/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var qtdUtilizada = resposta[0].faltaDisco;
+                    qtdUtilizada = qtdUtilizada.replace("GiB", "");
+                    qtdUtilizada = qtdUtilizada.replace(",", ".");
+                    qtdUtilizada = parseFloat(qtdUtilizada);
+                    qtdUtilizada = 30 - qtdUtilizada;
+                    var span = document.getElementById("gigas");
+                    span.innerHTML = `Total: 30GB <br>Utilizado: ${qtdUtilizada.toFixed(1)}GB`;
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
 
     function componenteMax() {
         // ATUALIZAR AQUI PARA DEPOIS O SESSION STORAGE
@@ -139,6 +201,74 @@
         });
     }
 
+    function puxarDadosGraficoRam() {
+        fetch(`/totem/ramGrafico/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    
+                    atualizarGrafico(resposta);
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+
+    }
+
+    function puxarDadosGraficoProcessador(){
+        fetch(`/totem/processadorGrafico/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    
+                    atualizarGraficoProcessador(resposta);
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+    function puxarDadosGraficoDisco(){
+        fetch(`/totem/discoGrafico/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    
+                    atualizarGraficoInternet(resposta);
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
 
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
@@ -154,13 +284,15 @@
     const ctx3 = document.getElementById('myChart3');
     const ctx4 = document.getElementById('myChart4');
 
-    new Chart(ctx1, {
+  
+
+    let graficoProcessador = new Chart(ctx1, {
         type: 'line',
         data: {
             labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
             datasets: [{
-                label: 'Utilização Processador',
-                data: [12, 19, 3, 5, 2, 1, 10],
+                label: 'Utilização Processador em %',
+                data: [12, 19, 3, 5, 2, 1, 7],
                 borderWidth: 1
             }]
         },
@@ -173,13 +305,30 @@
         }
     });
 
-    new Chart(ctx2, {
+    var processadorPorcentagem
+
+    function atualizarGraficoProcessador(resposta){
+
+        graficoProcessador.data.labels.shift();
+        graficoProcessador.data.labels.push(resposta[0].Hour);
+        graficoProcessador.data.datasets[0].data.shift();
+        var processador = resposta[0].qtdProcessador;
+        processador = processador.replace(",", ".");
+        processador = parseFloat(processador);  
+        processadorPorcentagem = processador;
+        graficoProcessador.data.datasets[0].data.push(processador);
+        graficoProcessador.update()
+        setTimeout(() => puxarDadosGraficoProcessador(), 5000);
+    }
+
+
+    let graficoRam = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
+            labels: ["23:32:31", "00:01:00", "00:05:00", "00:10:00", "00:15:00", "00:20:00", "00:25:00"],
             datasets: [{
-                label: 'Utilização Ram',
-                data: [12, 19, 3, 5, 2, 1, 9],
+                label: 'Utilização Ram em %',
+                data: [5, 7, 8, 7, 6, 7, 100],
                 borderWidth: 1
             }]
         },
@@ -192,32 +341,36 @@
         }
     });
 
-    new Chart(ctx3, {
+    var ramPorcentagem;
+
+    function atualizarGrafico(resposta){
+        
+        graficoRam.data.labels.shift();
+        graficoRam.data.labels.push(resposta[0].Hour);
+        graficoRam.data.datasets[0].data.shift();
+        var ram = resposta[0].qtdRam;
+        ram = ram.replace("Gib", "");
+        ram = ram.replace(",", ".");
+        ram = parseFloat(ram);
+        ram = (ram*100.0)/8.0
+        ramPorcentagem = ram;
+        graficoRam.data.datasets[0].data.push(ram);
+        graficoRam.update()
+        setTimeout(() => puxarDadosGraficoRam(), 5000);
+    }
+
+    let graficoInternet = new Chart(ctx3, {
         type: 'line',
         data: {
             labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
             datasets: [{
-                label: 'Utilização Disco',
+                label: 'Valor leitura Disco',
                 data: [12, 19, 3, 5, 2, 1, 8],
                 borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    new Chart(ctx4, {
-        type: 'polarArea',
-        data: {
-            labels: ['CPU', 'RAM', 'DISCO'],
-            datasets: [{
-                label: 'Utilização Disco',
-                data: [4, 6, 5],
+            },
+            {
+                label: 'Valor escrita disco',
+                data: [5, 34, 20, 2, 3, 9, 8],
                 borderWidth: 1
             }]
         },
@@ -229,4 +382,57 @@
             }
         }
     });
+
+    var dado1;
+    var dado2;
+    function atualizarGraficoInternet(resposta){
+        graficoInternet.data.labels.shift();
+        graficoInternet.data.labels.push(resposta[0].Hour);
+        graficoInternet.data.datasets[0].data.shift();
+        var ram = resposta[0].qtdRam;
+        ram = ram.replace("Gib", "");
+        ram = ram.replace(",", ".");
+        ram = parseFloat(ram);
+        ram = (ram*100.0)/8.0
+        dado1 = ram;
+        graficoInternet.data.datasets[0].data.push(ram);
+        graficoInternet.data.datasets[1].data.shift();
+        var disco = resposta[0].qtdDisco;
+        disco = disco.replace("Gib", "");
+        disco = disco.replace(",", ".");
+        disco = parseFloat(disco);
+        disco = (disco*100.0)/30.0;
+        dado2 = disco;
+        graficoInternet.data.datasets[1].data.push(disco);
+        graficoInternet.update()
+        setTimeout(() => puxarDadosGraficoDisco(), 5000);
+    }
+
+    let graficoPolar = new Chart(ctx4, {
+        type: 'polarArea',
+        data: {
+            labels: ['CPU', 'RAM', 'DISCO', 'INTERNET'],
+            datasets: [{
+                label: 'Utilização Disco',
+                data: [4, 6, 5, 9],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function atualizarGraficoPolar(){
+        graficoPolar.data.datasets[0].data = [];
+        graficoPolar.data.datasets[0].data = [processadorPorcentagem, ramPorcentagem, dado1, dado2]
+        graficoPolar.update();
+        console.log("AAAAAAAAAAAAAAAA")
+        setTimeout(() => atualizarGraficoPolar(), 5000);
+    }
+
 </script>
