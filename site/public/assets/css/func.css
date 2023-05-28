@@ -18,19 +18,25 @@
 
 .form {
     width: 80%;
-    background-color: #00072d;
-    border-radius: 20px;
+    background-color: #FAF9FF;
+    margin: 10% 0 0 0;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
 }
 
 .tituloFunc {
     width: 100%;
     height: 15%;
-    background-color: #F1D302;
     display: flex;
     justify-content: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom: 3px solid #1B98E0;
+    border-bottom: 3px solid #F1D302;
+    color: #F1D302;
+}
+
+.tituloInp{
+    color: #020c42;
+    font-weight: bold;
 }
 
 .contentForm {
@@ -39,6 +45,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding-bottom: 60px;
+    padding-top: 60px;
 }
 
 .parteForm {
@@ -49,14 +57,17 @@
 
 .inputs {
     width: 100%;
-    height: 3vh;
-    margin-bottom: 5%;
+    margin-bottom: 8%;
     padding-left: 2%;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid white;
-    color: white;
+    border-bottom: 3px solid #0008353a;
+    color: #6D6A75;
+    font-family: poppins;
+    font-size: 12px;
+    /* height: 3vh; */
 }
+
 .lastInput{
     margin-bottom: 0;
 
@@ -68,9 +79,9 @@
 
 .selectPermissao {
     width: 30%;
-    background-color:  #00072D;
+    background-color: #FAF9FF;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 3px solid #0008353a;
     color: #6D6A75;
     font-size: 100%;
 }
@@ -85,12 +96,13 @@
     font-size: 100%;
     cursor: pointer;
     transition: 0.3s;
+    border: none;
 }
 
-.btnConfirmar:hover {
-    box-shadow: 3px 3px 1px black;
-    transition: 0.3s;
-}
+/* .btnConfirmar:hover {
+    background: #ffe749;
+    padding: 10px 29px;
+} */
 
 .btnsForm {
     height: 15%;
@@ -237,9 +249,11 @@
         gap: 5vh;
         margin-top: 1vh;
     }
+
     .parteForm{
         width: 80%;
         height: 35%;
+        padding: 30px;
     }
 
     .inputs {

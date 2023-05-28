@@ -40,6 +40,7 @@
                 <a id="ancoraGrafico" class="ancora" href="dashboard.html"><img class="iconPerfil dashboard"
                         src="../assets/img/grafico-preditivo.png" alt=""></a>
             </div>
+            <button onclick="abrirChamado()" class="btnChamado">Abrir chamado</button>
             <button onclick="sairDashboard()" class="btnSair">Sair</button>
         </div>
         <!-- FIM DA SIDEBAR -->
@@ -273,6 +274,10 @@
     var nomes = sessionStorage.NOME_USUARIO;
     spanNome.innerHTML = nomes;
 
+    function abrirChamado() {
+  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
+}
+
     // Função para sair da Dashboard
     function sairDashboard() {
         window.location = "../index.html"
@@ -431,7 +436,6 @@
         graficoPolar.data.datasets[0].data = [];
         graficoPolar.data.datasets[0].data = [processadorPorcentagem, ramPorcentagem, dado1, dado2]
         graficoPolar.update();
-        console.log("AAAAAAAAAAAAAAAA")
         setTimeout(() => atualizarGraficoPolar(), 5000);
     }
 

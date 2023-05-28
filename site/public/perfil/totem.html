@@ -36,23 +36,29 @@
                     <a id="ancoraGrafico" class="ancora" href="dashGerente.html"><img class="iconPerfil"
                             src="../assets/img/grafico-preditivo.png" alt=""></a>
                 </div>
+                <button onclick="abrirChamado()" class="btnChamado">Abrir chamado</button>
                 <button class="btnSair" onclick="sair()">Sair</button>
             </div>
             <!-- FIM DA SIDEBAR -->
             <div class="content-form">
                 <div class="div-form">
+                    <h1 class="title-form">Cadastre seu totem</h1>
                     <div class="form">
-                        <h1 class="title-form">Cadastre seu totem</h1>
                         <div class="form-inputs">
                             <div class="parteForm">
+                                <span class="tituloInp">Nome:</span>
                                 <input id="apelidoTotem" class="inputs" type="text" placeholder="Número Serial">
+                                <span class="tituloInp">Nome:</span>
                                 <select name="" id="selectFranquia" class="comboBox" placeholder="Apelido">
                                     <option value="">Franquia</option>
                                 </select>
+                                <span class="tituloInp">Nome:</span>
                                 <input id="discoTotem" class="inputs" type="text" placeholder="Disco">
                             </div>
                             <div class="parteForm">
+                                <span class="tituloInp">Nome:</span>
                                 <input id="processadorTotem" class="inputs" type="text" placeholder="Processador">
+                                <span class="tituloInp">Nome:</span>
                                 <input id="ramTotem" class="inputs" type="text" placeholder="Ram">
                             </div>
                         </div>
@@ -161,6 +167,9 @@
 </html>
 
 <script>
+        function abrirChamado() {
+  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
+}
     function sair(){
         window.location = "../index.html";
     }

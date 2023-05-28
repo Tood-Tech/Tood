@@ -3,7 +3,8 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgb(201, 201, 201);
+    background: rgb(93, 224, 230);
+    background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
        
 }
 
@@ -101,6 +102,25 @@
 .btnSair:hover{
     background: #ffe749;
     padding: 10px 29px;
+}
+
+.btnChamado{
+    background: rgb(67 129 212);
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 100%;
+    padding: 10px 6px;
+    outline: none;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.1s;
+    border: none;
+}
+
+.btnChamado:hover{
+    background: #b536e4;
+    padding: 10px 15px;
 }
 
 
