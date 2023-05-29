@@ -41,8 +41,7 @@ function listarDadosTotem(idEmpresa, idTotem) {
 
 function componenteMax(idTotem) {
 
-    instrucao = `select max(qtdProcessador) as maximoProcessador from [dbo].[DadoTotem] where dataHora >= DATEADD(WEEK, -1, GETDATE()) 
-                    AND dataHora <= GETDATE() and fkTotem = ${idTotem};`
+    instrucao = `select max(qtdProcessador) as maximoProcessador from [dbo].[DadoTotem] where fkTotem = ${idTotem};`
 
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function componenteMax()");
 
