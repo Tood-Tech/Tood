@@ -66,6 +66,13 @@
     align-items: center;
 }
 
+.kpi_dentro_chart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .kpi h1 {
 
     width: 100%;
@@ -117,15 +124,15 @@
 }
 
 .chart01 {
+    display: flex;
     height: 42vh;
-    width: 18vw;
+    width: 30vw;
     background-color: #FAF9FF;
     border-radius: 20px;
     -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     margin-left: 20px;
-    
 }
 
 .div_chart1 {
