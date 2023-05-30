@@ -16,8 +16,6 @@ CREATE TABLE IF NOT EXISTS `ToodDatabase`.`Empresa` (
   `responsavel` VARCHAR(45) NULL,
   PRIMARY KEY (`idEmpresa`))
 ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `ToodDatabase`.`Estabelecimento`
 -- -----------------------------------------------------
