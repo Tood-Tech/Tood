@@ -24,13 +24,13 @@
 
 .voceSabia h2 {
     text-align: center;
-    color: #f1d302;
+    color: #00072D;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 35px;
     /* background-color: #00072D; */
     padding: 35px 0px 10px 0px;
-    border-bottom: #ffe749 2px solid;
-    
+    border-bottom: #f1d302 2px solid;
+
 }
 
 .voceSabia-box,
@@ -48,6 +48,9 @@
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
 }
 
 .justify-box p {
@@ -58,6 +61,9 @@
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
 }
 
 .voceSabia-box img,
@@ -103,13 +109,57 @@
     margin-left: 110px;
 }
 
-.btnSaibaMais:hover{
+.btnSaibaMais:hover {
     background: #ffe749;
     padding: 10px 140px;
 }
 
 .icone-inicio {
     width: 40%;
+}
+
+.nossaSolucao {
+    height: 100vh;
+    background: rgb(93, 224, 230);
+    background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
+    border-bottom: rgb(93, 224, 230) solid 3px;
+}
+
+.nossaSolucao h2 {
+    text-align: center;
+    color: #00072D;
+    font-weight: bold;
+    font-size: 35px;
+    /* background-color: #00072D; */
+    padding: 35px 0px 10px 0px;
+    border-bottom: #f1d302 2px solid;
+}
+
+.demonstracaoGraficos {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.demonstracaoGraficos p {
+    padding: 15px 20px 15px 20px;
+    color: black;
+    max-width: 585px;
+    margin-left: 60px;
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+    max-height: 200px;
+    align-items: center;
+    margin-top: 160px;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+}
+
+.img-grafico {
+    height: 490px;
+    margin-right: 80px;
 }
 
 @media only screen and (max-width: 600px) {
