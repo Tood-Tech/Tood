@@ -15,7 +15,7 @@
     <title>Dashboard - Gerente</title>
 </head>
 
-<body>
+<body onload="statusTotem()">
     <section class="main">
 
         <!-- SIDE BAR -->
@@ -52,23 +52,32 @@
                 </div>
             </div>
             <div class="kpis">
-                <!-- <div class="kpi"><span>Quantidade de totens Desativos</span>
-                    <h5 class="kpitexto"></h5>
-                        <h6 class="texto_kpi" id="kpiTxt">4</h6>
-                </div> -->
-                <div class="kpi"><span>Unidade com mais ocorrências de erro</span>
-                    <!-- <h5 class="kpitexto"></h5> -->
-                    <h6 class="texto_kpi" id="kpiTxt">Méqui 1000</h6>
+                <div class="kpi">
+                    <h1 class="titleKpi">Fluxo de clientes</h1>
+                    <h5 class="kpitexto">Dia com mais e menos fluxo</h5>
+                    <h3 class="componente" style="font-size: 95%;">Dia com maior fluxo: Sábado<br>Dia com menor fluxo:
+                        Terça</h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:08</span>
                 </div>
-                <div class="kpi"><span>Tipo de erro mais comum</span>
-                    <!-- <h5 class="kpitexto"></h5> -->
-                   <h6 class="texto_kpi" id="kpiTxt">Disco</h6>
+                <div class="kpi">
+                    <h1 class="titleKpi">Totens desativados</h1>
+                    <h5 class="kpitexto">quantidade de totens desativados</h5>
+                    <h3 id="divDesativados" class="componente">Totens desativados: </h3>
+                    <h3 id="divAtivados" class="componente">Totens ativados: </h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
-                <div class="kpi"><span>mes com maior e menor numero de incidentes (grafico ou abstrair para kpi)</span>
-                    <!-- <h5 class="kpitexto">Tempo médio desativado</h5>  -->
-                  <h6 class="texto_kpi" id="kpiTxt">janeiro < junho</h6>
+                <div class="kpi">
+                    <h1 class="titleKpi">Componente maior stress</h1>
+                    <h5 class="kpitexto">Totem e o seu componente com maior uso</h5>
+                    <h3 class="componente" id="gigas">Totem: 1<br>Ram: 90%</h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
                 </div>
-
+                <div class="kpi">
+                    <h1 class="titleKpi">Último componente sobre stress</h1>
+                    <h5 class="kpitexto">Nos últimos registros</h5>
+                    <h3 class="componente" id="ramGigas"></h3>
+                    <span class="datetime">Ultima atualização: 23/05/2023 19:08:50</span>
+                </div>
             </div>
             <div class="graficos">
 
@@ -78,15 +87,32 @@
                     </div>
                 </div>
 
-                <div class="div_chart01">
-                    <div class="chart01">
-                        <canvas id="myChart"></canvas>
-                        <div class="kpi_dentro_chart"><span>Totens ativos</span>
-                            <!-- <h5 class="kpitexto">Tempo médio desativado</h5>  -->
-                          <h6 class="texto_kpi" id="kpiTxt">6 de 8</h6>
-                        </div>
+                <div class="divTotem">
+                    <h3 class="titleTotem">STATUS TOTENS</h3>
+                    <div class="Totem">
+                        <h3 class="totemName">Totem 1</h3>
+                        <div id="onOrOff0"></div>
                     </div>
-
+                    <div class="Totem">
+                        <h3 class="totemName">Totem 2</h3>
+                        <div id="onOrOff1"></div>
+                    </div>
+                    <div class="Totem">
+                        <h3 class="totemName">Totem 3</h3>
+                        <div id="onOrOff2"></div>
+                    </div>
+                    <div class="Totem">
+                        <h3 class="totemName">Totem 4</h3>
+                        <div id="onOrOff3"></div>
+                    </div>
+                    <div class="Totem">
+                        <h3 class="totemName">Totem 5</h3>
+                        <div id="onOrOff4"></div>
+                    </div>
+                    <div class="Totem">
+                        <h3 class="totemName">Totem 6</h3>
+                        <div id="onOrOff5"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,7 +124,7 @@
 </html>
 
 <script>
-     if(sessionStorage.CARGO == "suporte"){
+    if (sessionStorage.CARGO == "suporte") {
         var ancora = document.getElementById("ancoraGrafico");
         ancora.href = "selecaoTotem.html";
     } else {
@@ -109,38 +135,68 @@
     spanNome.innerHTML = nomes;
 
     function abrirChamado() {
-  window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo'; 
-}
+        window.location.href = 'https://toodtech.auvo.com.br/Ticket/Novo';
+    }
 
     // Função para sair da Dashboard
     function sairDashboard() {
         window.location = "../index.html"
     }
 
-    const ctx = document.getElementById('myChart');
+    var qtdTotensAtivados = 0;
+    var qtdTotensDesativados = 0;
+    function statusTotem(){
+        qtdTotensAtivados = 0;
+        qtdTotensDesativados = 0;
+        fetch(`/totem/statusTotem/`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
 
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Ativos', 'Inativos'],
-            datasets: [{
-                label: 'Totens',
-                data: [8, 6],
-                backgroundColor: ['#9ab3ff', '#ff6464'] ,
-                borderWidth: 3
-            }]
-        },
-    });
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    for(var i=0; i < 6; i++){
+                        var div = document.getElementById(`onOrOff${i}`);
+                        var ativo;
+                        if(resposta[i].ativo == "false"){
+                            ativo = "DESLIGADO";
+                            div.classList.remove("ligado")
+                            div.classList.add("desligado")
+                            qtdTotensDesativados++;
+                        } else{
+                            ativo = "LIGADO";
+                            div.classList.remove("desligado");
+                            div.classList.add("ligado")
+                            qtdTotensAtivados++;
+                        }
+                        div.innerHTML = ativo;
+                    }
+                    var divAtivados = document.getElementById("divAtivados");
+                    divAtivados.innerHTML = `totens Ativados: ${qtdTotensAtivados}`
+                    var divDesativados = document.getElementById("divDesativados");
+                    divDesativados.innerHTML = `totens Desativados ${qtdTotensDesativados}`
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    setInterval(() => statusTotem(), 5000);
 
     const ctx1 = document.getElementById('myChart1');
 
     new Chart(ctx1, {
         type: 'bar',
         data: {
-            labels: ['CPU', 'DISCO', 'RAM', 'REDE'],
+            labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
             datasets: [{
-                label: 'Erros mais comuns na semana',
-                data: [4, 6, 5, 2],
+                label: 'Dia com mais fluxo na semana',
+                data: [3, 1, 5, 6, 9, 10, 8],
                 borderWidth: 1
             }]
         },

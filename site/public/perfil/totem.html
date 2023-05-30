@@ -11,8 +11,7 @@
     <title>Cadastro Totem</title>
 </head>
 
-<body>
-    <main>
+<body onload="atualizarFeed()">
         <section class="main">
             <!-- SIDE BAR -->
             <div class="sidebar">
@@ -154,7 +153,6 @@
             </div>
 
         </section>
-    </main>
 
 </body>
 
@@ -448,7 +446,7 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                    teste.innerHTML = "";
+                    // teste.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 

@@ -40,6 +40,9 @@ router.get("/processadorGrafico/:idTotem", function (req, res) {
     totemController.processadorGrafico(req, res);
 });
 
+router.get("/statusTotem/", function (req, res) {
+    totemController.statusTotem(req, res);
+});
 
 router.get("/discoGrafico/:idTotem", function (req, res) {
     totemController.discoGrafico(req, res);

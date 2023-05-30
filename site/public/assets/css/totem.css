@@ -11,7 +11,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    background: rgb(93, 224, 230);
+    background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
 }
 
 .form{
@@ -23,6 +25,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 10vh;
 }
 
 .title-form{

@@ -1,6 +1,5 @@
 .dash {
     background: rgb(201, 201, 201);
-    height: 100vh;
 }
 
 .inicio {
@@ -8,7 +7,7 @@
     flex-direction: row;
     justify-content: center;
     background-color: #DA291C;
-    height: 23%;
+    height: 18%;
 }
 
 .titulo {
@@ -30,7 +29,6 @@
     display: flex;
     justify-content: center;
 }
-
 .kpis {
     margin-left: 15%;
     display: flex;
@@ -39,7 +37,6 @@
 
 .componente {
     margin-left: 3%;
-
 }
 
 .kpi {
@@ -49,28 +46,18 @@
     -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     background-color: #FAF9FF;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 1%;
 }
 
 .kpi span {
-    font-size: 13px;
+    width: 80%;
+    font-size: 10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     margin: 5px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-
-.kpi_dentro_chart{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
 .kpi h1 {
@@ -109,34 +96,67 @@
     display: flex;
     margin-left: 15%;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
     margin-top: 3rem;
     margin-bottom: 5%;
 }
 
 
-.div_chart01 {
-    height: 100%;
+.divTotem {
+    height: 55vh;
+    width: 45%;
+    background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.chart01 {
-    display: flex;
-    height: 42vh;
-    width: 30vw;
-    background-color: #FAF9FF;
-    border-radius: 20px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
     -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
-    margin-left: 20px;
+}
+.titleTotem{
+    height: 5%;
+    font-size: 100%;
+}
+
+.Totem{
+    height: 10%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FAF9FF;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+}
+.totemName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    width: 40%;
+}
+.ligado{
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    color: white;
+}
+.desligado{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    color: white;
 }
 
 .div_chart1 {
     height: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +169,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 20px;
     -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
@@ -157,12 +176,12 @@
 }
 
 .texto_kpi {
+    width: 80%;
     font-weight: 500;
     font-size: 17px;
     margin-top: 0;
     font-family: 'inter';
-    display: flex;
-    justify-content: center;
+    margin: 1px 0 0 5px;
 }
 
 .detalheTotem {
@@ -178,6 +197,5 @@
     width: 12rem;
     height: 8rem;
     background-color: #FAF9FF;
-    border-radius: 20px;
     margin-bottom: 4%;
 }

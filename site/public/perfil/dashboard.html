@@ -190,7 +190,8 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
                     var span = document.getElementById("componenteMaxSpan");
                     span.innerHTML = `CPU: ${resposta[0].maximoProcessador}%`
-
+                    console.log(idTotem)
+                    console.log("AAAAAAAAAAAAAAAAAAAAAA")
                     // finalizarAguardar();
                 });
             } else {
@@ -318,8 +319,6 @@
         graficoProcessador.data.labels.push(resposta[0].Hour);
         graficoProcessador.data.datasets[0].data.shift();
         var processador = resposta[0].qtdProcessador;
-        processador = processador.replace(",", ".");
-        processador = parseFloat(processador);  
         processadorPorcentagem = processador;
         graficoProcessador.data.datasets[0].data.push(processador);
         graficoProcessador.update()
@@ -438,5 +437,9 @@
         graficoPolar.update();
         setTimeout(() => atualizarGraficoPolar(), 5000);
     }
+
+    setInterval(() => componenteMax(), 5000);
+    setInterval(() => armazenamentoTotal(), 5000);
+    setInterval(() => memoriaRam(), 5000);
 
 </script>

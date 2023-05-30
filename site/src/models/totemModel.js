@@ -73,7 +73,7 @@ function memoriaRam(idTotem) {
 
 function ramGrafico(idTotem) {
 
-    instrucao = `select top 1 qtdRam, format(dataHora, 'HH:mm') AS Hour from [dbo].[DadoTotem]
+    instrucao = `select top 1 qtdRam, format(dataHora, 'HH:mm:ss') AS Hour from [dbo].[DadoTotem]
 	                where fkTotem = ${idTotem}
 		                order by idDadosTotem desc`
 
@@ -85,7 +85,7 @@ function ramGrafico(idTotem) {
 
 function processadorGrafico(idTotem) {
 
-    instrucao = `select top 1 qtdProcessador, format(dataHora, 'HH:mm') AS Hour from [dbo].[DadoTotem]
+    instrucao = `select top 1 qtdProcessador, format(dataHora, 'HH:mm:ss') AS Hour from [dbo].[DadoTotem]
 	                where fkTotem = ${idTotem}
 		                order by idDadosTotem desc`
 
@@ -97,11 +97,21 @@ function processadorGrafico(idTotem) {
 
 function discoGrafico(idTotem) {
 
-    instrucao = `select top 1 qtdDisco, qtdRam, format(dataHora, 'HH:mm') AS Hour from [dbo].[DadoTotem]
+    instrucao = `select top 1 qtdDisco, qtdRam, format(dataHora, 'HH:mm:ss') AS Hour from [dbo].[DadoTotem]
 	                where fkTotem = ${idTotem}
 		                order by idDadosTotem desc`
 
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function discoGrafico()");
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function statusTotem(idTotem) {
+
+    instrucao = `select idTotem, ativo from [dbo].[Totem];`
+
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function statusTotem()");
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -189,4 +199,5 @@ module.exports = {
     ramGrafico,
     processadorGrafico,
     discoGrafico,
+    statusTotem,
 }
