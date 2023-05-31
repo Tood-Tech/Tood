@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/func.css">
     <script src="../assets/js/menu.js"></script>
-    <title>Cadastro Funcionário</title>
+    <title>Funcionário | Tood</title>
+    <link rel="shortcut icon" href="./assets/img/T.png" type="image/x-icon" />
+
 </head>
 
 <body onload="atualizarFeed()">
@@ -77,15 +79,16 @@
                             <input class="inputs" type="text" placeholder="(00)99999-9999" id="telefoneIpt">
                             <span class="tituloInp">CPF:</span>
                             <input class="inputs" type="text" placeholder="000.000.000-00" id="cpfIpt">
+                            <span class="tituloInp">Função:</span>
                             <div class="btnsForm">
                                 <select class="selectPermissao" name="Permissao" id="cargoFunc">
                                     <option value="gerente">Gerente</option>
                                     <option value="suporte">Suporte</option>
                                 </select>
-                                <button onclick="cadastrarFuncionario()" class="btnConfirmar">Confirmar</button>
                             </div>
                         </div>
                     </div>
+                    <button onclick="cadastrarFuncionario()" class="btnConfirmar">Confirmar</button>
                 </div>
                 <!-- aq TIRAR ISSO DEPOIS -->
                 <div id="cardsFunc" class="funcCards">

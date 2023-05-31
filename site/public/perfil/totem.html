@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="../assets/css/estilos-gerais.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/totem.css">
-    <title>Cadastro Totem</title>
+    <title>Totem | Tood</title>
+    <link rel="shortcut icon" href="./assets/img/T.png" type="image/x-icon" />
+
 </head>
 
-<body onload="atualizarFeed()">
+<body>
+    <main>
         <section class="main">
             <!-- SIDE BAR -->
             <div class="sidebar">
@@ -45,25 +48,25 @@
                     <div class="form">
                         <div class="form-inputs">
                             <div class="parteForm">
-                                <span class="tituloInp">Nome:</span>
-                                <input id="apelidoTotem" class="inputs" type="text" placeholder="Número Serial">
-                                <span class="tituloInp">Nome:</span>
-                                <select name="" id="selectFranquia" class="comboBox" placeholder="Apelido">
-                                    <option value="">Franquia</option>
+                                <span class="tituloInp">Número Serial:</span>
+                                <input id="apelidoTotem" class="inputs" type="text" placeholder="ex: 7D9H2-G4J5K-3C8F6">
+                                <span class="tituloInp">Franquia:</span>
+                                <select name="" id="selectFranquia" class="comboBox" placeholder="">
+                                    <option value="">Selecione a franquia do totem</option>
                                 </select>
-                                <span class="tituloInp">Nome:</span>
-                                <input id="discoTotem" class="inputs" type="text" placeholder="Disco">
+                                <span class="tituloInp">Disco:</span>
+                                <input id="discoTotem" class="inputs" type="text" placeholder="ex: 1.0 TB">
                             </div>
                             <div class="parteForm">
-                                <span class="tituloInp">Nome:</span>
-                                <input id="processadorTotem" class="inputs" type="text" placeholder="Processador">
-                                <span class="tituloInp">Nome:</span>
-                                <input id="ramTotem" class="inputs" type="text" placeholder="Ram">
+                                <span class="tituloInp">Processador:</span>
+                                <input id="processadorTotem" class="inputs" type="text" placeholder="ex: Intel Core i7">
+                                <span class="tituloInp">Ram:</span>
+                                <input id="ramTotem" class="inputs" type="text" placeholder="ex: 8 GB">
                             </div>
                         </div>
                         <div class="parametrizar">
                             <h1 class="titleParametrizar">Parametrizar Alertas</h1>
-                            <p class="pDescricao">Digite a "%" de uso para gerarmos um alerta para cada componente.</p>
+                            <p class="pDescricao">Digite a porcentagem de uso para gerarmos um alerta para cada componente.</p>
                             <div class="labelIpt">
                                 <label for="processadorTotem" class="labelComponentes">Processador:</label>
                                 <input id="processadorTotemA" class="inputs parametrizarIpts" type="number" min="1"
@@ -167,6 +170,7 @@
             </div>
 
         </section>
+    </main>
 
 </body>
 
@@ -488,7 +492,7 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                    // teste.innerHTML = "";
+                    teste.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 

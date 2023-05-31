@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+.tituloInp{
+    font-weight: 700;
+    color:#00072D;
+    padding-bottom: 10px;
+}
+
 .div-form{
     width: 85%;
     display: flex;
@@ -16,9 +22,9 @@
     background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
 }
 
-.form{
+.form {
     width: 80%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding: 15px 0;
     background-color: #FAF9FF;
     display: flex;
@@ -26,6 +32,9 @@
     align-items: center;
     justify-content: space-evenly;
     margin-bottom: 10vh;
+    -webkit-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.75);
 }
 
 .title-form{
@@ -39,12 +48,12 @@
     color: #F1D302;
 }
 
-.form-inputs{
+.form-inputs {
     display: flex;
     width: 100%;
     /* height: 40%; */
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 15px;
 }
 
@@ -62,6 +71,7 @@
     border: none;
     border-bottom: 3px solid #0008353a;
     color: #6D6A75;
+    font-family: poppins;
 }
 
 .inputs::placeholder {
@@ -108,11 +118,17 @@
     font-size: 100%;
     /* color: white; */
 }
-.pDescricao{
+
+.pDescricao {
     /* color: white; */
     font-size: 80%;
-    margin: 10px 0;
+    /* margin: 0px 0; */
+    padding: 10px;
+    width: 535px;
+    display: flex;
+    text-align: center;
 }
+
 .parametrizarIpts{
     width: 50%;
     margin: 0;

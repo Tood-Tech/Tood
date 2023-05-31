@@ -12,8 +12,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* margin-top: 2%; */
     background: rgb(93, 224, 230);
     background: linear-gradient(90deg, rgba(93, 224, 230, 1) 0%, rgba(0, 74, 173, 1) 100%);
+
 }
 
 .form {
@@ -34,7 +36,7 @@
     color: #F1D302;
 }
 
-.tituloInp{
+.tituloInp {
     color: #020c42;
     font-weight: bold;
 }
@@ -44,9 +46,9 @@
     height: 85%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    padding-bottom: 60px;
-    padding-top: 60px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    padding-top: 40px;
 }
 
 .parteForm {
@@ -68,7 +70,7 @@
     /* height: 3vh; */
 }
 
-.lastInput{
+.lastInput {
     margin-bottom: 0;
 
 }
@@ -78,31 +80,34 @@
 }
 
 .selectPermissao {
-    width: 30%;
+    width: 100%;
     background-color: #FAF9FF;
     border: none;
     border-bottom: 3px solid #0008353a;
     color: #6D6A75;
     font-size: 100%;
+    margin-top: 5px;
 }
 
 .btnConfirmar {
-    width: 30%;
-    height: 100%;
     background-color: #F1D302;
     color: black;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 100%;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.1s;
     border: none;
+    padding: 10px 25px 10px 25px;
+    margin-top: 65px;
+    margin-left: -85px;
+    margin: 15px 0px 15px 400px;
 }
 
-/* .btnConfirmar:hover {
+.btnConfirmar:hover{
     background: #ffe749;
-    padding: 10px 29px;
-} */
+    padding: 10px 29px 10px 29px;
+}
 
 .btnsForm {
     height: 15%;
@@ -121,7 +126,7 @@
 }
 
 /* Cards de funcionários */
-.card-func{
+.card-func {
     width: 100%;
     background-color: #00072D;
     display: flex;
@@ -130,7 +135,7 @@
     margin: 2% 0 2% 0;
 }
 
-.imgIconPerfil{
+.imgIconPerfil {
     width: 20%;
     background-color: #00072D;
     display: flex;
@@ -140,18 +145,21 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
-.iconCardFuncionario{
+
+.iconCardFuncionario {
     width: 90%;
     background-color: white;
     border-radius: 20px;
-    border: 10px solid  #000000;
+    border: 10px solid #000000;
 }
-.atributos{
+
+.atributos {
     width: 80%;
     height: 100%;
     display: flex;
 }
-.metadeAtributos{
+
+.metadeAtributos {
     width: 50%;
     margin-left: 2%;
     margin-right: 2%;
@@ -160,7 +168,7 @@
     justify-content: center;
 }
 
-.individualAtributo{
+.individualAtributo {
     display: flex;
     justify-content: space-between;
     gap: 5%;
@@ -168,7 +176,8 @@
     margin: 2% 0 0;
     color: white;
 }
-.btnAlterar{
+
+.btnAlterar {
     width: 30%;
     background-color: #F1D302;
     border: none;
@@ -177,24 +186,27 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.btnAlterarApelido:hover{
+
+.btnAlterarApelido:hover {
     background-color: yellow;
     transition: 0.3s;
 }
-.cardFunc{
+
+.cardFunc {
     margin-top: 2%;
     height: 100%;
 }
-.cardFuncPermissao{
+
+.cardFuncPermissao {
     color: white;
-    background-color:  #00072D;
+    background-color: #00072D;
 }
 
-.botoesTotem button{
+.botoesTotem button {
     margin: 2% 0 0 0;
 }
 
-.btnDeletarMaquina{
+.btnDeletarMaquina {
     margin-top: 5%;
     margin-left: 1%;
     width: 40%;
@@ -221,16 +233,19 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .content-main{
+    .content-main {
         width: 100%;
         justify-content: flex-start;
     }
-    body{
+
+    body {
         overflow-x: hidden;
     }
-    .form{
+
+    .form {
         height: 95%;
     }
+
     .tituloFunc {
         width: 100%;
         height: 10%;
@@ -250,7 +265,7 @@
         margin-top: 1vh;
     }
 
-    .parteForm{
+    .parteForm {
         width: 80%;
         height: 35%;
         padding: 30px;
@@ -276,13 +291,13 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        align-items:center;
+        align-items: center;
         gap: 0.5vh;
         margin-top: 1vh;
         height: 50%;
     }
 }
 
-.invisible{
+.invisible {
     display: none;
 }
