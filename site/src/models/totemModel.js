@@ -97,7 +97,7 @@ function processadorGrafico(idTotem) {
 
 function discoGrafico(idTotem) {
 
-    instrucao = `select top 1 qtdDisco, qtdRam, format(dataHora, 'HH:mm:ss') AS Hour from [dbo].[DadoTotem]
+    instrucao = `select top 1 pacoteEnviado, pacoteRecebido, format(dataHora, 'HH:mm:ss') AS Hour from [dbo].[DadoTotem]
 	                where fkTotem = ${idTotem}
 		                order by idDadosTotem desc`
 

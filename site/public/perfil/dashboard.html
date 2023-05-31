@@ -370,12 +370,12 @@
         data: {
             labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
             datasets: [{
-                label: 'Valor leitura Disco',
+                label: 'Pacotes recebidos',
                 data: [12, 19, 3, 5, 2, 1, 8],
                 borderWidth: 1
             },
             {
-                label: 'Valor escrita disco',
+                label: 'Pacotes enviados',
                 data: [5, 34, 20, 2, 3, 9, 8],
                 borderWidth: 1
             }]
@@ -395,19 +395,15 @@
         graficoInternet.data.labels.shift();
         graficoInternet.data.labels.push(resposta[0].Hour);
         graficoInternet.data.datasets[0].data.shift();
-        var ram = resposta[0].qtdRam;
-        ram = ram.replace("Gib", "");
-        ram = ram.replace(",", ".");
+        var ram = resposta[0].pacoteEnviado;
+        ram = ram.replace("Kib", "");
         ram = parseFloat(ram);
-        ram = (ram*100.0)/8.0
         dado1 = ram;
         graficoInternet.data.datasets[0].data.push(ram);
         graficoInternet.data.datasets[1].data.shift();
-        var disco = resposta[0].qtdDisco;
-        disco = disco.replace("Gib", "");
-        disco = disco.replace(",", ".");
+        var disco = resposta[0].pacoteRecebido;
+        disco = disco.replace("Kib", "");
         disco = parseFloat(disco);
-        disco = (disco*100.0)/30.0;
         dado2 = disco;
         graficoInternet.data.datasets[1].data.push(disco);
         graficoInternet.update()
