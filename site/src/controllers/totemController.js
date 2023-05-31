@@ -203,8 +203,10 @@ function editarTotem(req, res) {
     var alertaProcess = req.body.alertaProcess;
     var alertaRam = req.body.alertaRam;
     var alertaDisco = req.body.alertaDisco;
+    var rebootProcessador = req.body.rebootProcessador;
+    var rebootRam = req.body.rebootRam;
 
-    totemController.editarTotem(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco)
+    totemController.editarTotem(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco, rebootProcessador, rebootRam)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -248,6 +250,8 @@ function publicarTotem(req, res) {
     var alertaRam = req.body.alertaRamServer;
     var disco = req.body.discoServer;
     var alertaDisco = req.body.alertaDiscoServer;
+    var rebootProcessador = req.body.rebootProcessador;
+    var rebootRam = req.body.rebootRam;
 
     if (fkEstabelecimento == undefined) {
         res.status(400).send("O título está indefinido!");
@@ -256,7 +260,7 @@ function publicarTotem(req, res) {
     } else if (processador == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        totemController.publicarTotem(fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, disco, alertaDisco)
+        totemController.publicarTotem(fkEstabelecimento, numeroSerial, processador, alertaProcessador, ram, alertaRam, disco, alertaDisco, rebootProcessador, rebootRam)
             .then(
                 function (resultado) {
                     res.json(resultado);

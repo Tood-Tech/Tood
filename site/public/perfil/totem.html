@@ -80,6 +80,20 @@
                                     placeholder="%">
                             </div>
                         </div>
+                        <div class="parametrizar">
+                            <h1 class="titleParametrizar">Parametrizar Reinicialização</h1>
+                            <p class="pDescricao">Digite a "%" de uso para realizarmos um reset na máquina</p>
+                            <div class="labelIpt">
+                                <label for="processadorTotem" class="labelComponentes">Processador:</label>
+                                <input id="processadorReboot" class="inputs parametrizarIpts" type="number" min="1"
+                                    max="100" placeholder="%">
+                            </div>
+                            <div class="labelIpt">
+                                <label for="ramTotem" class="labelComponentes">Ram:</label>
+                                <input id="ramReboot" class="inputs parametrizarIpts" type="number" min="1" max="100"
+                                    placeholder="%">
+                            </div>
+                        </div>
                         <div class="div-btnConfirmar">
                             <button onclick="criarTotem()" class="btnConfirmar">
                                 Confirmar
@@ -209,6 +223,8 @@
                         idAlertaProcess = `alertaProcess${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
                         idAlertaRam = `alertaRam${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
                         idAlertaDisco = `alertaDisco${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
+                        idRebootProcessador = `rebootProcessador${publicacao.idTotem}${publicacao.fkEstabelecimento}`;
+                        idRebootRam = `rebootRam${publicacao.idTotem}${publicacao.fkEstabelecimento}`
 
                         teste.innerHTML += `
                         <div class="cardTotem">
@@ -244,14 +260,20 @@
                                 <div class="individualAtributo parametrosAlterar">
                                     <p style="font-weight: bold;">Disco: <span style="font-weight: 300;" id="${idAlertaDisco}">${publicacao.alertaDisco}%</span></p>
                                 </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Reboot processador: <span style="font-weight: 300;" id="${idRebootProcessador}">${publicacao.rebootProcessador}%</span></p>
+                                </div>
+                                <div class="individualAtributo parametrosAlterar">
+                                    <p style="font-weight: bold;">Reboot ram: <span style="font-weight: 300;" id="${idRebootRam}">${publicacao.rebootRam}%</span></p>
+                                </div>
                                 <div id="divBotoesTotem${publicacao.idTotem}${publicacao.fkEstabelecimento}" class="botoesTotem">
-                                    <button id="btnConfirmar${publicacao.idTotem}${publicacao.fkEstabelecimento}" onclick="alterarInfoTotem(${publicacao.idTotem}, ${publicacao.fkEstabelecimento}, '${publicacao.disco}', '${publicacao.processador}', '${publicacao.ram}', ${publicacao.alertaProcessador}, ${publicacao.alertaRam}, ${publicacao.alertaDisco})" class="btnDeletarMaquina editar">
+                                    <button id="btnConfirmar${publicacao.idTotem}${publicacao.fkEstabelecimento}" onclick="alterarInfoTotem(${publicacao.idTotem}, ${publicacao.fkEstabelecimento}, '${publicacao.disco}', '${publicacao.processador}', '${publicacao.ram}', ${publicacao.alertaProcessador}, ${publicacao.alertaRam}, ${publicacao.alertaDisco}, ${publicacao.rebootProcessador}, ${publicacao.rebootRam})" class="btnDeletarMaquina editar">
                                     Alterar
                                 </button>
-                                <button id="btnDeletar${publicacao.idTotem}${publicacao.fkEstabelecimento}" onclick="perguntarDeletar(${publicacao.idTotem}, ${publicacao.fkEstabelecimento}, '${publicacao.disco}', '${publicacao.processador}', '${publicacao.ram}', ${publicacao.alertaProcessador}, ${publicacao.alertaRam}, ${publicacao.alertaDisco})" class="btnDeletarMaquina">
+                                <button id="btnDeletar${publicacao.idTotem}${publicacao.fkEstabelecimento}" onclick="perguntarDeletar(${publicacao.idTotem}, ${publicacao.fkEstabelecimento}, '${publicacao.disco}', '${publicacao.processador}', '${publicacao.ram}', ${publicacao.alertaProcessador}, ${publicacao.alertaRam}, ${publicacao.alertaDisco}, ${publicacao.rebootProcessador}, ${publicacao.rebootRam})" class="btnDeletarMaquina">
                                     Deletar
                                 </button>
-                                </div>
+                            </div>
                         `
                     }
 
@@ -268,7 +290,7 @@
 
     // Função para editar
 
-    function alterarInfoTotem(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco) {
+    function alterarInfoTotem(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco, rebootProcessador, rebootRam) {
 
         mudarBotoes = document.getElementById(`divBotoesTotem${idTotem}${fkEstabelecimento}`);
         idDisco = document.getElementById(`disco${idTotem}${fkEstabelecimento}`);
@@ -277,6 +299,8 @@
         idAlertaProcess = document.getElementById(`alertaProcess${idTotem}${fkEstabelecimento}`)
         idAlertaRam = document.getElementById(`alertaRam${idTotem}${fkEstabelecimento}`)
         idAlertaDisco = document.getElementById(`alertaDisco${idTotem}${fkEstabelecimento}`)
+        idRebootProcessador = document.getElementById(`rebootProcessador${idTotem}${fkEstabelecimento}`)
+        idRebootRam = document.getElementById(`rebootRam${idTotem}${fkEstabelecimento}`)
 
         idDisco.innerHTML = `<input id="iptDisco${idTotem}${fkEstabelecimento}" style="width: 120px;" class="inputs" placeholder="${disco}">`;
         idProcess.innerHTML = `<input id="iptProcess${idTotem}${fkEstabelecimento}"  style="width: 120px;" class="inputs" placeholder="${processador}">`;
@@ -284,12 +308,13 @@
         idAlertaProcess.innerHTML = `<input type="number" id="iptAlertProcess${idTotem}${fkEstabelecimento}" min="0" max="100" style="width: 120px;" class="inputs" placeholder="${alertaProcess}%">`;
         idAlertaRam.innerHTML = `<input type="number" id="iptAlertRam${idTotem}${fkEstabelecimento}" min="0" max="100" style="width: 120px;" class="inputs" placeholder="${alertaRam}%">`;
         idAlertaDisco.innerHTML = `<input type="number" id="iptAlertDisco${idTotem}${fkEstabelecimento}" min="0" max="100" style="width: 120px;" class="inputs" placeholder="${alertaDisco}%">`;
-
+        idRebootProcessador.innerHTML = `<input type="number" id="iptRebootProcessador${idTotem}${fkEstabelecimento}" min="0" max="100" style="width: 120px;" class="inputs" placeholder="${rebootProcessador}%">`
+        idRebootRam.innerHTML = `<input type="number" id="iptRebootRam${idTotem}${fkEstabelecimento}" min="0" max="100" style="width: 120px;" class="inputs" placeholder="${rebootRam}%">`
         mudarBotoes.innerHTML = `
-        <button onclick="enviarInfoTotem(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco})" class="btnDeletarMaquina confirmar">
+        <button onclick="enviarInfoTotem(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco}, ${rebootProcessador}, ${rebootRam})" class="btnDeletarMaquina confirmar">
                                     Confirmar
                                 </button>
-                                <button id="btnDeletar${idTotem}${fkEstabelecimento}" onclick="desfazerAlteracoes(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco})" class="btnDeletarMaquina editar">
+                                <button id="btnDeletar${idTotem}${fkEstabelecimento}" onclick="desfazerAlteracoes(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco}, ${rebootProcessador}, ${rebootRam})" class="btnDeletarMaquina editar">
                                     Desfazer
                                 </button>
         `;
@@ -298,7 +323,7 @@
 
 
     // Função para enviar edição
-    function enviarInfoTotem(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco) {
+    function enviarInfoTotem(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco, rebootProcessador, rebootRam) {
 
         iptDisco = document.getElementById(`iptDisco${idTotem}${fkEstabelecimento}`);
         iptProcess = document.getElementById(`iptProcess${idTotem}${fkEstabelecimento}`);
@@ -306,6 +331,8 @@
         iptAlertProcess = document.getElementById(`iptAlertProcess${idTotem}${fkEstabelecimento}`)
         iptAlertRam = document.getElementById(`iptAlertRam${idTotem}${fkEstabelecimento}`)
         iptAlertDisco = document.getElementById(`iptAlertDisco${idTotem}${fkEstabelecimento}`)
+        iptRebootProcessador = document.getElementById(`iptRebootProcessador${idTotem}${fkEstabelecimento}`)
+        iptRebootRam = document.getElementById(`iptRebootRam${idTotem}${fkEstabelecimento}`)
 
         if (iptDisco.value != "") {
             disco = iptDisco.value
@@ -331,6 +358,15 @@
             alertaDisco = iptAlertDisco.value
         }
 
+        if(iptRebootProcessador.value != ""){
+            rebootProcessador = iptRebootProcessador.value;
+        }
+
+        if(iptRebootRam.value != ""){
+            rebootRam = iptRebootRam.value;
+        }
+
+
             fetch(`/totem/editarTotem/${idTotem}/${fkEstabelecimento}`, {
                 method: "PUT",
                 headers: {
@@ -345,6 +381,8 @@
                     alertaProcess: alertaProcess,
                     alertaRam: alertaRam,
                     alertaDisco: alertaDisco,
+                    rebootProcessador: rebootProcessador,
+                    rebootRam: rebootRam,
                 })
             }).then(function (resposta) {
 
@@ -362,7 +400,7 @@
     }
 
 
-    function desfazerAlteracoes(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco) {
+    function desfazerAlteracoes(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco, rebootProcessador, rebootRam) {
 
         idDisco = document.getElementById(`disco${idTotem}${fkEstabelecimento}`);
         idProcess = document.getElementById(`processador${idTotem}${fkEstabelecimento}`);
@@ -371,6 +409,8 @@
         idAlertaRam = document.getElementById(`alertaRam${idTotem}${fkEstabelecimento}`)
         idAlertaDisco = document.getElementById(`alertaDisco${idTotem}${fkEstabelecimento}`)
         mudarBotoes = document.getElementById(`divBotoesTotem${idTotem}${fkEstabelecimento}`);
+        idRebootProcessador = document.getElementById(`rebootProcessador${idTotem}${fkEstabelecimento}`)
+        idRebootRam = document.getElementById(`rebootRam${idTotem}${fkEstabelecimento}`)
 
         idDisco.innerHTML = `${disco}`;
         idProcess.innerHTML = `${processador}`;
@@ -378,24 +418,26 @@
         idAlertaProcess.innerHTML = `${alertaProcess}%`;
         idAlertaRam.innerHTML = `${alertaRam}%`;
         idAlertaDisco.innerHTML = `${alertaDisco}%`;
+        idRebootProcessador.innerHTML = `${rebootProcessador}%`
+        idRebootRam.innerHTML = `${rebootRam}%`
 
         mudarBotoes.innerHTML = `
-        <button id="btnConfirmar${idTotem}${fkEstabelecimento}" onclick="alterarInfoTotem(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco})" class="btnDeletarMaquina editar">
+        <button id="btnConfirmar${idTotem}${fkEstabelecimento}" onclick="alterarInfoTotem(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco}, ${rebootProcessador}, ${rebootRam})" class="btnDeletarMaquina editar">
                                     Alterar
                                 </button>
-                                <button id="btnDeletar${idTotem}${fkEstabelecimento}" onclick="perguntarDeletar(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco})" class="btnDeletarMaquina">
+                                <button id="btnDeletar${idTotem}${fkEstabelecimento}" onclick="perguntarDeletar(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco}, ${rebootProcessador}, ${rebootRam})" class="btnDeletarMaquina">
                                     Deletar
                                 </button>`
     }
 
-    function perguntarDeletar(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco) {
+    function perguntarDeletar(idTotem, fkEstabelecimento, disco, processador, ram, alertaProcess, alertaRam, alertaDisco, rebootProcessador, rebootRam) {
         mudarBotoes = document.getElementById(`divBotoesTotem${idTotem}${fkEstabelecimento}`);
 
         mudarBotoes.innerHTML = `
         <button id="btnConfirmar${idTotem}${fkEstabelecimento}" onclick="deletar(${idTotem}, ${fkEstabelecimento})" class="btnDeletarMaquina deletar">
                                     Confirmar
                                 </button>
-                                <button id="btnDeletar${idTotem}${fkEstabelecimento}" onclick="desfazerAlteracoes(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco})" class="btnDeletarMaquina editar">
+                                <button id="btnDeletar${idTotem}${fkEstabelecimento}" onclick="desfazerAlteracoes(${idTotem}, ${fkEstabelecimento}, '${disco}', '${processador}', '${ram}', ${alertaProcess}, ${alertaRam}, ${alertaDisco}, ${rebootProcessador}, ${rebootRam})" class="btnDeletarMaquina editar">
                                     Desfazer
                                 </button>`
     }
@@ -481,6 +523,8 @@
         var alertaRamVar = ramTotemA.value;
         var discoVar = discoTotem.value;
         var alertaDiscoVar = discoTotemA.value;
+        var rebootProcessador = processadorReboot.value;
+        var rebootRam = ramReboot.value;
 
         // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
         //     cardErro.style.display = "block"
@@ -510,6 +554,8 @@
                 alertaRamServer: alertaRamVar,
                 discoServer: discoVar,
                 alertaDiscoServer: alertaDiscoVar,
+                rebootProcessador: rebootProcessador,
+                rebootRam: rebootRam,
             })
         }).then(function (resposta) {
 
